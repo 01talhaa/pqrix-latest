@@ -1,0 +1,181 @@
+"use client"
+
+import { useState } from "react"
+import { jobOpenings } from "@/data/career"
+import { motion, useInView } from "framer-motion"
+import { useRef } from "react"
+import { MapPin, Briefcase, DollarSign } from "lucide-react"
+import { JobModal } from "@/components/job-modal"
+import type { JobOpening } from "@/data/career"
+
+export function CareerSection() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, amount: 0.3 })
+  const [selectedJob, setSelectedJob] = useState<JobOpening | null>(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const handleJobClick = (job: JobOpening) => {
+    setSelectedJob(job)
+    setIsModalOpen(true)
+  }
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false)
+    setTimeout(() => setSelectedJob(null), 300)
+  }
+
+  return (
+    <section id="careers" className="relative overflow-hidden py-12 sm:py-24 md:py-32">
+      <div className="bg-primary absolute -top-10 left-1/2 h-16 w-44 -translate-x-1/2 rounded-full opacity-40 blur-3xl select-none"></div>
+      <div className="via-primary/50 absolute top-0 left-1/2 h-px w-3/5 -translate-x-1/2 bg-gradient-to-r from-transparent to-transparent"></div>
+      
+      <motion.div
+        ref={ref}
+        initial={{ opacity: 0, y: 50 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+        transition={{ duration: 0.5, delay: 0 }}
+        className="container mx-auto flex flex-col items-center gap-12"
+      >
+        {/* Header */}
+        <div className="mx-auto max-w-[640px]">
+          <div className="flex justify-center">
+            <button
+              type="button"
+              className="group relative z-[60] mx-auto rounded-full border border-white/20 bg-white/5 px-6 py-1 text-xs backdrop-blur transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-100 md:text-sm"
+            >
+              <div className="absolute inset-x-0 -top-px mx-auto h-0.5 w-1/2 bg-gradient-to-br from-[#F5A623] to-[#FF8C00] shadow-2xl transition-all duration-500 group-hover:w-3/4"></div>
+              <div className="absolute inset-x-0 -bottom-px mx-auto h-0.5 w-1/2 bg-gradient-to-br from-[#F5A623] to-[#FF8C00] shadow-2xl transition-all duration-500 group-hover:h-px"></div>
+              <span className="relative text-foreground font-medium">Join Our Team</span>
+            </button>
+          </div>
+          <h2 className="mt-5 bg-gradient-to-br from-[#F5A623] to-[#FF8C00] bg-clip-text text-center text-4xl font-semibold tracking-tighter text-transparent md:text-[54px] md:leading-[60px] relative z-10">
+            Career Opportunities
+          </h2>
+          <p className="mt-5 relative z-10 text-center text-lg text-foreground/70 font-medium">
+            Join a team of passionate designers and help us create exceptional digital experiences
+          </p>
+        </div>
+
+        {/* Job Listings Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-6xl">
+          {jobOpenings.map((job, index) => (
+            <motion.div
+              key={job.id}
+              initial={{ opacity: 0, y: 50 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{
+                scale: 1.03,
+                y: -5,
+              }}
+              onClick={() => handleJobClick(job)}
+              className="group relative overflow-hidden rounded-3xl border border-border/30 bg-card/90 backdrop-blur-sm p-8 shadow-xl cursor-pointer"
+            >
+              {/* Animated gradient background on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-[#e78a53]/5 via-transparent to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+              {/* Decorative blur */}
+              <div className="absolute -top-5 -right-5 -z-10 h-32 w-32 rounded-full bg-gradient-to-b from-[#e78a53]/20 to-transparent blur-2xl"></div>
+
+              {/* Content */}
+              <div className="relative space-y-4">
+                {/* Badges */}
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="px-3 py-1 rounded-full bg-gradient-to-br from-[#F5A623] to-[#FF8C00] text-white text-xs font-semibold">
+                    {job.department}
+                  </span>
+                  <span className="px-3 py-1 rounded-full bg-muted text-foreground text-xs font-semibold">
+                    {job.type}
+                  </span>
+                </div>
+
+                {/* Title */}
+                <h3 className="text-2xl font-bold text-foreground group-hover:text-[#e78a53] transition-colors duration-300">
+                  {job.title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-sm text-foreground/70 leading-relaxed group-hover:text-foreground/90 transition-colors duration-300">
+                  {job.description}
+                </p>
+
+                {/* Details */}
+                <div className="flex items-center gap-4 text-sm text-muted-foreground pt-4 border-t border-border/30 flex-wrap">
+                  <div className="flex items-center gap-1">
+                    <MapPin className="w-4 h-4" />
+                    <span>{job.location}</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <Briefcase className="w-4 h-4" />
+                    <span>{job.type}</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <DollarSign className="w-4 h-4" />
+                    <span>{job.salary}</span>
+                  </div>
+                </div>
+
+                {/* Apply Button */}
+                <motion.div 
+                  className="flex justify-end pt-2"
+                  initial={{ x: 0 }}
+                  whileHover={{ x: 10 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="px-6 py-2 rounded-full bg-gradient-to-br from-[#F5A623] to-[#FF8C00] text-white font-medium group-hover:bg-[#e78a53]/20 transition-all duration-300">
+                    View & Apply →
+                  </div>
+                </motion.div>
+              </div>
+
+              {/* Shine effect on hover */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full"
+                animate={{ x: ["0%", "200%"] }}
+                transition={{
+                  duration: 2,
+                  repeat: Number.POSITIVE_INFINITY,
+                  repeatDelay: 5,
+                  ease: "easeInOut",
+                }}
+              />
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Bottom CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className="flex flex-col items-center gap-4 mt-8"
+        >
+          <p className="text-center text-foreground/70">
+            Don't see a perfect fit? We're always looking for talented people.
+          </p>
+          <button className="group relative inline-flex items-center gap-2 rounded-full border border-[#e78a53]/30 bg-primary/10 backdrop-blur-sm px-8 py-4 text-sm font-medium text-foreground transition-all hover:border-[#e78a53]/60 hover:bg-[#e78a53]/20 active:scale-95">
+            <div className="absolute inset-x-0 -top-px mx-auto h-px w-3/4 bg-gradient-to-r from-transparent via-[#e78a53]/40 to-transparent"></div>
+            <div className="absolute inset-x-0 -bottom-px mx-auto h-px w-3/4 bg-gradient-to-r from-transparent via-[#e78a53]/40 to-transparent"></div>
+            <span>Send Us Your Resume</span>
+            <svg
+              className="w-4 h-4 group-hover:translate-x-1 transition-transform"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M13 7l5 5m0 0l-5 5m5-5H6"
+              />
+            </svg>
+          </button>
+        </motion.div>
+      </motion.div>
+
+      {/* Job Application Modal */}
+      <JobModal job={selectedJob} isOpen={isModalOpen} onClose={handleCloseModal} />
+    </section>
+  )
+}

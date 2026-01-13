@@ -1,0 +1,389 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated color scheme to match the portfolio design */
+  --background: oklch(0.88 0.01 280);
+  --foreground: oklch(0.2 0 0);
+  --card: oklch(0.95 0.005 280);
+  --card-foreground: oklch(0.2 0 0);
+  --popover: oklch(0.95 0.005 280);
+  --popover-foreground: oklch(0.2 0 0);
+  --primary: oklch(0.92 0.15 110);
+  --primary-foreground: oklch(0.2 0 0);
+  --secondary: oklch(0.92 0.01 280);
+  --secondary-foreground: oklch(0.2 0 0);
+  --muted: oklch(0.9 0.01 280);
+  --muted-foreground: oklch(0.5 0 0);
+  --accent: oklch(0.92 0.15 110);
+  --accent-foreground: oklch(0.2 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.85 0.01 280);
+  --input: oklch(0.93 0.005 280);
+  --ring: oklch(0.92 0.15 110);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.95 0.005 280);
+  --sidebar-foreground: oklch(0.2 0 0);
+  --sidebar-primary: oklch(0.92 0.15 110);
+  --sidebar-primary-foreground: oklch(0.2 0 0);
+  --sidebar-accent: oklch(0.9 0.01 280);
+  --sidebar-accent-foreground: oklch(0.2 0 0);
+  --sidebar-border: oklch(0.85 0.01 280);
+  --sidebar-ring: oklch(0.92 0.15 110);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+@theme inline {
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Adding all 10 premium animations according to PQRIX specification */
+
+/* 1. FADE & SLIDE REVEAL - Sections, headings, text blocks, cards */
+@keyframes fadeSlideReveal {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-slide-reveal {
+  animation: fadeSlideReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* 2. STAGGERED CASCADE - Multiple items in sequence */
+@keyframes cascadeReveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cascade-stagger {
+  animation: cascadeReveal 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* 3. HOVER LIFT (ELEVATION) - Cards and interactive elements */
+@keyframes hoverLift {
+  to {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.hover-lift:hover {
+  animation: hoverLift 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* 4. MAGNETIC BUTTON - Primary CTA only */
+@keyframes magneticPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(var(--primary-rgb), 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(var(--primary-rgb), 0);
+  }
+}
+
+.magnetic-btn {
+  will-change: transform;
+  cursor: grab;
+}
+
+.magnetic-btn:active {
+  cursor: grabbing;
+}
+
+/* 5. GRADIENT FLOW - Hero background and elements */
+@keyframes gradientFlow {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.gradient-flow {
+  background-size: 200% 200%;
+  animation: gradientFlow 12s ease-in-out infinite;
+}
+
+/* 6. PARALLAX DRIFT - Subtle depth effect */
+@keyframes parallaxDrift {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-8px, -4px);
+  }
+}
+
+.parallax-drift {
+  animation: parallaxDrift 16s ease-in-out infinite;
+}
+
+/* 7. BLUR-TO-FOCUS REVEAL - Hero headline only */
+@keyframes blurToFocus {
+  from {
+    opacity: 0;
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+
+.blur-to-focus {
+  animation: blurToFocus 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* 8. MICRO GLOW HOVER - Subtle highlight */
+@keyframes microGlow {
+  to {
+    box-shadow: 0 0 12px rgba(var(--primary-rgb), 0.4);
+  }
+}
+
+.micro-glow:hover {
+  animation: microGlow 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* 9. PAGE FADE TRANSITION - Navigation */
+@keyframes pageFadeExit {
+  to {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+@keyframes pageFadeEnter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 10. FLOATING 3D AMBIENT MOTION - Hero section */
+@keyframes float3D {
+  0%,
+  100% {
+    transform: translate(0, 0) rotateX(0deg) rotateY(0deg);
+  }
+  25% {
+    transform: translate(4px, -8px) rotateX(2deg) rotateY(3deg);
+  }
+  50% {
+    transform: translate(-4px, 8px) rotateX(-2deg) rotateY(-3deg);
+  }
+  75% {
+    transform: translate(8px, -4px) rotateX(3deg) rotateY(2deg);
+  }
+}
+
+.floating-3d {
+  perspective: 1000px;
+  animation: float3D 16s ease-in-out infinite;
+}
+
+/* Utility classes for animations */
+.stagger-1 {
+  animation-delay: 0.08s;
+}
+.stagger-2 {
+  animation-delay: 0.16s;
+}
+.stagger-3 {
+  animation-delay: 0.24s;
+}
+.stagger-4 {
+  animation-delay: 0.32s;
+}
+.stagger-5 {
+  animation-delay: 0.4s;
+}
+.stagger-6 {
+  animation-delay: 0.48s;
+}
+.stagger-7 {
+  animation-delay: 0.56s;
+}
+.stagger-8 {
+  animation-delay: 0.64s;
+}
+
+/* Respects prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Blob shape styles for decorative elements */
+.blob-shape {
+  position: absolute;
+  background: oklch(0.92 0.15 110);
+  border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+  opacity: 0.4;
+  filter: blur(40px);
+  animation: blob-float 20s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes blob-float {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+/* Parallax scroll effect utility */
+.parallax {
+  will-change: transform;
+}
+
+/* Marquee animations */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}
+
+@keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(calc(-100% - var(--gap)));
+  }
+}
+
+.animate-marquee {
+  animation: marquee var(--duration) linear infinite;
+}
+
+.animate-marquee-vertical {
+  animation: marquee-vertical var(--duration) linear infinite;
+}
+
+/* Radial gradient utility */
+.bg-radial {
+  background-image: radial-gradient(var(--tw-gradient-stops));
+}
