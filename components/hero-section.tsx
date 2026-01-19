@@ -10,40 +10,40 @@ import { motion } from "framer-motion"
 
 export function HeroSection() {
   return (
-    <section className="bg-card/60 backdrop-blur-sm rounded-3xl p-8 md:p-12 lg:p-16 mb-6 border border-border/50 overflow-hidden relative">
+    <section className="bg-card/60 backdrop-blur-sm rounded-3xl p-6 md:p-8 lg:p-10 mb-6 border border-border/50 overflow-hidden relative">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-10 right-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-10 left-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }}></div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-8 lg:gap-12 items-center relative z-10">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-6 lg:gap-8 items-center relative z-10">
         {/* Left Content */}
-        <div className="space-y-8">
+        <div className="space-y-5 sm:space-y-6 text-center lg:text-left">
           {/* Main Heading */}
           <FadeSlideReveal delay={0} duration={0.8}>
             <div>
-              <div className="flex items-center gap-3 mb-4">
+              <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
                 <motion.div
                   animate={{ rotate: 360 }}
                   transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-                  className="w-12 h-12 rounded-full bg-gradient-to-br from-[#F5A623] to-[#FF8C00] flex items-center justify-center"
+                  className="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-gradient-to-br from-[#F5A623] to-[#FF8C00] flex items-center justify-center"
                 >
-                  <Cpu className="w-6 h-6 text-white" />
+                  <Cpu className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </motion.div>
-                <span className="px-4 py-1.5 rounded-full bg-gradient-to-br from-[#F5A623] to-[#FF8C00] text-white text-sm font-semibold border border-primary/20">
+                <span className="px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-gradient-to-br from-[#F5A623] to-[#FF8C00] text-white text-xs sm:text-sm font-semibold border border-primary/20">
                   AI-Powered Innovation
                 </span>
               </div>
-              <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold leading-none tracking-tight mb-4 text-foreground">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-none tracking-tight mb-2 sm:mb-3 text-foreground">
                 Building the
               </h1>
-              <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold leading-none tracking-tight mb-4">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-none tracking-tight mb-2 sm:mb-3">
                 <span className="bg-gradient-to-br from-[#F5A623] to-[#FF8C00] bg-clip-text text-transparent animate-gradient-x">
                   Future
                 </span>
               </h1>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-none tracking-tight text-foreground/80">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-none tracking-tight text-foreground/80">
                 of Technology
               </h1>
             </div>
@@ -51,7 +51,7 @@ export function HeroSection() {
 
           {/* Subtitle */}
           <FadeSlideReveal delay={0.1} duration={0.8}>
-            <p className="text-lg md:text-xl text-foreground/70 max-w-2xl leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg text-foreground/70 max-w-2xl leading-relaxed">
               Empowering businesses with cutting-edge AI solutions, intelligent automation, and next-generation digital
               experiences that transform possibilities into reality.
             </p>
@@ -59,7 +59,7 @@ export function HeroSection() {
 
           {/* Feature Pills */}
           <FadeSlideReveal delay={0.15} duration={0.8}>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
               <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-muted/50 border border-border/30">
                 <Zap className="w-4 h-4" />
                 <span className="text-sm font-medium">Lightning Fast</span>
@@ -77,12 +77,12 @@ export function HeroSection() {
 
           {/* CTA Section with Magnetic Button */}
           <FadeSlideReveal delay={0.2} duration={0.8}>
-            <div className="flex flex-wrap gap-4 items-center ">
-              <MagneticButton variant="primary" className="bg-gradient-to-br from-[#F5A623] to-[#FF8C00] text-white">
-                <Rocket className="w-4 h-4 " />
+            <div className="flex flex-wrap gap-3 sm:gap-4 items-center justify-center lg:justify-start">
+              <MagneticButton variant="primary" className="bg-gradient-to-br from-[#F5A623] to-[#FF8C00] text-white text-sm sm:text-base">
+                <Rocket className="w-4 h-4" />
                 Start Your Journey
               </MagneticButton>
-              <button className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-border/30 font-medium hover:border-primary/50 hover:bg-gradient-to-br from-[#F5A623] to-[#FF8C00] transition-all duration-300 group">
+              <button className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-full border-2 border-border/30 font-medium text-sm sm:text-base hover:border-primary/50 hover:bg-gradient-to-br from-[#F5A623] to-[#FF8C00] transition-all duration-300 group">
                 Watch Demo
                 <motion.div
                   animate={{ x: [0, 5, 0] }}
@@ -94,7 +94,7 @@ export function HeroSection() {
           </FadeSlideReveal>
 
           {/* Statistics */}
-          <FadeSlideReveal delay={0.3} duration={0.8}>
+          {/* <FadeSlideReveal delay={0.3} duration={0.8}>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8 border-t border-border/30">
               <CascadeStagger delay={0} duration={0.7}>
                 <StatCard label="Active Users" value=" 50K+" />
@@ -109,26 +109,26 @@ export function HeroSection() {
                 <StatCard label="Uptime" value="99.9%" />
               </CascadeStagger>
             </div>
-          </FadeSlideReveal>
+          </FadeSlideReveal> */}
         </div>
 
         {/* Right Content - Orange Card */}
         <FadeSlideReveal delay={0.4} duration={0.8}>
           <div className="relative">
-            <div className="relative bg-gradient-to-br from-[#F5A623] to-[#FF8C00] rounded-[3rem] p-8 md:p-12 w-full lg:w-[500px] xl:w-[600px] aspect-[4/5] overflow-hidden">
+            <div className="relative bg-gradient-to-br from-[#F5A623] to-[#FF8C00] rounded-[2.5rem] p-6 sm:p-8 w-full lg:w-[380px] xl:w-[450px] aspect-[3/4] overflow-hidden">
               {/* Globe Icon */}
-              <div className="absolute top-6 right-6 w-14 h-14 bg-black rounded-full flex items-center justify-center">
-                <Globe className="w-7 h-7 text-white" />
+              <div className="absolute top-4 right-4 sm:top-6 sm:right-6 w-10 h-10 sm:w-12 sm:h-12 bg-black rounded-full flex items-center justify-center">
+                <Globe className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
               </div>
 
               {/* Signature Text */}
-              <div className="absolute top-8 left-8 right-20">
-                <svg viewBox="0 0 300 80" className="w-full max-w-[250px]">
+              <div className="absolute top-6 left-6 right-16 sm:top-8 sm:left-8 sm:right-20">
+                <svg viewBox="0 0 300 80" className="w-full max-w-[180px] sm:max-w-[220px]">
                   <text
                     x="10"
                     y="50"
                     fill="white"
-                    fontSize="48"
+                    fontSize="42"
                     fontFamily="'Brush Script MT', cursive"
                     style={{ fontStyle: "italic" }}
                   >
@@ -147,15 +147,15 @@ export function HeroSection() {
               </div>
 
               {/* Side Icons */}
-              <div className="absolute right-6 top-1/2 -translate-y-1/2 flex flex-col gap-4">
-                <div className="w-14 h-14 rounded-full bg-[#FFB84D] flex items-center justify-center overflow-hidden border-2 border-white/20">
-                  <Cpu className="w-7 h-7 text-white" />
+              <div className="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 flex flex-col gap-3">
+                <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#FFB84D] flex items-center justify-center overflow-hidden border-2 border-white/20">
+                  <Cpu className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </div>
-                <div className="w-14 h-14 rounded-full bg-[#FFB84D] overflow-hidden border-2 border-white/20">
+                <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#FFB84D] overflow-hidden border-2 border-white/20">
                   <img src="/diverse-group.png" alt="Profile" className="w-full h-full object-cover" />
                 </div>
-                <div className="w-14 h-14 rounded-full bg-black flex items-center justify-center">
-                  <Rocket className="w-7 h-7 text-white" />
+                <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-black flex items-center justify-center">
+                  <Rocket className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </div>
               </div>
             </div>

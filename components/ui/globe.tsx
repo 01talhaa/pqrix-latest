@@ -1,7 +1,7 @@
 "use client"
 
 import createGlobe from "cobe"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 
 export default function Earth({
   baseColor = [0.906, 0.541, 0.325],
@@ -15,21 +15,38 @@ export default function Earth({
   dark?: number
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    // Detect mobile devices for performance optimization
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   useEffect(() => {
     let phi = 0
 
     if (!canvasRef.current) return
 
+    // Optimize settings for mobile devices
+    const isMobileDevice = window.innerWidth < 768
+    const pixelRatio = isMobileDevice ? 1 : 2
+    const size = isMobileDevice ? 400 : 600
+    const samples = isMobileDevice ? 8000 : 16000
+
     const globe = createGlobe(canvasRef.current, {
-      devicePixelRatio: 2,
-      width: 600 * 2,
-      height: 600 * 2,
+      devicePixelRatio: pixelRatio,
+      width: size * 2,
+      height: size * 2,
       phi: 0,
       theta: 0,
       dark: dark,
       diffuse: 1.2,
-      mapSamples: 16000,
+      mapSamples: samples,
       mapBrightness: 6,
       baseColor: baseColor,
       markerColor: markerColor,
@@ -43,7 +60,7 @@ export default function Earth({
         // Called on every animation frame.
         // `state` will be an empty object, return updated params.
         state.phi = phi
-        phi += 0.01
+        phi += isMobileDevice ? 0.005 : 0.01 // Slower rotation on mobile
       },
     })
 
@@ -55,7 +72,7 @@ export default function Earth({
   return (
     <canvas
       ref={canvasRef}
-      style={{ width: 600, height: 600, maxWidth: "100%", aspectRatio: 1 }}
+      style={{ width: isMobile ? 400 : 600, height: isMobile ? 400 : 600, maxWidth: "100%", aspectRatio: 1 }}
     />
   )
 }

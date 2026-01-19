@@ -9,6 +9,7 @@ import { CareerSection } from "@/components/career-section"
 import { TeamSection } from "@/components/team-section"
 import { Footer } from "@/components/footer"
 import Features from "@/components/features"
+import PartnersSection from "@/components/partners-section"
 
 export default function PortfolioPage() {
   return (
@@ -17,11 +18,12 @@ export default function PortfolioPage() {
 
       <div className="relative z-10 p-4 md:p-8">
         <HeroSection />
-        <PortfolioSection />
+         <PartnersSection />
       </div>
 
-      <div className="relative z-10">
+      <div className="relative p-4 md:p-8">
         <Features />
+        <PortfolioSection /> 
         <TestimonialsSection />
         <InsightsSection />
         <CareerSection />
