@@ -21,7 +21,7 @@ export function Header({ searchQuery = "", onSearchChange }: HeaderProps) {
 
   return (
     <>
-      <header className="fade-slide-reveal bg-card/80 backdrop-blur-sm rounded-2xl p-4 mb-4 md:mb-6 border border-border/50 hover:shadow-lg transition-all duration-300">
+      <header className="fade-slide-reveal bg-[#FBFFFF] p-4 mb-4 md:mb-6 border border-border/50 transition-all duration-300 rounded-2xl hover:shadow-lg">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Avatar className="h-10 w-10 ambient-motion">
@@ -43,13 +43,13 @@ export function Header({ searchQuery = "", onSearchChange }: HeaderProps) {
               <Link
                 key={link.name}
                 href={link.href}
-                className={`text-sm font-medium hover:text-primary transition-all duration-300 hover-lift cascade-stagger stagger-${index + 1}`}
+                className={`text-sm font-medium hover:text-[#2b0071] transition-all duration-300 hover-lift cascade-stagger stagger-${index + 1}`}
               >
                 {link.name}
               </Link>
             ))}
             <div className="relative group">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors duration-300" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground group-hover:text-[#2b0071] transition-colors duration-300" />
               <Input
                 type="search"
                 placeholder="Search"

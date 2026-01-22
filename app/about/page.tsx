@@ -37,16 +37,16 @@ export default function AboutPage() {
                 <AvatarFallback className="text-4xl">FM</AvatarFallback>
               </Avatar>
               <div className="space-y-4">
-                <h1 className="text-4xl md:text-5xl font-bold text-balance">About Me</h1>
-                <p className="text-xl text-muted-foreground">Designer based in Rotterdam, The Netherlands</p>
+                <h1 className="text-4xl md:text-5xl font-bold text-balance">About Us</h1>
+                <p className="text-xl text-muted-foreground">Tech innovation company with global reach</p>
               </div>
             </div>
 
             <div className="space-y-6 text-base leading-relaxed">
               <p>
-                Hi, I'm Fons Mans, a multidisciplinary designer passionate about creating beautiful and functional
-                digital experiences. With over 8 years of experience in the design industry, I specialize in web design,
-                product design, and visual identity.
+                We are pqrix, a leading tech company passionate about creating beautiful and functional
+                digital experiences with cutting-edge technology. With years of experience in the tech industry, we specialize in software development,
+                cloud solutions, and enterprise-level applications.
               </p>
 
               <p>
@@ -56,9 +56,9 @@ export default function AboutPage() {
               </p>
 
               <p>
-                Based in Rotterdam, I work with clients worldwide, helping startups and established companies bring
-                their visions to life through design. When I'm not designing, you can find me exploring new creative
-                techniques, experimenting with generative art, or enjoying the vibrant culture of The Netherlands.
+                With a global presence, we work with clients worldwide, helping startups and established companies bring
+                their visions to life through innovative technology solutions. Our team is dedicated to pushing boundaries
+                and delivering exceptional results that drive business growth.
               </p>
 
               <div className="pt-6 border-t border-border/50">

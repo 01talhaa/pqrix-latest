@@ -4,8 +4,8 @@ import createGlobe from "cobe"
 import { useEffect, useRef, useState } from "react"
 
 export default function Earth({
-  baseColor = [0.906, 0.541, 0.325],
-  markerColor = [0, 0, 0],
+  baseColor = [0.6, 0.2, 0.8],
+  markerColor = [255, 255, 255],
   glowColor = [0.906, 0.541, 0.325],
   dark = 1,
 }: {
@@ -40,12 +40,12 @@ export default function Earth({
 
     const globe = createGlobe(canvasRef.current, {
       devicePixelRatio: pixelRatio,
-      width: size * 2,
-      height: size * 2,
+      width: size * 0.9,
+      height: size * 1.1,
       phi: 0,
       theta: 0,
       dark: dark,
-      diffuse: 1.2,
+      diffuse: 1,
       mapSamples: samples,
       mapBrightness: 6,
       baseColor: baseColor,
@@ -72,7 +72,7 @@ export default function Earth({
   return (
     <canvas
       ref={canvasRef}
-      style={{ width: isMobile ? 400 : 600, height: isMobile ? 400 : 600, maxWidth: "100%", aspectRatio: 1 }}
+      style={{ width: isMobile ? 400 : 400, height: isMobile ? 400 : 400, maxWidth: "800%", aspectRatio: 1 }}
     />
   )
 }

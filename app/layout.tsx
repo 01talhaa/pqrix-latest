@@ -4,8 +4,8 @@ import { Suspense } from "react"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "Fons Mans - Designer Portfolio",
-  description: "Designer based in Rotterdam, The Netherlands",
+  title: "pqrix - Tech Solutions & Innovation",
+  description: "Leading tech company delivering innovative solutions and cutting-edge technology",
   generator: "v0.app",
 }
 

@@ -38,15 +38,15 @@ export function InsightsSection() {
           <div className="flex justify-center">
             <button
               type="button"
-              className="group relative z-[60] mx-auto rounded-full border border-white/20 bg-white/5 px-6 py-1 text-xs backdrop-blur transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-100 md:text-sm"
+              className="group relative  mx-auto rounded-full border border-white/20 bg-white/5 px-6 py-1 text-xs backdrop-blur transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-100 md:text-sm"
             >
-              <div className="absolute inset-x-0 -top-px mx-auto h-0.5 w-1/2 bg-gradient-to-br from-[#F5A623] to-[#FF8C00] shadow-2xl transition-all duration-500 group-hover:w-3/4"></div>
-              <div className="absolute inset-x-0 -bottom-px mx-auto h-0.5 w-1/2 bg-gradient-to-br from-[#F5A623] to-[#FF8C00] shadow-2xl transition-all duration-500 group-hover:h-px"></div>
+              <div className="absolute inset-x-0 -top-px mx-auto h-0.5 w-1/2 bg-gradient-to-br from-[#2b0071] to-[#2b0071] shadow-2xl transition-all duration-500 group-hover:w-3/4"></div>
+              <div className="absolute inset-x-0 -bottom-px mx-auto h-0.5 w-1/2 bg-gradient-to-br from-[#2b0071] to-[#2b0071] shadow-2xl transition-all duration-500 group-hover:h-px"></div>
               <span className="relative text-foreground font-medium">Industry Trends</span>
             </button>
           </div>
-          <h2 className="mt-5 bg-gradient-to-br from-[#F5A623] to-[#FF8C00] bg-clip-text text-center text-4xl font-semibold tracking-tighter text-transparent md:text-[54px] md:leading-[60px] relative z-10">
-            Latest Design Insights
+          <h2 className="mt-5 bg-gradient-to-br from-[#2b0071] to-[#2b0071] bg-clip-text text-center text-4xl font-semibold tracking-tighter text-transparent md:text-[54px] md:leading-[60px] relative z-10">
+            Latest Insights
           </h2>
           <p className="mt-5 relative z-10 text-center text-lg text-foreground/70 font-medium">
             Exploring the cutting-edge trends and innovations shaping the future of design
@@ -63,7 +63,7 @@ export function InsightsSection() {
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5 }}
       onClick={() => handleInsightClick(industryInsights[0])}
-      className="lg:col-span-2 group cursor-pointer overflow-hidden rounded-3xl border border-border/30 bg-card shadow-xl"
+      className="lg:col-span-2 group cursor-pointer overflow-hidden rounded-3xl border border-border/30 bg-[#FBFFFF]  shadow-xl"
     >
       {/* Image */}
       <div className="relative h-[320px] w-full overflow-hidden">
@@ -102,7 +102,7 @@ export function InsightsSection() {
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.5, delay: index * 0.1 }}
         onClick={() => handleInsightClick(insight)}
-        className="group cursor-pointer overflow-hidden rounded-3xl border border-border/30 bg-card shadow-xl flex"
+        className="group cursor-pointer overflow-hidden rounded-3xl border border-border/30 bg-[#FBFFFF]  shadow-xl flex"
       >
         {/* Thumbnail */}
         <div className="relative w-40 shrink-0 overflow-hidden">
@@ -116,7 +116,7 @@ export function InsightsSection() {
         {/* Content */}
         <div className="p-5 flex flex-col justify-between">
           <div>
-            <h4 className="text-lg font-semibold leading-snug text-foreground group-hover:text-primary transition-colors">
+            <h4 className="text-lg font-semibold leading-snug text-foreground group-hover:text-black transition-colors">
               {insight.title}
             </h4>
             <p className="mt-2 text-sm text-foreground/70 line-clamp-3">
@@ -141,9 +141,9 @@ export function InsightsSection() {
           transition={{ duration: 0.5, delay: 0.8 }}
           className="flex justify-center mt-8"
         >
-          <button className="group relative inline-flex items-center gap-2 rounded-full border border-[#e78a53]/30 bg-primary/10 backdrop-blur-sm px-8 py-4 text-sm font-medium text-foreground transition-all hover:border-[#e78a53]/60 hover:bg-[#e78a53]/20 active:scale-95">
-            <div className="absolute inset-x-0 -top-px mx-auto h-px w-3/4 bg-gradient-to-r from-transparent via-[#e78a53]/40 to-transparent"></div>
-            <div className="absolute inset-x-0 -bottom-px mx-auto h-px w-3/4 bg-gradient-to-r from-transparent via-[#e78a53]/40 to-transparent"></div>
+          <button className="group relative inline-flex items-center gap-2 rounded-full border border-[#2b0071]/30 bg-primary/10 backdrop-blur-sm px-8 py-4 text-sm font-medium text-foreground transition-all hover:border-[#2b0071]/60 hover:bg-[#2b0071]/20 active:scale-95">
+            <div className="absolute inset-x-0 -top-px mx-auto h-px w-3/4 bg-gradient-to-r from-transparent via-[#2b0071]/40 to-transparent"></div>
+            <div className="absolute inset-x-0 -bottom-px mx-auto h-px w-3/4 bg-gradient-to-r from-transparent via-[#2b0071]/40 to-transparent"></div>
             <span>Explore All Insights</span>
             <svg
               className="w-4 h-4 group-hover:translate-x-1 transition-transform"

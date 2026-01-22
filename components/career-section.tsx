@@ -25,7 +25,7 @@ export function CareerSection() {
   }
 
   return (
-    <section id="careers" className="relative overflow-hidden py-12 sm:py-24 md:py-32">
+    <section id="careers" className="relative overflow-hidden">
       <div className="bg-primary absolute -top-10 left-1/2 h-16 w-44 -translate-x-1/2 rounded-full opacity-40 blur-3xl select-none"></div>
       <div className="via-primary/50 absolute top-0 left-1/2 h-px w-3/5 -translate-x-1/2 bg-gradient-to-r from-transparent to-transparent"></div>
       
@@ -41,18 +41,18 @@ export function CareerSection() {
           <div className="flex justify-center">
             <button
               type="button"
-              className="group relative z-[60] mx-auto rounded-full border border-white/20 bg-white/5 px-6 py-1 text-xs backdrop-blur transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-100 md:text-sm"
+              className="group relative mx-auto rounded-full border border-white/20 bg-white/5 px-6 py-1 text-xs backdrop-blur transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-100 md:text-sm"
             >
-              <div className="absolute inset-x-0 -top-px mx-auto h-0.5 w-1/2 bg-gradient-to-br from-[#F5A623] to-[#FF8C00] shadow-2xl transition-all duration-500 group-hover:w-3/4"></div>
-              <div className="absolute inset-x-0 -bottom-px mx-auto h-0.5 w-1/2 bg-gradient-to-br from-[#F5A623] to-[#FF8C00] shadow-2xl transition-all duration-500 group-hover:h-px"></div>
+              <div className="absolute inset-x-0 -top-px mx-auto h-0.5 w-1/2 bg-gradient-to-br from-[#2b0071] to-[#2b0071] shadow-2xl transition-all duration-500 group-hover:w-3/4"></div>
+              <div className="absolute inset-x-0 -bottom-px mx-auto h-0.5 w-1/2 bg-gradient-to-br from-[#2b0071] to-[#2b0071] shadow-2xl transition-all duration-500 group-hover:h-px"></div>
               <span className="relative text-foreground font-medium">Join Our Team</span>
             </button>
           </div>
-          <h2 className="mt-5 bg-gradient-to-br from-[#F5A623] to-[#FF8C00] bg-clip-text text-center text-4xl font-semibold tracking-tighter text-transparent md:text-[54px] md:leading-[60px] relative z-10">
+          <h2 className="mt-5 bg-gradient-to-br from-[#2b0071] to-[#2b0071] bg-clip-text text-center text-4xl font-semibold tracking-tighter text-transparent md:text-[54px] md:leading-[60px] relative z-10">
             Career Opportunities
           </h2>
           <p className="mt-5 relative z-10 text-center text-lg text-foreground/70 font-medium">
-            Join a team of passionate designers and help us create exceptional digital experiences
+            Join a team of passionate technologists and help us create exceptional digital solutions
           </p>
         </div>
 
@@ -69,19 +69,19 @@ export function CareerSection() {
                 y: -5,
               }}
               onClick={() => handleJobClick(job)}
-              className="group relative overflow-hidden rounded-3xl border border-border/30 bg-card/90 backdrop-blur-sm p-8 shadow-xl cursor-pointer"
+              className="group relative overflow-hidden rounded-3xl border border-border/30 bg-[#FBFFFF] backdrop-blur-sm p-8 shadow-xl cursor-pointer"
             >
               {/* Animated gradient background on hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#e78a53]/5 via-transparent to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-[#2b0071]/5 via-transparent to-[#2b0071]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               
               {/* Decorative blur */}
-              <div className="absolute -top-5 -right-5 -z-10 h-32 w-32 rounded-full bg-gradient-to-b from-[#e78a53]/20 to-transparent blur-2xl"></div>
+              <div className="absolute -top-5 -right-5 -z-10 h-32 w-32 rounded-full bg-gradient-to-b from-[#2b0071]/20 to-transparent blur-2xl"></div>
 
               {/* Content */}
               <div className="relative space-y-4">
                 {/* Badges */}
                 <div className="flex items-center gap-2 flex-wrap">
-                  <span className="px-3 py-1 rounded-full bg-gradient-to-br from-[#F5A623] to-[#FF8C00] text-white text-xs font-semibold">
+                  <span className="px-3 py-1 rounded-full bg-gradient-to-br from-[#2b0071] to-[#2b0071] text-white text-xs font-semibold">
                     {job.department}
                   </span>
                   <span className="px-3 py-1 rounded-full bg-muted text-foreground text-xs font-semibold">
@@ -90,7 +90,7 @@ export function CareerSection() {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-2xl font-bold text-foreground group-hover:text-[#e78a53] transition-colors duration-300">
+                <h3 className="text-2xl font-bold text-foreground group-hover:text-[#2b0071] transition-colors duration-300">
                   {job.title}
                 </h3>
 
@@ -122,7 +122,7 @@ export function CareerSection() {
                   whileHover={{ x: 10 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div className="px-6 py-2 rounded-full bg-gradient-to-br from-[#F5A623] to-[#FF8C00] text-white font-medium group-hover:bg-[#e78a53]/20 transition-all duration-300">
+                  <div className="px-6 py-2 rounded-full bg-gradient-to-br from-[#2b0071] to-[#2b0071] text-white font-medium group-hover:bg-[#e78a53]/20 transition-all duration-300">
                     View & Apply →
                   </div>
                 </motion.div>
@@ -153,9 +153,9 @@ export function CareerSection() {
           <p className="text-center text-foreground/70">
             Don't see a perfect fit? We're always looking for talented people.
           </p>
-          <button className="group relative inline-flex items-center gap-2 rounded-full border border-[#e78a53]/30 bg-primary/10 backdrop-blur-sm px-8 py-4 text-sm font-medium text-foreground transition-all hover:border-[#e78a53]/60 hover:bg-[#e78a53]/20 active:scale-95">
-            <div className="absolute inset-x-0 -top-px mx-auto h-px w-3/4 bg-gradient-to-r from-transparent via-[#e78a53]/40 to-transparent"></div>
-            <div className="absolute inset-x-0 -bottom-px mx-auto h-px w-3/4 bg-gradient-to-r from-transparent via-[#e78a53]/40 to-transparent"></div>
+          <button className="group relative inline-flex items-center gap-2 rounded-full border border-[#2b0071]/30 bg-primary/10 backdrop-blur-sm px-8 py-4 text-sm font-medium text-foreground transition-all hover:border-[#2b0071]/60 hover:bg-[#2b0071]/20 active:scale-95">
+            <div className="absolute inset-x-0 -top-px mx-auto h-px w-3/4 bg-gradient-to-r from-transparent via-[#2b0071]/40 to-transparent"></div>
+            <div className="absolute inset-x-0 -bottom-px mx-auto h-px w-3/4 bg-gradient-to-r from-transparent via-[#2b0071]/40 to-transparent"></div>
             <span>Send Us Your Resume</span>
             <svg
               className="w-4 h-4 group-hover:translate-x-1 transition-transform"

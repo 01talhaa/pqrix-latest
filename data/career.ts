@@ -2,32 +2,32 @@
 export const jobOpenings = [
   {
     id: 1,
-    title: "Senior UI/UX Designer",
-    department: "Design",
-    location: "Rotterdam, Netherlands",
+    title: "Senior Full Stack Developer",
+    department: "Engineering",
+    location: "Remote / Global",
     type: "Full-time",
-    description: "We're looking for a talented Senior UI/UX Designer to join our creative team and help shape the future of digital experiences.",
-    fullDescription: "As a Senior UI/UX Designer, you'll work closely with our product and engineering teams to create beautiful, intuitive interfaces that delight our users. You'll be responsible for the entire design process from research and wireframing to high-fidelity prototypes and design systems.",
+    description: "We're looking for a talented Senior Full Stack Developer to join our engineering team and help build scalable technology solutions.",
+    fullDescription: "As a Senior Full Stack Developer, you'll work closely with our product and design teams to create robust, scalable applications that solve real-world problems. You'll be responsible for the entire development process from architecture to deployment.",
     responsibilities: [
-      "Lead end-to-end design projects from concept to launch",
-      "Create wireframes, prototypes, and high-fidelity mockups",
-      "Conduct user research and usability testing",
-      "Collaborate with product managers and engineers",
-      "Contribute to and maintain our design system",
-      "Mentor junior designers and provide constructive feedback"
+      "Lead end-to-end development projects from concept to production",
+      "Design and implement RESTful APIs and microservices",
+      "Write clean, maintainable, and well-tested code",
+      "Collaborate with product managers and designers",
+      "Contribute to technical architecture decisions",
+      "Mentor junior developers and provide code reviews"
     ],
     requirements: [
-      "5+ years of experience in UI/UX design",
-      "Strong portfolio showcasing your design process",
-      "Proficiency in Figma, Sketch, or Adobe XD",
-      "Experience with design systems and component libraries",
-      "Excellent communication and collaboration skills",
-      "Bachelor's degree in Design or related field"
+      "5+ years of experience in full stack development",
+      "Strong portfolio showcasing your technical expertise",
+      "Proficiency in React, Node.js, and TypeScript",
+      "Experience with cloud platforms (AWS, Azure, or GCP)",
+      "Excellent problem-solving and communication skills",
+      "Bachelor's degree in Computer Science or related field"
     ],
     niceToHave: [
-      "Experience with front-end development (HTML/CSS)",
-      "Knowledge of accessibility standards (WCAG)",
-      "Motion design and prototyping skills",
+      "Experience with DevOps and CI/CD pipelines",
+      "Knowledge of containerization (Docker, Kubernetes)",
+      "Database optimization and scaling experience",
       "Experience in SaaS or B2B products"
     ],
     salary: "€65,000 - €85,000",

@@ -40,14 +40,14 @@ export function Footer() {
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
                 <motion.h3 
-                  className="text-2xl font-bold bg-gradient-to-r from-[#F5A623] to-[#FF8C00] bg-clip-text text-transparent"
+                  className="text-2xl font-bold bg-gradient-to-r from-[#2b0071] to-[#2b0071] bg-clip-text text-transparent"
                   animate={{
                     backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
                   }}
                   transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
                   style={{ backgroundSize: '200% 200%' }}
                 >
-                  Fons Mans
+                  pqrix
                 </motion.h3>
                 <motion.p 
                   className="text-sm text-muted-foreground mt-1"
@@ -56,7 +56,7 @@ export function Footer() {
                   viewport={{ once: true }}
                   transition={{ delay: 0.2 }}
                 >
-                  Designer based in Rotterdam, The Netherlands
+                  Leading tech company delivering innovative solutions
                 </motion.p>
               </motion.div>
               <div className="flex justify-center md:justify-start">
@@ -86,7 +86,7 @@ export function Footer() {
                 >
                   <Link 
                     href={link.href} 
-                    className="text-sm text-foreground/70 hover:text-[#F5A623] transition-colors inline-block"
+                    className="text-sm text-foreground/70 hover:text-[#2b0071] transition-colors inline-block"
                   >
                     {link.name}
                   </Link>
@@ -116,7 +116,7 @@ export function Footer() {
                 >
                   <Link 
                     href={link.href} 
-                    className="text-sm text-foreground/70 hover:text-[#F5A623] transition-colors inline-block"
+                    className="text-sm text-foreground/70 hover:text-[#2b0071] transition-colors inline-block"
                   >
                     {link.name}
                   </Link>
@@ -125,7 +125,7 @@ export function Footer() {
             </ul>
           </motion.div>
 
-          {/* Quick Stats - Using #FF8C00 for highlights */}
+          {/* Quick Stats - Using #2b0071 for highlights */}
           <motion.div 
             className="text-center md:text-left"
             initial={{ opacity: 0, y: 20 }}
@@ -144,7 +144,7 @@ export function Footer() {
                 whileHover={{ scale: 1.05 }}
               >
                 <motion.span 
-                  className="font-semibold text-[#FF8C00]"
+                  className="font-semibold text-[#2b0071]"
                   whileHover={{ scale: 1.1 }}
                   transition={{ type: "spring", stiffness: 400, damping: 17 }}
                 >250K+</motion.span> Videos
@@ -158,7 +158,7 @@ export function Footer() {
                 whileHover={{ scale: 1.05 }}
               >
                 <motion.span 
-                  className="font-semibold text-[#FF8C00]"
+                  className="font-semibold text-[#2b0071]"
                   whileHover={{ scale: 1.1 }}
                   transition={{ type: "spring", stiffness: 400, damping: 17 }}
                 >800K+</motion.span> Hours Watched
@@ -172,7 +172,7 @@ export function Footer() {
                 whileHover={{ scale: 1.05 }}
               >
                 <motion.span 
-                  className="font-semibold text-[#FF8C00]"
+                  className="font-semibold text-[#2b0071]"
                   whileHover={{ scale: 1.1 }}
                   transition={{ type: "spring", stiffness: 400, damping: 17 }}
                 >50+</motion.span> Projects
@@ -198,7 +198,7 @@ export function Footer() {
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
             >
-              © {currentYear} Fons Mans. All rights reserved.
+              © {currentYear} pqrix. All rights reserved.
             </motion.p>
             <motion.div 
               className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6"
@@ -208,17 +208,17 @@ export function Footer() {
               transition={{ delay: 0.3 }}
             >
               <motion.div whileHover={{ y: -2 }} transition={{ type: "spring", stiffness: 400, damping: 17 }}>
-                <Link href="#" className="text-sm text-foreground/70 hover:text-[#F5A623] transition-colors">
+                <Link href="#" className="text-sm text-foreground/70 hover:text-[#2b0071] transition-colors">
                   Privacy Policy
                 </Link>
               </motion.div>
               <motion.div whileHover={{ y: -2 }} transition={{ type: "spring", stiffness: 400, damping: 17 }}>
-                <Link href="#" className="text-sm text-foreground/70 hover:text-[#F5A623] transition-colors">
+                <Link href="#" className="text-sm text-foreground/70 hover:text-[#2b0071] transition-colors">
                   Terms of Service
                 </Link>
               </motion.div>
               <motion.div whileHover={{ y: -2 }} transition={{ type: "spring", stiffness: 400, damping: 17 }}>
-                <Link href="#" className="text-sm text-foreground/70 hover:text-[#F5A623] transition-colors">
+                <Link href="#" className="text-sm text-foreground/70 hover:text-[#2b0071] transition-colors">
                   Cookie Settings
                 </Link>
               </motion.div>

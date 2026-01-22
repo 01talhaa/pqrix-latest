@@ -10,18 +10,20 @@ import { TeamSection } from "@/components/team-section"
 import { Footer } from "@/components/footer"
 import Features from "@/components/features"
 import PartnersSection from "@/components/partners-section"
+import { MainHeader } from "@/components/main-header"
 
 export default function PortfolioPage() {
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
-      <BlobDecorations count={4} />
+      <MainHeader />
+      {/* <BlobDecorations count={4} /> */}
 
-      <div className="relative z-10 p-4 md:p-8">
+      <div className="relative pt-20">
         <HeroSection />
-         <PartnersSection />
+         {/* <PartnersSection /> */}
       </div>
 
-      <div className="relative p-4 md:p-8">
+      <div className="relative">
         <Features />
         <PortfolioSection /> 
         <TestimonialsSection />
@@ -33,4 +35,3 @@ export default function PortfolioPage() {
     </div>
   )
 }
-

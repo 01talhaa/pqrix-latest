@@ -5,7 +5,6 @@ import type React from "react"
 import { useTheme } from "next-themes"
 import Earth from "./ui/globe"
 import ScrambleHover from "./ui/scramble"
-import { FollowerPointerCard } from "./ui/following-pointer"
 import { motion, useInView } from "framer-motion"
 import { Suspense, useEffect, useRef, useState } from "react"
 import { geist } from "@/lib/fonts"
@@ -21,14 +20,14 @@ export default function Features() {
   const [isEnterpriseHovering, setIsEnterpriseHovering] = useState(false)
   const [inputValue, setInputValue] = useState("")
 
-  const [baseColor, setBaseColor] = useState<[number, number, number]>([0.906, 0.541, 0.325]) // #e78a53 in RGB normalized
-  const [glowColor, setGlowColor] = useState<[number, number, number]>([0.906, 0.541, 0.325]) // #e78a53 in RGB normalized
+  const [baseColor, setBaseColor] = useState<[number, number, number]>([0.169, 0, 0.443]) // #2b0071 in RGB normalized
+  const [glowColor, setGlowColor] = useState<[number, number, number]>([0.169, 0, 0.443]) // #2b0071 in RGB normalized
 
   const [dark, setDark] = useState<number>(theme === "dark" ? 1 : 0)
 
   useEffect(() => {
-    setBaseColor([0.906, 0.541, 0.325]) // #e78a53
-    setGlowColor([0.906, 0.541, 0.325]) // #e78a53
+    setBaseColor([0.169, 0, 0.443]) // #2b0071
+    setGlowColor([0.169, 0, 0.443]) // #2b0071
     setDark(theme === "dark" ? 1 : 0)
   }, [theme])
 
@@ -49,9 +48,7 @@ export default function Features() {
   }, [])
 
   return (
-    <section id="features" className="text-foreground relative overflow-hidden py-12 sm:py-24 md:py-32">
-      <div className="bg-primary absolute -top-10 left-1/2 h-16 w-44 -translate-x-1/2 rounded-full opacity-40 blur-3xl select-none"></div>
-      <div className="via-primary/50 absolute top-0 left-1/2 h-px w-3/5 -translate-x-1/2 bg-gradient-to-r from-transparent to-transparent transition-all ease-in-out"></div>
+    <section id="features" className="text-foreground relative overflow-hidden py-12 sm:py-12 md:py-12 bg-[#FBFFFF]">
       <motion.div
         ref={ref}
         initial={{ opacity: 0, y: isMobile ? 0 : 50 }}
@@ -64,24 +61,16 @@ export default function Features() {
               type="button"
               className="group relative z-[60] mx-auto rounded-full border border-white/20 bg-white/5 px-6 py-1 text-xs backdrop-blur transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-100 md:text-sm"
             >
-              <div className="absolute inset-x-0 -top-px mx-auto h-0.5 w-1/2 bg-gradient-to-br from-[#F5A623] to-[#FF8C00] shadow-2xl transition-all duration-500 group-hover:w-3/4"></div>
-              <div className="absolute inset-x-0 -bottom-px mx-auto h-0.5 w-1/2 bg-gradient-to-br from-[#F5A623] to-[#FF8C00] shadow-2xl transition-all duration-500 group-hover:h-px"></div>
+              <div className="absolute inset-x-0 -top-px mx-auto h-0.5 w-1/2 bg-gradient-to-br from-[#2b0071] to-[#2b0071] shadow-2xl transition-all duration-500 group-hover:w-3/4"></div>
+              <div className="absolute inset-x-0 -bottom-px mx-auto h-0.5 w-1/2 bg-gradient-to-br from-[#2b0071] to-[#2b0071] shadow-2xl transition-all duration-500 group-hover:h-px"></div>
               <span className="relative text-foreground font-medium">Features</span>
             </button>
           </div>
-        <FollowerPointerCard
-          title={
-            <div className="flex items-center gap-2">
-              <span>✨</span>
-              <span>Interactive Features</span>
-            </div>
-          }
-        >
-          <div className="cursor-none">
-            <div className="grid grid-cols-12 gap-4 justify-center">
+        <div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 justify-center">
               {/* CLI */}
               <motion.div
-                className="group border-secondary/40 text-card-foreground relative col-span-12 flex flex-col overflow-hidden rounded-xl border-2 p-6 shadow-xl transition-all ease-in-out md:col-span-6 xl:col-span-6 xl:col-start-2"
+                className="group border-[#2b0071]/40 text-card-foreground relative flex flex-col overflow-hidden rounded-xl border-2 p-2 shadow-xl transition-all ease-in-out"
                 onMouseEnter={() => setIsCliHovering(true)}
                 onMouseLeave={() => setIsCliHovering(false)}
                 ref={ref}
@@ -90,28 +79,28 @@ export default function Features() {
                 transition={{ duration: isMobile ? 0.2 : 0.5, delay: isMobile ? 0 : 0.5 }}
                 whileHover={{
                   scale: 1.02,
-                  borderColor: "rgba(231, 138, 83, 0.6)",
-                  boxShadow: "0 0 30px rgba(231, 138, 83, 0.2)",
+                  borderColor: "rgba(43, 0, 113, 0.6)",
+                  boxShadow: "0 0 30px rgba(43, 0, 113, 0.2)",
                 }}
                 style={{ transition: "all 0s ease-in-out" }}
               >
-                <div className="flex flex-col gap-4">
-                  <h3 className="text-2xl leading-none font-semibold tracking-tight">Seamless Integration</h3>
-                  <div className="text-md text-muted-foreground flex flex-col gap-2 text-sm">
-                    <p className="max-w-[460px]">
+                <div className="flex flex-col gap-3">
+                  <h3 className="text-lg leading-none font-semibold tracking-tight">Seamless Integration</h3>
+                  <div className="text-muted-foreground flex flex-col gap-2 text-xs">
+                    <p>
                       Integrate effortlessly with your existing tools and workflows. CLI support and manual configuration for maximum flexibility.
                     </p>
                   </div>
                 </div>
-                <div className="pointer-events-none flex grow items-center justify-center select-none relative min-h-[300px]">
+                <div className="pointer-events-none flex grow items-center justify-center select-none relative min-h-[200px]">
                   <div
-                    className="relative w-full h-[400px] rounded-xl overflow-hidden"
+                    className="relative w-full h-[200px] rounded-xl overflow-hidden"
                     style={{ borderRadius: "20px" }}
                   >
                     {/* Background Image */}
                     <div className="absolute inset-0">
                       <img
-                        src="https://framerusercontent.com/images/UjqUIiBHmIcSH9vos9HlG2BF4bo.png"
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSl3Ul3KNqwlu7EebnsQtAtWd43ygONy39j9w&s"
                         alt="Arrow-CoreExchange"
                         className="w-full h-full object-cover rounded-xl"
                       />
@@ -121,35 +110,39 @@ export default function Features() {
                     <motion.div
                       className="absolute inset-0 flex items-center justify-center"
                       initial={{ opacity: 0 }}
-                      animate={isCliHovering ? { opacity: 1 } : { opacity: 0 }}
+                      animate={(isCliHovering || isMobile) ? { opacity: 1 } : { opacity: 0 }}
                       transition={{ duration: 0.5 }}
                     >
                       <svg width="100%" height="100%" viewBox="0 0 121 94" className="absolute">
                         <motion.path
                           d="M 60.688 1.59 L 60.688 92.449 M 60.688 92.449 L 119.368 92.449 M 60.688 92.449 L 1.414 92.449"
-                          stroke="rgb(255,222,213)"
+                          stroke="rgba(43, 0, 113, 0.6)"
                           fill="transparent"
                           strokeDasharray="2 2"
                           initial={{ pathLength: 0 }}
-                          animate={isCliHovering ? { pathLength: 1 } : { pathLength: 0 }}
+                          animate={isCliHovering ? { pathLength: 1 } : isMobile ? { pathLength: 1 } : { pathLength: 0 }}
                           transition={{
                             duration: 2,
                             ease: "easeInOut",
+                            repeat: isMobile ? Infinity : 0,
+                            repeatType: "reverse",
                           }}
                         />
                       </svg>
                       <svg width="100%" height="100%" viewBox="0 0 121 94" className="absolute">
                         <motion.path
                           d="M 60.688 92.449 L 60.688 1.59 M 60.688 1.59 L 119.368 1.59 M 60.688 1.59 L 1.414 1.59"
-                          stroke="rgb(255,222,213)"
+                          stroke="rgba(43, 0, 113, 0.6)"
                           fill="transparent"
                           strokeDasharray="2 2"
                           initial={{ pathLength: 0 }}
-                          animate={isCliHovering ? { pathLength: 1 } : { pathLength: 0 }}
+                          animate={isCliHovering ? { pathLength: 1 } : isMobile ? { pathLength: 1 } : { pathLength: 0 }}
                           transition={{
                             duration: 2,
                             delay: 0.5,
                             ease: "easeInOut",
+                            repeat: isMobile ? Infinity : 0,
+                            repeatType: "reverse",
                           }}
                         />
                       </svg>
@@ -157,31 +150,33 @@ export default function Features() {
 
                     {/* Animated Purple Blur Effect */}
                     <motion.div
-                      className="absolute top-1/2 left-1/2 w-16 h-16 bg-purple-500 rounded-full blur-[74px] opacity-65 transform -translate-x-1/2 -translate-y-1/2"
+                      className="absolute top-1/2 left-1/2 w-16 h-16 bg-[#2b0071] rounded-full blur-[74px] opacity-65 transform -translate-x-1/2 -translate-y-1/2"
                       initial={{ scale: 1 }}
-                      animate={isCliHovering ? { scale: [1, 1.342, 1, 1.342] } : { scale: 1 }}
+                      animate={isCliHovering ? { scale: [1, 1.342, 1, 1.342] } : isMobile ? { scale: [1, 1.342, 1, 1.342] } : { scale: 1 }}
                       transition={{
                         duration: 3,
                         ease: "easeInOut",
-                        repeat: isCliHovering ? Number.POSITIVE_INFINITY : 0,
+                        repeat: isCliHovering ? Number.POSITIVE_INFINITY : isMobile ? Number.POSITIVE_INFINITY : 0,
                         repeatType: "loop",
                       }}
                     />
 
                     {/* Main Content Container with Staggered Animations */}
-                    <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="absolute inset-0 flex items-center justify-center p-6">
                       <div className="flex items-center gap-4 sm:gap-8">
                         {/* Left Column */}
                         <div className="flex flex-col gap-2 sm:gap-3">
                           {["Analytics", "Payments", "Enterprise"].map((item, index) => (
                             <motion.div
                               key={`left-${index}`}
-                              className="bg-white rounded px-2 sm:px-3 py-1.5 sm:py-2 flex items-center gap-1.5 sm:gap-2 text-black text-xs sm:text-sm font-medium shadow-sm"
+                              className="bg-white rounded px-1 sm:px-1 py-1 sm:py-1 flex items-center gap-1.5 sm:gap-2 text-black text-xs sm:text-sm font-medium shadow-sm ml-8"
                               initial={{ opacity: 1, x: 0 }}
-                              animate={isCliHovering ? { x: [-20, 0] } : { x: 0 }}
+                              animate={isCliHovering ? { x: [-20, 0] } : isMobile ? { x: [-20, 0, -20] } : { x: 0 }}
                               transition={{
-                                duration: 0.5,
+                                duration: isMobile ? 2 : 0.5,
                                 delay: index * 0.1,
+                                repeat: isMobile ? Infinity : 0,
+                                ease: "easeInOut",
                               }}
                               whileHover={{ scale: 1.05 }}
                             >
@@ -197,11 +192,21 @@ export default function Features() {
 
                         {/* Center Logo */}
                         <motion.div
-                          className="w-12 h-12 sm:w-16 sm:h-16 border border-gray-300 rounded-lg overflow-hidden shadow-lg"
-                          initial={{ opacity: 1, scale: 1 }}
-                          animate={isCliHovering ? { scale: [1, 1.1, 1] } : { scale: 1 }}
-                          transition={{ duration: 0.6, ease: "easeOut" }}
-                          whileHover={{ scale: 1.1, rotate: 5 }}
+                          className="w-6 h-6 sm:w-6 sm:h-6 border border-gray-300 rounded-lg overflow-hidden shadow-lg"
+                          initial={{ opacity: 1, scale: 1, rotate: 0 }}
+                          animate={{ 
+                            scale: isCliHovering ? [1, 1.1, 1] : isMobile ? [1, 1.1, 1] : 1,
+                            rotate: 360
+                          }}
+                          transition={{ 
+                            scale: { 
+                              duration: isMobile ? 2 : 0.6, 
+                              ease: "easeInOut",
+                              repeat: isCliHovering ? Infinity : isMobile ? Infinity : 0
+                            },
+                            rotate: { duration: 3, ease: "linear", repeat: Infinity }
+                          }}
+                          whileHover={{ scale: 1.1 }}
                         >
                           <img
                             src="https://framerusercontent.com/images/q43ivjLz67lXhWf6TKfLIh0FY.png"
@@ -215,12 +220,14 @@ export default function Features() {
                           {["Users", "Security", "Reports"].map((item, index) => (
                             <motion.div
                               key={`right-${index}`}
-                              className="bg-white rounded px-2 sm:px-3 py-1.5 sm:py-2 flex items-center gap-1.5 sm:gap-2 text-black text-xs sm:text-sm font-medium shadow-sm"
+                              className="bg-white rounded px-1 sm:px-1 py-1 sm:py-1 flex items-center gap-1.5 sm:gap-2 text-black text-xs sm:text-sm font-medium shadow-sm mr-8"
                               initial={{ opacity: 1, x: 0 }}
-                              animate={isCliHovering ? { x: [20, 0] } : { x: 0 }}
+                              animate={isCliHovering ? { x: [20, 0] } : isMobile ? { x: [20, 0, 20] } : { x: 0 }}
                               transition={{
-                                duration: 0.5,
+                                duration: isMobile ? 2 : 0.5,
                                 delay: index * 0.1,
+                                repeat: isMobile ? Infinity : 0,
+                                ease: "easeInOut",
                               }}
                               whileHover={{ scale: 1.05 }}
                             >
@@ -240,7 +247,7 @@ export default function Features() {
                     <motion.div
                       className="absolute inset-0 flex items-center justify-center"
                       initial={{ opacity: 0 }}
-                      animate={isCliHovering ? { opacity: 1 } : { opacity: 0 }}
+                      animate={(isCliHovering || isMobile) ? { opacity: 1 } : { opacity: 0 }}
                       transition={{ duration: 0.5 }}
                     >
                       <svg width="350" height="350" viewBox="0 0 350 350" className="opacity-40">
@@ -251,12 +258,17 @@ export default function Features() {
                           fill="transparent"
                           strokeDasharray="4 4"
                           initial={{ pathLength: 0, rotate: 0 }}
-                          animate={isCliHovering ? { pathLength: 1, rotate: 360 } : { pathLength: 0, rotate: 0 }}
+                          animate={isCliHovering ? { pathLength: 1, rotate: 360 } : isMobile ? { pathLength: 1, rotate: 360 } : { pathLength: 0, rotate: 0 }}
                           transition={{
-                            pathLength: { duration: 3, ease: "easeInOut" },
+                            pathLength: { 
+                              duration: 3, 
+                              ease: "easeInOut",
+                              repeat: isMobile ? Infinity : 0,
+                              repeatType: "reverse"
+                            },
                             rotate: {
                               duration: 20,
-                              repeat: isCliHovering ? Number.POSITIVE_INFINITY : 0,
+                              repeat: isCliHovering ? Number.POSITIVE_INFINITY : isMobile ? Number.POSITIVE_INFINITY : 0,
                               ease: "linear",
                             },
                           }}
@@ -269,7 +281,7 @@ export default function Features() {
 
               {/* Global */}
               <motion.div
-                className="group border-secondary/40 text-card-foreground relative col-span-12 flex flex-col overflow-hidden rounded-xl border-2 p-6 shadow-xl transition-all ease-in-out md:col-span-6 xl:col-span-6 xl:col-start-8"
+                className="group border-[#2b0071]/40 text-card-foreground relative flex flex-col overflow-hidden rounded-xl border-2 p-4 shadow-xl transition-all ease-in-out"
                 onMouseEnter={() => setIsHovering(true)}
                 onMouseLeave={() => setIsHovering(false)}
                 ref={ref}
@@ -278,27 +290,27 @@ export default function Features() {
                 transition={{ duration: isMobile ? 0.2 : 0.5, delay: isMobile ? 0 : 0.5 }}
                 whileHover={{
                   scale: 1.02,
-                  borderColor: "rgba(231, 138, 83, 0.6)",
-                  boxShadow: "0 0 30px rgba(231, 138, 83, 0.2)",
+                  borderColor: "rgba(43, 0, 113, 0.6)",
+                  boxShadow: "0 0 30px rgba(43, 0, 113, 0.2)",
                 }}
                 style={{ transition: "all 0s ease-in-out" }}
               >
-                <div className="flex flex-col gap-4">
-                  <h3 className="text-2xl leading-none font-semibold tracking-tight">Global Accessibility</h3>
-                  <div className="text-md text-muted-foreground flex flex-col gap-2 text-sm">
-                    <p className="max-w-[460px]">
+                <div className="flex flex-col gap-3">
+                  <h3 className="text-lg leading-none font-semibold tracking-tight">Global Accessibility</h3>
+                  <div className="text-muted-foreground flex flex-col gap-2 text-xs mb-4">
+                    <p>
                       Deploy globally and reach customers worldwide with multi-region support and CDN integration.
                     </p>
                   </div>
                 </div>
-                <div className="flex min-h-[300px] grow items-center justify-center select-none overflow-hidden relative">
+                <div className="flex min-h-[200px] grow items-center justify-center select-none overflow-hidden relative">
                   {/* Mobile: Sleek animations instead of 3D globe */}
                   <div className="md:hidden relative w-full h-full flex items-center justify-center">
                     {/* Central "Deploy Globally" text */}
                     <div className="relative z-20">
                       <h1 className="text-center text-3xl sm:text-4xl leading-[100%] font-semibold">
                         <span className='bg-background relative inline-block w-fit rounded-md border px-3 py-1.5 before:absolute before:top-0 before:left-0 before:z-10 before:h-full before:w-full before:bg-[url("/noise.gif")] before:opacity-[0.09] before:content-[""]'>
-                          <span className="bg-gradient-to-br from-[#e78a53] to-[#f97316] bg-clip-text text-transparent">
+                          <span className="bg-gradient-to-br from-[#2b0071] to-[#5b21b6] bg-clip-text text-transparent">
                             Deploy
                             <br />
                             Globally
@@ -309,11 +321,11 @@ export default function Features() {
                     
                     {/* Orbiting location markers */}
                     {[
-                      { icon: '🌏', label: 'Asia', angle: 0, color: 'from-blue-500 to-cyan-500' },
-                      { icon: '🌍', label: 'Europe', angle: 72, color: 'from-green-500 to-emerald-500' },
-                      { icon: '🌎', label: 'Americas', angle: 144, color: 'from-orange-500 to-red-500' },
-                      { icon: '🌍', label: 'Africa', angle: 216, color: 'from-yellow-500 to-orange-500' },
-                      { icon: '🌏', label: 'Oceania', angle: 288, color: 'from-purple-500 to-pink-500' },
+                      { icon: '🌏', label: 'Asia', angle: 0, color: 'from-[#2b0071] to-[#5b21b6]' },
+                      { icon: '🌍', label: 'Europe', angle: 72, color: 'from-[#5b21b6] to-[#7c3aed]' },
+                      { icon: '🌎', label: 'Americas', angle: 144, color: 'from-[#7c3aed] to-[#a855f7]' },
+                      { icon: '🌍', label: 'Africa', angle: 216, color: 'from-[#a855f7] to-[#c084fc]' },
+                      { icon: '🌏', label: 'Oceania', angle: 288, color: 'from-[#c084fc] to-[#e9d5ff]' },
                     ].map((item, index) => {
                       const angle = (item.angle * Math.PI) / 180
                       const radius = 100
@@ -341,6 +353,21 @@ export default function Features() {
                                   opacity: [0, 1, 1],
                                   scale: [0.5, 1, 1],
                                 }
+                              : isMobile
+                              ? {
+                                  x: [
+                                    -28,
+                                    Math.cos(angle) * radius - 28,
+                                    -28,
+                                  ],
+                                  y: [
+                                    -28,
+                                    Math.sin(angle) * radius - 28,
+                                    -28,
+                                  ],
+                                  opacity: [0, 1, 0],
+                                  scale: [0.5, 1, 0.5],
+                                }
                               : {
                                   x: -28,
                                   y: -28,
@@ -349,9 +376,11 @@ export default function Features() {
                                 }
                           }
                           transition={{
-                            duration: 0.6,
+                            duration: isMobile ? 2.5 : 0.6,
                             delay: index * 0.1,
-                            ease: "easeOut",
+                            ease: "easeInOut",
+                            repeat: isMobile ? Infinity : 0,
+                            repeatType: "loop",
                           }}
                         >
                           <span className="text-2xl">{item.icon}</span>
@@ -373,7 +402,7 @@ export default function Features() {
                               y1="50%"
                               x2={`calc(50% + ${Math.cos(rad) * radius}px)`}
                               y2={`calc(50% + ${Math.sin(rad) * radius}px)`}
-                              stroke="rgba(231, 138, 83, 0.4)"
+                              stroke="rgba(43, 0, 113, 0.4)"
                               strokeWidth="2"
                               strokeDasharray="4 4"
                               initial={{ pathLength: 0 }}
@@ -388,7 +417,7 @@ export default function Features() {
                     {[0, 1, 2].map((index) => (
                       <motion.div
                         key={`ring-${index}`}
-                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-[#e78a53]/30 rounded-full"
+                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-[#2b0071]/30 rounded-full"
                         style={{
                           width: 80 + index * 50,
                           height: 80 + index * 50,
@@ -408,7 +437,7 @@ export default function Features() {
 
                     {/* Animated gradient orbs */}
                     <motion.div
-                      className="absolute -top-10 -left-10 w-32 h-32 bg-blue-500 rounded-full blur-3xl opacity-20"
+                      className="absolute -top-10 -left-10 w-32 h-32 bg-[#2b0071] rounded-full blur-3xl opacity-20"
                       animate={{
                         scale: [1, 1.2, 1],
                         x: [0, 20, 0],
@@ -421,7 +450,7 @@ export default function Features() {
                       }}
                     />
                     <motion.div
-                      className="absolute -bottom-10 -right-10 w-32 h-32 bg-orange-500 rounded-full blur-3xl opacity-20"
+                      className="absolute -bottom-10 -right-10 w-32 h-32 bg-[#5b21b6] rounded-full blur-3xl opacity-20"
                       animate={{
                         scale: [1, 1.3, 1],
                         x: [0, -20, 0],
@@ -436,23 +465,23 @@ export default function Features() {
                   </div>
                   
                   {/* Desktop: Original 3D globe */}
-                  <div className="hidden md:flex md:flex-col md:items-start md:justify-start w-full h-full">
-                    <h1 className="mt-4 sm:mt-8 text-center text-3xl sm:text-5xl leading-[100%] font-semibold sm:leading-normal lg:mt-12 lg:text-6xl z-20 w-full">
+                  <div className="hidden md:flex md:flex-col md:items-center md:justify-center w-full h-full relative">
+                    <h1 className="absolute top-2 text-center text-2xl leading-[100%] font-semibold z-20 w-full">
                       <span className='bg-background relative mt-3 inline-block w-fit rounded-md border px-1.5 py-0.5 before:absolute before:top-0 before:left-0 before:z-10 before:h-full before:w-full before:bg-[url("/noise.gif")] before:opacity-[0.09] before:content-[""]'>
                         <ScrambleHover
                           text="Global"
                           scrambleSpeed={70}
                           maxIterations={20}
                           useOriginalCharsOnly={false}
-                          className="cursor-pointer bg-gradient-to-t from-[#e78a53] to-[#e78a53] bg-clip-text text-transparent"
+                          className="cursor-pointer bg-gradient-to-t from-[#2b0071] to-[#5b21b6] bg-clip-text text-transparent"
                           isHovering={isHovering}
                           setIsHovering={setIsHovering}
                           characters="abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+-=[]{}|;':\,./<>?"
                         />
                       </span>
                     </h1>
-                    <div className="absolute top-48 sm:top-64 z-10 flex items-center justify-center w-full">
-                      <div className="w-[280px] h-[280px] sm:w-[400px] sm:h-[400px]">
+                    <div className="z-10  w-full h-full">
+                      <div className="w-[120px] h-[120px]">
                         <Suspense
                           fallback={
                             <div className="bg-secondary/20 h-full w-full animate-pulse rounded-full"></div>
@@ -462,9 +491,9 @@ export default function Features() {
                         </Suspense>
                       </div>
                     </div>
-                    <div className="absolute top-1/2 w-full translate-y-20 scale-x-[1.2] opacity-70 transition-all duration-1000 group-hover:translate-y-8 group-hover:opacity-100">
-                      <div className="from-primary/50 to-primary/0 absolute left-1/2 h-[256px] w-[60%] -translate-x-1/2 scale-[2.5] rounded-[50%] bg-radial from-10% to-60% opacity-20 sm:h-[512px] dark:opacity-100"></div>
-                      <div className="from-primary/30 to-primary/0 absolute left-1/2 h-[128px] w-[40%] -translate-x-1/2 scale-200 rounded-[50%] bg-radial from-10% to-60% opacity-20 sm:h-[256px] dark:opacity-100"></div>
+                    <div className="absolute bottom-0 w-full opacity-70 transition-all duration-1000 group-hover:opacity-100">
+                      <div className="from-primary/50 to-primary/0 absolute left-1/2 h-[80px] w-[45%] -translate-x-1/2 scale-[1] rounded-[50%] bg-radial from-10% to-60% opacity-20 dark:opacity-100"></div>
+                      <div className="from-primary/30 to-primary/0 absolute left-1/2 h-[40px] w-[25%] -translate-x-1/2 scale-[0.8] rounded-[50%] bg-radial from-10% to-60% opacity-20 dark:opacity-100"></div>
                     </div>
                   </div>
                 </div>
@@ -472,7 +501,7 @@ export default function Features() {
 
               {/* Smooth & Sleek Design */}
               <motion.div
-                className="group border-secondary/40 text-card-foreground relative col-span-12 flex flex-col overflow-hidden rounded-xl border-2 p-6 shadow-xl transition-all ease-in-out md:col-span-6 xl:col-span-6 xl:col-start-2"
+                className="group border-[#2b0071]/40 text-card-foreground relative flex flex-col overflow-hidden rounded-xl border-2 p-4 shadow-xl transition-all ease-in-out"
                 onMouseEnter={() => setIsSleekDesignHovering(true)}
                 onMouseLeave={() => setIsSleekDesignHovering(false)}
                 initial={{ opacity: 0, y: isMobile ? 0 : 50 }}
@@ -480,32 +509,32 @@ export default function Features() {
                 transition={{ duration: isMobile ? 0.2 : 0.5, delay: isMobile ? 0 : 1.0 }}
                 whileHover={{
                   scale: 1.02,
-                  borderColor: "rgba(231, 138, 83, 0.5)",
-                  boxShadow: "0 0 30px rgba(231, 138, 83, 0.2)",
+                  borderColor: "rgba(43, 0, 113, 0.5)",
+                  boxShadow: "0 0 30px rgba(43, 0, 113, 0.2)",
                 }}
                 style={{ transition: "all 0s ease-in-out" }}
               >
-                <div className="flex flex-col gap-4">
-                  <h3 className="text-2xl leading-none font-semibold tracking-tight">Smooth & Sleek Design</h3>
-                  <div className="text-md text-muted-foreground flex flex-col gap-2 text-sm">
-                    <p className="max-w-[460px]">
+                <div className="flex flex-col gap-3">
+                  <h3 className="text-lg leading-none font-semibold tracking-tight">Smooth & Sleek Design</h3>
+                  <div className="text-muted-foreground flex flex-col gap-2 text-xs">
+                    <p>
                       Beautiful, modern interfaces with fluid animations and transitions that delight users.
                     </p>
                   </div>
                 </div>
-                <div className="flex grow items-center justify-center select-none relative min-h-[300px] p-4">
-                  <div className="relative w-full max-w-md">
+                <div className="flex grow items-center justify-center select-none relative min-h-[200px] p-4">
+                  <div className="relative w-full max-w-xs">
                     {/* Animated floating cards */}
-                    <div className="relative h-[280px] flex items-center justify-center">
+                    <div className="relative h-[220px] flex items-center justify-center">
                       {[0, 1, 2].map((index) => (
                         <motion.div
                           key={index}
-                          className="absolute w-32 h-40 sm:w-40 sm:h-48 rounded-2xl shadow-2xl"
+                          className="absolute w-24 h-32 sm:w-32 sm:h-40 rounded-2xl shadow-2xl"
                           style={{
                             background: `linear-gradient(135deg, ${
-                              index === 0 ? '#e78a53' : index === 1 ? '#a855f7' : '#3b82f6'
+                              index === 0 ? '#2b0071' : index === 1 ? '#5b21b6' : '#7c3aed'
                             } 0%, ${
-                              index === 0 ? '#f97316' : index === 1 ? '#8b5cf6' : '#2563eb'
+                              index === 0 ? '#5b21b6' : index === 1 ? '#7c3aed' : '#a855f7'
                             } 100%)`,
                             zIndex: 3 - index,
                           }}
@@ -513,16 +542,24 @@ export default function Features() {
                           animate={
                             isSleekDesignHovering
                               ? {
-                                  x: [0, (index - 1) * 80, (index - 1) * 80],
+                                  x: [0, (index - 1) * 60, (index - 1) * 60],
                                   y: [0, -20, -20],
                                   rotate: [0, (index - 1) * 15, (index - 1) * 15],
+                                }
+                              : isMobile
+                              ? {
+                                  x: [0, (index - 1) * 60, 0],
+                                  y: [0, -20, 0],
+                                  rotate: [0, (index - 1) * 15, 0],
                                 }
                               : { x: 0, y: 0, rotate: 0 }
                           }
                           transition={{
-                            duration: 0.6,
-                            ease: "easeOut",
+                            duration: isMobile ? 2 : 0.6,
+                            ease: "easeInOut",
                             delay: index * 0.1,
+                            repeat: isMobile ? Infinity : 0,
+                            repeatType: "loop",
                           }}
                           whileHover={{ y: -10 }}
                         >
@@ -539,28 +576,28 @@ export default function Features() {
                     
                     {/* Animated gradient orbs */}
                     <motion.div
-                      className="absolute -top-10 -left-10 w-32 h-32 sm:w-40 sm:h-40 bg-purple-500 rounded-full blur-3xl opacity-30"
+                      className="absolute -top-10 -left-10 w-32 h-32 sm:w-40 sm:h-40 bg-[#2b0071] rounded-full blur-3xl opacity-30"
                       animate={{
-                        scale: isSleekDesignHovering ? [1, 1.2, 1] : 1,
-                        x: isSleekDesignHovering ? [0, 20, 0] : 0,
-                        y: isSleekDesignHovering ? [0, -20, 0] : 0,
+                        scale: isSleekDesignHovering ? [1, 1.2, 1] : isMobile ? [1, 1.2, 1] : 1,
+                        x: isSleekDesignHovering ? [0, 20, 0] : isMobile ? [0, 20, 0] : 0,
+                        y: isSleekDesignHovering ? [0, -20, 0] : isMobile ? [0, -20, 0] : 0,
                       }}
                       transition={{
                         duration: 3,
-                        repeat: isSleekDesignHovering ? Number.POSITIVE_INFINITY : 0,
+                        repeat: isSleekDesignHovering ? Number.POSITIVE_INFINITY : isMobile ? Number.POSITIVE_INFINITY : 0,
                         ease: "easeInOut",
                       }}
                     />
                     <motion.div
-                      className="absolute -bottom-10 -right-10 w-32 h-32 sm:w-40 sm:h-40 bg-orange-500 rounded-full blur-3xl opacity-30"
+                      className="absolute -bottom-10 -right-10 w-32 h-32 sm:w-40 sm:h-40 bg-[#5b21b6] rounded-full blur-3xl opacity-30"
                       animate={{
-                        scale: isSleekDesignHovering ? [1, 1.3, 1] : 1,
-                        x: isSleekDesignHovering ? [0, -20, 0] : 0,
-                        y: isSleekDesignHovering ? [0, 20, 0] : 0,
+                        scale: isSleekDesignHovering ? [1, 1.3, 1] : isMobile ? [1, 1.3, 1] : 1,
+                        x: isSleekDesignHovering ? [0, -20, 0] : isMobile ? [0, -20, 0] : 0,
+                        y: isSleekDesignHovering ? [0, 20, 0] : isMobile ? [0, 20, 0] : 0,
                       }}
                       transition={{
                         duration: 4,
-                        repeat: isSleekDesignHovering ? Number.POSITIVE_INFINITY : 0,
+                        repeat: isSleekDesignHovering ? Number.POSITIVE_INFINITY : isMobile ? Number.POSITIVE_INFINITY : 0,
                         ease: "easeInOut",
                       }}
                     />
@@ -570,7 +607,7 @@ export default function Features() {
 
               {/* Enterprise Level Software */}
               <motion.div
-                className="group border-secondary/40 text-card-foreground relative col-span-12 flex flex-col overflow-hidden rounded-xl border-2 p-6 shadow-xl transition-all ease-in-out md:col-span-6 xl:col-span-6 xl:col-start-8"
+                className="group border-[#2b0071]/40 text-card-foreground relative flex flex-col overflow-hidden rounded-xl border-2 p-4 shadow-xl transition-all ease-in-out"
                 onMouseEnter={() => setIsEnterpriseHovering(true)}
                 onMouseLeave={() => setIsEnterpriseHovering(false)}
                 initial={{ opacity: 0, y: isMobile ? 0 : 50 }}
@@ -578,26 +615,31 @@ export default function Features() {
                 transition={{ duration: isMobile ? 0.2 : 0.5, delay: isMobile ? 0 : 1.0 }}
                 whileHover={{
                   scale: 1.02,
-                  borderColor: "rgba(231, 138, 83, 0.6)",
-                  boxShadow: "0 0 30px rgba(231, 138, 83, 0.2)",
+                  borderColor: "rgba(43, 0, 113, 0.6)",
+                  boxShadow: "0 0 30px rgba(43, 0, 113, 0.2)",
                 }}
                 style={{ transition: "all 0s ease-in-out" }}
               >
-                <div className="flex flex-col gap-4">
-                  <h3 className="text-2xl leading-none font-semibold tracking-tight">Enterprise Level Software</h3>
-                  <div className="text-md text-muted-foreground flex flex-col gap-2 text-sm">
-                    <p className="max-w-[460px]">
+                <div className="flex flex-col gap-3">
+                  <h3 className="text-lg leading-none font-semibold tracking-tight">Enterprise Level Software</h3>
+                  <div className="text-muted-foreground flex flex-col gap-2 text-xs">
+                    <p>
                       Built for scale with advanced security, compliance, and enterprise-grade performance.
                     </p>
                   </div>
                 </div>
-                <div className="flex grow items-center justify-center select-none relative min-h-[300px] p-4">
+                <div className="flex grow items-center justify-center select-none relative min-h-[200px] p-4">
                   <div className="relative w-full max-w-lg h-[280px]">
                     {/* Central Hub */}
                     <motion.div
-                      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-gradient-to-br from-[#e78a53] to-[#f97316] shadow-2xl flex items-center justify-center border-4 border-white/20"
+                      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-gradient-to-br from-[#2b0071] to-[#5b21b6] shadow-2xl flex items-center justify-center border-4 border-white/20"
                       animate={
                         isEnterpriseHovering
+                          ? {
+                              scale: [1, 1.1, 1],
+                              rotate: [0, 180, 360],
+                            }
+                          : isMobile
                           ? {
                               scale: [1, 1.1, 1],
                               rotate: [0, 180, 360],
@@ -606,7 +648,7 @@ export default function Features() {
                       }
                       transition={{
                         duration: 3,
-                        repeat: isEnterpriseHovering ? Number.POSITIVE_INFINITY : 0,
+                        repeat: isEnterpriseHovering ? Number.POSITIVE_INFINITY : isMobile ? Number.POSITIVE_INFINITY : 0,
                         ease: "linear",
                       }}
                     >
@@ -646,6 +688,20 @@ export default function Features() {
                                   ],
                                   opacity: [0, 1, 1],
                                 }
+                              : isMobile
+                              ? {
+                                  x: [
+                                    -24,
+                                    Math.cos(angle) * radius - 24,
+                                    -24,
+                                  ],
+                                  y: [
+                                    -24,
+                                    Math.sin(angle) * radius - 24,
+                                    -24,
+                                  ],
+                                  opacity: [0, 1, 0],
+                                }
                               : {
                                   x: -24,
                                   y: -24,
@@ -653,9 +709,11 @@ export default function Features() {
                                 }
                           }
                           transition={{
-                            duration: 0.6,
+                            duration: isMobile ? 2.5 : 0.6,
                             delay: index * 0.1,
-                            ease: "easeOut",
+                            ease: "easeInOut",
+                            repeat: isMobile ? Infinity : 0,
+                            repeatType: "loop",
                           }}
                         >
                           <span className="text-xl sm:text-2xl">{item.icon}</span>
@@ -677,7 +735,7 @@ export default function Features() {
                               y1="50%"
                               x2={`calc(50% + ${Math.cos(rad) * radius}px)`}
                               y2={`calc(50% + ${Math.sin(rad) * radius}px)`}
-                              stroke="rgba(231, 138, 83, 0.3)"
+                              stroke="rgba(43, 0, 113, 0.3)"
                               strokeWidth="2"
                               strokeDasharray="4 4"
                               initial={{ pathLength: 0 }}
@@ -692,7 +750,6 @@ export default function Features() {
               </motion.div>
             </div>
           </div>
-        </FollowerPointerCard>
       </motion.div>
     </section>
   )

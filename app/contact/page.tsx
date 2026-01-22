@@ -85,7 +85,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-medium mb-1">Location</h3>
-                    <p className="text-muted-foreground">Rotterdam, The Netherlands</p>
+                    <p className="text-muted-foreground">Global Headquarters</p>
                   </div>
                 </div>
               </div>
