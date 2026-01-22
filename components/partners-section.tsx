@@ -76,7 +76,7 @@ export default function PartnersSection() {
               >
                 <Award className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#2b0071]" />
               </motion.div>
-              <span className="text-xs sm:text-sm font-semibold bg-gradient-to-br from-[#2b0071] to-[#2b0071] bg-clip-text text-transparent">
+              <span className="text-xs sm:text-sm font-semibold bg-gradient-to-br from-[#2b0071] to-[#5E14E4] bg-clip-text text-transparent">
                 Trusted Worldwide
               </span>
             </motion.div>
@@ -96,7 +96,7 @@ export default function PartnersSection() {
               {" "}
             </motion.span>
             <motion.span 
-              className="bg-gradient-to-br from-[#2b0071] to-[#2b0071] bg-clip-text text-transparent"
+              className="bg-gradient-to-br from-[#2b0071] to-[#5E14E4] bg-clip-text text-transparent"
               animate={{
                 backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
               }}

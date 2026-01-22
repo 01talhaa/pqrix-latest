@@ -14,7 +14,7 @@ export function SectionHeader({ title, subtitle, description, centered = true, c
       {subtitle && (
         <p className="text-sm md:text-base font-semibold text-primary mb-2 uppercase tracking-wider"></p>
       )}
-      <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight text-[#2b0071]">{title}</h2>
+      <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight bg-gradient-to-br from-[#2b0071] to-[#5E14E4] bg-clip-text text-transparent">{title}</h2>
       {description && (
         <p className="text-base md:text-lg text-foreground/70 max-w-2xl leading-relaxed mx-auto">{description}</p>
       )}

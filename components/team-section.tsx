@@ -60,7 +60,7 @@ export function TeamSection() {
 
                 {/* Back of Card */}
                 <div className="flip-card-back">
-                  <div className="bg-gradient-to-br from-[#2b0071] to-[#2b0071] rounded-2xl p-6 h-full flex flex-col justify-between text-white shadow-2xl">
+                  <div className="bg-gradient-to-br from-[#2b0071] to-[#5E14E4] rounded-2xl p-6 h-full flex flex-col justify-between text-white shadow-2xl">
                     <div className="space-y-4">
                       <h3 className="text-lg font-bold border-b border-white/20 pb-2">
                         {member.name}

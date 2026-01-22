@@ -40,7 +40,7 @@ export function Footer() {
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
                 <motion.h3 
-                  className="text-2xl font-bold bg-gradient-to-r from-[#2b0071] to-[#2b0071] bg-clip-text text-transparent"
+                  className="text-2xl font-bold bg-gradient-to-r from-[#2b0071] to-[#5E14E4] bg-clip-text text-transparent"
                   animate={{
                     backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
                   }}

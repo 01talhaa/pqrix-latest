@@ -2,6 +2,8 @@
 
 import { BlobDecorations } from "@/components/blob-decorations"
 import { HeroSection } from "@/components/hero-section"
+import { AboutSection } from "@/components/about-section"
+import { ProductSection } from "@/components/product-section"
 import { PortfolioSection } from "@/components/portfolio-section"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { InsightsSection } from "@/components/insights-section"
@@ -20,6 +22,8 @@ export default function PortfolioPage() {
 
       <div className="relative pt-20">
         <HeroSection />
+        <AboutSection />
+        <ProductSection />
          {/* <PartnersSection /> */}
       </div>
 
