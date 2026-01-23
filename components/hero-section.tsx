@@ -48,7 +48,7 @@ export function HeroSection() {
 
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-6 lg:gap-8 items-center relative z-10">
         {/* Left Content */}
-        <div className="space-y-4 sm:space-y-4 text-center lg:text-left">
+        <div className="space-y-4 sm:space-y-4 text-center lg:text-left ml-10">
           {/* Main Heading */}
           <FadeSlideReveal delay={0} duration={0.8}>
             <div>
@@ -79,7 +79,7 @@ export function HeroSection() {
 
           {/* Subtitle */}
           <FadeSlideReveal delay={0.1} duration={0.8}>
-            <p className="text-sm sm:text-base md:text-lg text-foreground/70 max-w-2xl leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg text-foreground/70 max-w-2xl leading-relaxed mt-5">
               Empowering businesses with cutting-edge AI solutions, intelligent automation, and next-generation digital
               experiences that transform possibilities into reality.
             </p>
@@ -105,7 +105,7 @@ export function HeroSection() {
 
           {/* CTA Section with Magnetic Button */}
           <FadeSlideReveal delay={0.2} duration={0.8}>
-            <div className="flex flex-wrap gap-3 sm:gap-4 items-center justify-center lg:justify-start">
+            <div className="flex flex-wrap gap-3 sm:gap-4 items-center justify-center lg:justify-start mt-10">
               <AnimatedJourneyButton />
               {/* <button className="flex items-center gap-2 px-4 sm:px-6 py-3 sm:py-4 rounded-full border-2 border-border/30 font-medium text-sm sm:text-base hover:border-primary/50 hover:bg-gradient-to-br from-[#2b0071] to-[#5E14E4] transition-all hover:text-white duration-300 group">
                 talk to an expert 
@@ -194,7 +194,7 @@ export function HeroSection() {
         {/* Right Content - Orange Card */}
         <FadeSlideReveal delay={0.2} duration={0.8}>
           <div className="relative">
-            <div className="relative bg-gradient-to-br from-[#2b0071] to-[#5E14E4] rounded-[2.5rem] p-6 sm:p-8 w-full lg:w-[400px] xl:w-[500px] aspect-[6/4] overflow-hidden">
+            <div className="relative bg-gradient-to-br from-[#2b0071] to-[#5E14E4] rounded-[2.5rem] p-4 sm:p-6 w-full lg:w-[450px] xl:w-[600px] aspect-[6/4] overflow-hidden mr-10">
               {/* Globe Icon */}
               <div className="absolute top-4 right-4 sm:top-6 sm:right-6 w-10 h-10 sm:w-12 sm:h-12 bg-black rounded-full flex items-center justify-center">
                 <Globe className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
@@ -221,7 +221,7 @@ export function HeroSection() {
                 <img
                   src="/hero-photographer.png"
                   alt="Tech professional"
-                  className="h-full w-auto object-contain object-bottom"
+                  className="h-full w-auto object-contain object-bottom right-10"
                 />
               </div>
 

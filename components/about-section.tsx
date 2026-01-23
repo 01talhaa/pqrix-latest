@@ -4,6 +4,7 @@ import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
 import { Sparkles, Target, Zap, TrendingUp } from "lucide-react"
 
+
 export function AboutSection() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.3 })
@@ -105,9 +106,9 @@ export function AboutSection() {
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ delay: 0.4 }}
             >
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-                Transforming Ideas into
-                <span className="block mt-2 bg-gradient-to-r from-[#2b0071] to-[#5E14E4] bg-clip-text text-transparent">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
+                Transforming Ideas Into
+                <span className="block bg-gradient-to-r from-[#2b0071] to-[#5E14E4] bg-clip-text text-transparent">
                   Digital Reality
                 </span>
               </h2>
@@ -133,10 +134,14 @@ export function AboutSection() {
               className="space-y-4"
             >
               {[
-                { icon: Zap, title: "AI-Powered Solutions", desc: "Leverage cutting-edge artificial intelligence" },
-                { icon: TrendingUp, title: "Scalable Architecture", desc: "Built to grow with your business needs" },
-                { icon: Sparkles, title: "Innovation First", desc: "Always staying ahead of technology trends" },
-              ].map((feature, index) => (
+  { icon: Zap, title: "AI-Driven Solutions", desc: "Leverage cutting-edge artificial intelligence" },
+  { icon: TrendingUp, title: "Scalable Systems", desc: "Built to grow seamlessly with your business" },
+  { icon: Sparkles, title: "Innovation-Led Development", desc: "Always staying ahead of technology trends" },
+  { icon: Target, title: "Product-Focused Execution", desc: "Focused on impactful, future-ready solutions" },
+  { icon: Zap, title: "Fast & Efficient Delivery", desc: "Rapid execution using modern technologies" },
+  { icon: TrendingUp, title: "Growth-Driven Engineering", desc: "Engineering solutions designed for long-term growth" },
+  { icon: Sparkles, title: "Creative Problem Solving", desc: "Creative thinking at the core of everything we build" },
+].map((feature, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, x: -20 }}
