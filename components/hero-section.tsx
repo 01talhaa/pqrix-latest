@@ -1,12 +1,12 @@
 "use client"
 
-import { Globe, Zap, Cpu, Rocket, Award, TrendingUp, Users, Shield } from "lucide-react"
+import { Globe, Zap, Cpu, Rocket, Award, TrendingUp, Users, Shield, X, Star } from "lucide-react";
 import { StatCard } from "@/components/stat-card"
 import { MagneticButton } from "@/components/magnetic-button"
 import { FadeSlideReveal } from "@/components/fade-slide-reveal"
 import { CascadeStagger } from "@/components/cascade-stagger"
 import AnimatedJourneyButton from "@/components/animated-journey-button"
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import { motion, useInView } from "framer-motion"
 import AnimatedExpertButton from "./animated-expert-button"
 import { ScrollVelocityContainer, ScrollVelocityRow } from "@/components/ui/scroll-based-velocity"
@@ -40,11 +40,148 @@ const duplicatedPartners = [...partners, ...partners, ...partners]
 
 export function HeroSection() {
   const ref = useRef(null)
+  const [showAnnouncement, setShowAnnouncement] = useState(true)
   // Attached the ref to the container below to make this trigger
   const isInView = useInView(ref, { once: true, amount: 0.1 })
 
   return (
-    <section className="bg-[#FBFFFF] p-10 overflow-hidden relative">
+    <section className="bg-white overflow-hidden relative">
+      {/* 3D Perspective Grid Floor */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        {/* Perspective container */}
+        <div 
+          className="absolute inset-0"
+          style={{
+            perspective: '1200px',
+            perspectiveOrigin: '50% 50%'
+          }}
+        >
+          {/* 3D Grid Floor */}
+          <div 
+            className="absolute left-0 right-0 bottom-0 h-full opacity-100"
+            style={{
+              transform: 'rotateX(20deg) translateZ(200px)',
+              transformStyle: 'preserve-3d',
+              backgroundImage: `
+                linear-gradient(to right, rgba(94, 20, 228, 0.08) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(94, 20, 228, 0.08) 1px, transparent 1px)
+              `,
+              backgroundSize: '80px 80px',
+              backgroundPosition: 'center center'
+            }}
+          />
+          
+          {/* Horizontal grid lines with fade */}
+          {/* <div 
+            className="absolute left-0 right-0 bottom-0 h-full"
+            style={{
+              transform: 'rotateX(75deg) translateZ(-200px)',
+              transformStyle: 'preserve-3d',
+              backgroundImage: `
+                linear-gradient(to right, rgba(43, 0, 113, 0.12) 2px, transparent 2px),
+                linear-gradient(to bottom, rgba(43, 0, 113, 0.12) 2px, transparent 2px)
+              `,
+              backgroundSize: '160px 160px',
+              backgroundPosition: 'center center',
+              opacity: 0.3
+            }}
+          /> */}
+        </div>
+        
+        {/* Gradient fade at horizon */}
+        {/* <div 
+          className="absolute inset-0"
+          style={{
+            background: 'linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 40%, transparent 70%)'
+          }}
+        /> */}
+      </div>
+
+      {/* Radial Gradient Mesh Background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-[1]">
+        {/* Multiple soft radial gradients */}
+        {/* <div 
+          className="absolute top-[-20%] left-[-10%] w-[70%] h-[70%] rounded-full blur-3xl"
+          style={{
+            background: 'radial-gradient(circle, rgba(94, 20, 228, 0.08) 0%, rgba(43, 0, 113, 0.04) 30%, transparent 70%)',
+            filter: 'blur(60px)'
+          }}
+        /> */}
+        {/* <div 
+          className="absolute top-[10%] right-[-5%] w-[60%] h-[60%] rounded-full blur-3xl"
+          style={{
+            background: 'radial-gradient(circle, rgba(147, 51, 234, 0.06) 0%, rgba(94, 20, 228, 0.03) 40%, transparent 70%)',
+            filter: 'blur(50px)'
+          }}
+        /> */}
+        {/* <div 
+          className="absolute bottom-[-10%] left-[20%] w-[55%] h-[55%] rounded-full blur-3xl"
+          style={{
+            background: 'radial-gradient(circle, rgba(168, 85, 247, 0.07) 0%, rgba(147, 51, 234, 0.035) 35%, transparent 65%)',
+            filter: 'blur(55px)'
+          }}
+        /> */}
+        {/* <div 
+          className="absolute top-[40%] left-[40%] w-[65%] h-[65%] rounded-full blur-3xl"
+          style={{
+            background: 'radial-gradient(circle, rgba(196, 181, 253, 0.09) 0%, rgba(168, 85, 247, 0.045) 45%, transparent 75%)',
+            filter: 'blur(65px)'
+          }}
+        /> */}
+        
+        {/* Subtle faint gray grid overlay */}
+        {/* <div 
+          className="absolute inset-0 opacity-[0.15]"
+          style={{
+            backgroundImage: `
+              linear-gradient(to right, rgba(43, 0, 113, 0.03) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(43, 0, 113, 0.03) 1px, transparent 1px)
+            `,
+            backgroundSize: '40px 40px'
+          }}
+        /> */}
+      </div>
+
+      {/* Announcement Bar */}
+      {showAnnouncement && (
+        <motion.div
+          initial={{ y: -100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: -100, opacity: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="relative z-20 mx-4 sm:mx-6 lg:mx-10 mt-0 sm:mt-0"
+        >
+          <div className="relative backdrop-blur-md bg-gradient-to-r from-[#2b0071]/90 via-[#5E14E4]/85 to-[#2b0071]/90 rounded-full py-3 px-6 shadow-lg shadow-[#2b0071]/20 border border-white/10 group hover:shadow-xl hover:shadow-[#5E14E4]/30 transition-all duration-300">
+            {/* Subtle glow effect */}
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#5E14E4]/20 via-transparent to-[#5E14E4]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            
+            <div className="relative flex items-center justify-center gap-3">
+              {/* Animated dot */}
+              <motion.div
+                animate={{ scale: [1, 1.2, 1], opacity: [0.7, 1, 0.7] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="w-2 h-2 rounded-full bg-white"
+              />
+              
+              {/* Text */}
+              <p className="text-white text-sm sm:text-base font-medium text-center">
+                🚀 New: AI-powered automation features now available – <span className="underline underline-offset-2 cursor-pointer hover:text-white/90">Learn more</span>
+              </p>
+              
+              {/* Close button */}
+              <button
+                onClick={() => setShowAnnouncement(false)}
+                className="ml-2 p-1 rounded-full hover:bg-white/20 transition-colors duration-200 group/close"
+                aria-label="Close announcement"
+              >
+                <X className="w-4 h-4 text-white/80 group-hover/close:text-white transition-colors" />
+              </button>
+            </div>
+          </div>
+        </motion.div>
+      )}
+
+      <div className="p-16 relative z-10">
 
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-6 lg:gap-8 items-center relative z-10">
         {/* Left Content */}
@@ -64,7 +201,7 @@ export function HeroSection() {
                   AI-Powered Innovation
                 </span>
               </div>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-none tracking-tight mb-2 sm:mb-3 text-foreground">
+              <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-7xl font-bold leading-none tracking-tight text-foreground">
                 Building the {" "}
                 <span className="bg-gradient-to-br from-[#2b0071] to-[#5E14E4] bg-clip-text text-transparent animate-gradient-x">
                   Future
@@ -79,7 +216,7 @@ export function HeroSection() {
 
           {/* Subtitle */}
           <FadeSlideReveal delay={0.1} duration={0.8}>
-            <p className="text-sm sm:text-base md:text-lg text-foreground/70 max-w-2xl leading-relaxed mt-5">
+            <p className="text-sm sm:text-base md:text-lg text-foreground/70 max-w-2xl leading-relaxed mt-4">
               Empowering businesses with cutting-edge AI solutions, intelligent automation, and next-generation digital
               experiences that transform possibilities into reality.
             </p>
@@ -105,7 +242,7 @@ export function HeroSection() {
 
           {/* CTA Section with Magnetic Button */}
           <FadeSlideReveal delay={0.2} duration={0.8}>
-            <div className="flex flex-wrap gap-3 sm:gap-4 items-center justify-center lg:justify-start mt-10">
+            <div className="flex flex-wrap gap-3 sm:gap-4 items-center justify-center lg:justify-start mt-7">
               <AnimatedJourneyButton />
               {/* <button className="flex items-center gap-2 px-4 sm:px-6 py-3 sm:py-4 rounded-full border-2 border-border/30 font-medium text-sm sm:text-base hover:border-primary/50 hover:bg-gradient-to-br from-[#2b0071] to-[#5E14E4] transition-all hover:text-white duration-300 group">
                 talk to an expert 
@@ -122,7 +259,7 @@ export function HeroSection() {
 
           {/* Stats Section - Below CTA on Left Side */}
           <motion.div 
-            className="grid grid-cols-4 sm:grid-cols-4 lg:grid-cols-4 gap-3 sm:gap-4 pt-4 sm:pt-6 max-w-2xl"
+            className="grid grid-cols-4 sm:grid-cols-4 lg:grid-cols-4 gap-3 sm:gap-4 pt-2 sm:pt-2 max-w-2xl"
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.6, delay: 0.6 }}
@@ -243,51 +380,121 @@ export function HeroSection() {
       </div>
 
       {/* Partners Section - ScrollVelocity Animation */}
-      <div className="mt-10 pt-8 relative">
+      <div className="mt-16 pt-2 relative">
         <motion.div
           ref={ref}
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="text-center mb-12"
+        >
+          {/* Section Header */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#2b0071]/10 to-[#5E14E4]/10 border border-[#2b0071]/20 mb-4">
+  {/* <motion.div
+    animate={{ scale: [1, 1.2, 1] }}
+    transition={{ duration: 2, repeat: Infinity }}
+    className="w-2 h-2 rounded-full bg-gradient-to-r from-[#2b0071] to-[#5E14E4]"
+  /> */}
+
+  <div className="flex items-center gap-1">
+    {[...Array(5)].map((_, i) => (
+      <Star
+        key={i}
+        size={14}
+        className="fill-[#5E14E4] text-[#5E14E4]"
+      />
+    ))}
+  </div>
+</div>
+
+          <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-[#2b0071] to-[#5E14E4] bg-clip-text text-transparent mb-0">
+            Powering innovative startups & enterprises
+          </h2>
+          {/* <p className="text-foreground/60 text-base sm:text-lg">
+            Leading companies around the globe
+          </p> */}
+        </motion.div>
+
+        {/* 3D Card Carousel */}
+        <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
+          className="relative"
         >
-          <ScrollVelocityContainer className="w-full">
-            <ScrollVelocityRow baseVelocity={1} direction={1} className="py-4">
+          <ScrollVelocityContainer className="w-full py-0">
+            <ScrollVelocityRow baseVelocity={1.5} direction={1} className="py-0">
               {partners.map((partner, idx) => (
-                <div
+                <motion.div
                   key={`row1-${idx}`}
-                  className="mx-4 inline-flex group cursor-pointer"
+                  className="mx-6 inline-flex group cursor-pointer"
+                  whileHover={{ scale: 1.05, rotateY: 5 }}
+                  transition={{ duration: 0.3 }}
                 >
-                  <div className="relative w-48 h-30 flex items-center justify-center px-6 py-4 rounded-xl bg-white/80 backdrop-blur-sm border border-gray-200 shadow-sm hover:shadow-xl hover:border-[#2b0071]/40 transition-all duration-200 overflow-hidden mr-2 sm:mr-10 ml-2 sm:ml-10">
-                    {/* Gradient Background on Hover */}
-                    {/* <div className="absolute inset-0 bg-gradient-to-br from-[#2b0071]/5 to-[#5E14E4]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" /> */}
-                    
-                    {/* Logo */}
-                    <div className="flex flex-col items-center gap-0">
-                      <img 
-                      src={partner.logo} 
-                      alt={partner.name}
-                      className="relative z-10 h-20 w-auto object-contain  group-hover:grayscale-0 transition-all duration-300"
-                      loading="lazy"
-                    />
-                    <p className="text-gray-600 font-bold">
-                      {partner.name}
-                    </p>
+                  <div className="relative w-50 h-30 perspective-1000">
+                    {/* Glass morphism card */}
+                    <div className="relative h-full px-2 py-4 rounded-2xl">
+                      {/* Animated gradient background */}
+                      {/* <div className="absolute inset-0 bg-gradient-to-br from-[#2b0071]/5 via-[#5E14E4]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" /> */}
+                      
+                      {/* Glowing orb effect */}
+                      {/* <motion.div
+                        className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-gradient-to-br from-[#5E14E4]/20 to-[#2b0071]/20 blur-2xl opacity-0 group-hover:opacity-100"
+                        animate={{
+                          scale: [1, 1.2, 1],
+                          rotate: [0, 180, 360],
+                        }}
+                        transition={{
+                          duration: 4,
+                          repeat: Infinity,
+                          ease: "linear"
+                        }}
+                      /> */}
+                      
+                      {/* Logo container */}
+                      <div className="relative z-10 flex flex-col items-center justify-center h-full gap-3">
+                        <motion.div
+                          whileHover={{ scale: 1.1, rotate: 5 }}
+                          transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                        >
+                          <img 
+                            src={partner.logo} 
+                            alt={partner.name}
+                            className="h-16 w-auto object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500 drop-shadow-lg"
+                            loading="lazy"
+                          />
+                        </motion.div>
+                        <p className="text-sm font-bold bg-gradient-to-r from-gray-600 to-gray-800 bg-clip-text text-transparent group-hover:from-[#2b0071] group-hover:to-[#5E14E4] transition-all duration-500">
+                          {partner.name}
+                        </p>
+                      </div>
+                      
+                      {/* Shine Effect */}
+                      <motion.div 
+                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"
+                        style={{ width: '50%' }}
+                      />
+                      
+                      {/* Corner accent */}
+                      <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#5E14E4]/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      <div className="absolute bottom-0 left-0 w-20 h-20 bg-gradient-to-tr from-[#2b0071]/10 to-transparent rounded-tr-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     </div>
-                    
-                    {/* Shine Effect */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
                   </div>
-                </div>
+                </motion.div>
               ))}
             </ScrollVelocityRow>
-            
-
           </ScrollVelocityContainer>
           
-          {/* Gradient Overlays */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#FBFFFF] to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#FBFFFF] to-transparent" />
+          {/* Enhanced Gradient Overlays with glow */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-white via-white/80 to-transparent z-10" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-40 bg-gradient-to-l from-white via-white/80 to-transparent z-10" />
+          
+          {/* Subtle glow effect at edges */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-[#5E14E4]/5 to-transparent blur-xl" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-[#2b0071]/5 to-transparent blur-xl" />
         </motion.div>
+      </div>
+
       </div>
     </section>
   )
