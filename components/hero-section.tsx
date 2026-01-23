@@ -66,7 +66,7 @@ export function HeroSection() {
                 linear-gradient(to right, rgba(94, 20, 228, 0.08) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(94, 20, 228, 0.08) 1px, transparent 1px)
               `,
-              backgroundSize: '80px 80px',
+              backgroundSize: 'clamp(40px, 10vw, 80px) clamp(40px, 10vw, 80px)',
               backgroundPosition: 'center center'
             }}
           />
@@ -149,23 +149,25 @@ export function HeroSection() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -100, opacity: 0 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="relative z-20 mx-4 sm:mx-6 lg:mx-10 mt-0 sm:mt-0"
+          className="relative z-20 mx-3 sm:mx-6 lg:mx-10 mt-0"
         >
-          <div className="relative backdrop-blur-md bg-gradient-to-r from-[#2b0071]/90 via-[#5E14E4]/85 to-[#2b0071]/90 rounded-full py-3 px-6 shadow-lg shadow-[#2b0071]/20 border border-white/10 group hover:shadow-xl hover:shadow-[#5E14E4]/30 transition-all duration-300">
+          <div className="relative backdrop-blur-md bg-gradient-to-r from-[#2b0071]/90 via-[#5E14E4]/85 to-[#2b0071]/90 rounded-full py-2.5 px-4 sm:py-3 sm:px-6 shadow-lg shadow-[#2b0071]/20 border border-white/10 group hover:shadow-xl hover:shadow-[#5E14E4]/30 transition-all duration-300">
             {/* Subtle glow effect */}
             <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#5E14E4]/20 via-transparent to-[#5E14E4]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             
-            <div className="relative flex items-center justify-center gap-3">
+            <div className="relative flex items-center justify-center gap-2 sm:gap-3">
               {/* Animated dot */}
               <motion.div
                 animate={{ scale: [1, 1.2, 1], opacity: [0.7, 1, 0.7] }}
                 transition={{ duration: 2, repeat: Infinity }}
-                className="w-2 h-2 rounded-full bg-white"
+                className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-white flex-shrink-0"
               />
               
               {/* Text */}
-              <p className="text-white text-sm sm:text-base font-medium text-center">
-                🚀 New: AI-powered automation features now available – <span className="underline underline-offset-2 cursor-pointer hover:text-white/90">Learn more</span>
+              <p className="text-white text-xs sm:text-sm lg:text-base font-medium text-center leading-tight">
+                <span className="hidden xs:inline">🚀 New: AI-powered automation features now available – </span>
+                <span className="xs:hidden">🚀 New AI features – </span>
+                <span className="underline underline-offset-2 cursor-pointer hover:text-white/90">Learn more</span>
               </p>
               
               {/* Close button */}
@@ -181,33 +183,33 @@ export function HeroSection() {
         </motion.div>
       )}
 
-      <div className="p-16 relative z-10">
+      <div className="px-3 py-6 sm:px-10 sm:py-12 lg:px-20 lg:py-16 relative z-10">
 
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-6 lg:gap-8 items-center relative z-10">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-6 sm:gap-8 lg:gap-8 items-center relative z-10">
         {/* Left Content */}
-        <div className="space-y-4 sm:space-y-4 text-center lg:text-left ml-10">
+        <div className="space-y-3 sm:space-y-5 text-center lg:text-left">
           {/* Main Heading */}
-          <FadeSlideReveal delay={0} duration={0.8}>
+          <FadeSlideReveal delay={0} duration={0.5}>
             <div>
-              <div className="flex items-center justify-center lg:justify-start gap-2 sm:gap-3 mb-3 sm:mb-4">
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 sm:gap-3 mb-3 sm:mb-5">
                 <motion.div
                   animate={{ rotate: 360 }}
                   transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-                  className="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-gradient-to-br from-[#2b0071] to-[#5E14E4] flex items-center justify-center"
+                  className="w-8 h-8 sm:w-10 sm:h-10 lg:w-11 lg:h-11 rounded-full bg-gradient-to-br from-[#2b0071] to-[#5E14E4] flex items-center justify-center flex-shrink-0"
                 >
-                  <Cpu className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                  <Cpu className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white" />
                 </motion.div>
-                <span className="px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-gradient-to-br from-[#2b0071] to-[#5E14E4] text-white text-xs sm:text-sm font-semibold border border-primary/20">
+                <span className="px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-gradient-to-br from-[#2b0071] to-[#5E14E4] text-white text-[11px] sm:text-xs lg:text-sm font-semibold border border-primary/20">
                   AI-Powered Innovation
                 </span>
               </div>
-              <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-7xl font-bold leading-none tracking-tight text-foreground">
-                Building the {" "}
+              <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight sm:leading-tight tracking-tight text-foreground mb-1 sm:mb-2">
+                Building the{" "}
                 <span className="bg-gradient-to-br from-[#2b0071] to-[#5E14E4] bg-clip-text text-transparent animate-gradient-x">
                   Future
                 </span>
               </h1>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-none tracking-tight text-foreground/80">
+              <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight sm:leading-tight tracking-tight text-foreground/80">
                 of Technology
               </h1>
             </div>
@@ -215,8 +217,8 @@ export function HeroSection() {
 
 
           {/* Subtitle */}
-          <FadeSlideReveal delay={0.1} duration={0.8}>
-            <p className="text-sm sm:text-base md:text-lg text-foreground/70 max-w-2xl leading-relaxed mt-4">
+          <FadeSlideReveal delay={0.05} duration={0.5}>
+            <p className="text-sm sm:text-base md:text-lg text-foreground/70 max-w-2xl mx-auto lg:mx-0 leading-relaxed mt-2 sm:mt-4 px-0">
               Empowering businesses with cutting-edge AI solutions, intelligent automation, and next-generation digital
               experiences that transform possibilities into reality.
             </p>
@@ -241,8 +243,8 @@ export function HeroSection() {
           </FadeSlideReveal> */}
 
           {/* CTA Section with Magnetic Button */}
-          <FadeSlideReveal delay={0.2} duration={0.8}>
-            <div className="flex flex-wrap gap-3 sm:gap-4 items-center justify-center lg:justify-start mt-7">
+          <FadeSlideReveal delay={0.1} duration={0.5}>
+            <div className="flex flex-wrap gap-3 sm:gap-4 items-center justify-center lg:justify-start mt-4 sm:mt-7">
               <AnimatedJourneyButton />
               {/* <button className="flex items-center gap-2 px-4 sm:px-6 py-3 sm:py-4 rounded-full border-2 border-border/30 font-medium text-sm sm:text-base hover:border-primary/50 hover:bg-gradient-to-br from-[#2b0071] to-[#5E14E4] transition-all hover:text-white duration-300 group">
                 talk to an expert 
@@ -259,7 +261,7 @@ export function HeroSection() {
 
           {/* Stats Section - Below CTA on Left Side */}
           <motion.div 
-            className="grid grid-cols-4 sm:grid-cols-4 lg:grid-cols-4 gap-3 sm:gap-4 pt-2 sm:pt-2 max-w-2xl"
+            className="grid grid-cols-4 sm:grid-cols-4 gap-2.5 sm:gap-4 pt-3 sm:pt-5 max-w-2xl mx-auto lg:mx-0"
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.6, delay: 0.6 }}
@@ -296,10 +298,10 @@ export function HeroSection() {
                   whileHover={{ scale: 1.05, y: -5 }}
                   className="group relative"
                 >
-                  <div className="relative h-full p-2 sm:p-2 rounded-xl sm:rounded-2xl border border-border/30 backdrop-blur-sm overflow-hidden transition-all duration-300 group-hover:border-[#2b0071] group-hover:bg-gradient-to-br group-hover:from-[#2b0071] group-hover:to-[#5E14E4] group-hover:shadow-lg group-hover:shadow-[#2b0071]/30">
-                    {/* Icon */}
+                  <div className="relative h-full p-2.5 sm:p-4 rounded-xl sm:rounded-2xl border border-border/30 backdrop-blur-sm overflow-hidden transition-all duration-300 group-hover:border-[#2b0071] group-hover:bg-gradient-to-br group-hover:from-[#2b0071] group-hover:to-[#5E14E4] group-hover:shadow-lg group-hover:shadow-[#2b0071]/30">
+                    {/* Icon - Hidden on mobile to prevent overlap */}
                     <motion.div 
-                      className="absolute top-2 right-2 sm:top-3 sm:right-3 opacity-20 group-hover:opacity-30 transition-opacity"
+                      className="hidden sm:block absolute top-2 right-2 sm:top-3 sm:right-3 opacity-15 group-hover:opacity-30 transition-opacity"
                       animate={{
                         y: [0, -5, 0],
                       }}
@@ -309,15 +311,15 @@ export function HeroSection() {
                         ease: "easeInOut"
                       }}
                     >
-                      <Icon className="w-5 h-5 sm:w-7 sm:h-7 group-hover:text-white transition-colors" />
+                      <Icon className="w-6 h-6 sm:w-7 sm:h-7 group-hover:text-white transition-colors" />
                     </motion.div>
                     
-                    {/* Content */}
-                    <div className="relative flex flex-col items-start">
-                      <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-1 bg-gradient-to-br from-[#2b0071] to-[#5E14E4] bg-clip-text text-transparent group-hover:text-white transition-all">
+                    {/* Content - Centered on mobile */}
+                    <div className="relative flex flex-col items-center sm:items-start justify-center min-h-[55px] sm:min-h-[70px]">
+                      <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-0.5 sm:mb-1 bg-gradient-to-br from-[#2b0071] to-[#5E14E4] bg-clip-text text-transparent group-hover:text-white transition-all">
                         {stat.value}
                       </h3>
-                      <p className="text-[10px] sm:text-xs text-foreground/70 font-medium group-hover:text-white/90 transition-colors">
+                      <p className="text-[9px] sm:text-xs text-foreground/70 font-medium group-hover:text-white/90 transition-colors leading-tight text-center sm:text-left">
                         {stat.label}
                       </p>
                     </div>
@@ -328,18 +330,18 @@ export function HeroSection() {
           </motion.div>
         </div>
 
-        {/* Right Content - Orange Card */}
-        <FadeSlideReveal delay={0.2} duration={0.8}>
-          <div className="relative">
-            <div className="relative bg-gradient-to-br from-[#2b0071] to-[#5E14E4] rounded-[2.5rem] p-4 sm:p-6 w-full lg:w-[450px] xl:w-[600px] aspect-[6/4] overflow-hidden mr-10">
+        {/* Right Content - Purple Card */}
+        <FadeSlideReveal delay={0.1} duration={0.5}>
+          <div className="relative w-full max-w-md mx-auto lg:mx-0 lg:max-w-none">
+            <div className="relative bg-gradient-to-br from-[#2b0071] to-[#5E14E4] rounded-2xl sm:rounded-3xl lg:rounded-[2.5rem] p-4 sm:p-5 lg:p-6 w-full lg:w-[450px] xl:w-[600px] aspect-[6/4] overflow-hidden">
               {/* Globe Icon */}
-              <div className="absolute top-4 right-4 sm:top-6 sm:right-6 w-10 h-10 sm:w-12 sm:h-12 bg-black rounded-full flex items-center justify-center">
-                <Globe className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+              <div className="absolute top-3 right-3 sm:top-4 sm:right-4 lg:top-6 lg:right-6 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-black rounded-full flex items-center justify-center">
+                <Globe className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white" />
               </div>
 
               {/* Signature Text */}
-              <div className="absolute top-6 left-6 right-16 sm:top-8 sm:left-8 sm:right-20">
-                <svg viewBox="0 0 300 80" className="w-full max-w-[180px] sm:max-w-[220px]">
+              <div className="absolute top-4 left-4 right-12 sm:top-6 sm:left-6 sm:right-16 lg:top-8 lg:left-8 lg:right-20">
+                <svg viewBox="0 0 300 80" className="w-full max-w-[140px] sm:max-w-[180px] lg:max-w-[220px]">
                   <text
                     x="10"
                     y="50"
@@ -359,19 +361,26 @@ export function HeroSection() {
                   src="/hero-photographer.png"
                   alt="Tech professional"
                   className="h-full w-auto object-contain object-bottom right-10"
+                  loading="eager"
+                  fetchPriority="high"
                 />
               </div>
 
               {/* Side Icons */}
-              <div className="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 flex flex-col gap-3">
-                <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#2b0071] flex items-center justify-center overflow-hidden border-2 border-white/20">
-                  <Cpu className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+              <div className="absolute right-3 sm:right-4 lg:right-6 top-1/2 -translate-y-1/2 flex flex-col gap-2 sm:gap-2.5 lg:gap-3">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full bg-[#2b0071] flex items-center justify-center overflow-hidden border-2 border-white/20">
+                  <Cpu className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white" />
                 </div>
-                <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#2b0071] overflow-hidden border-2 border-white/20">
-                  <img src="/diverse-group.png" alt="Profile" className="w-full h-full object-cover" />
+                <div className="w-9 h-9 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full bg-[#2b0071] overflow-hidden border-2 border-white/20">
+                  <img 
+                    src="/diverse-group.png" 
+                    alt="Profile" 
+                    className="w-full h-full object-cover"
+                    loading="eager"
+                  />
                 </div>
-                <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-black flex items-center justify-center">
-                  <Rocket className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                <div className="w-9 h-9 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full bg-black flex items-center justify-center">
+                  <Rocket className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white" />
                 </div>
               </div>
             </div>
@@ -380,34 +389,34 @@ export function HeroSection() {
       </div>
 
       {/* Partners Section - ScrollVelocity Animation */}
-      <div className="mt-16 pt-2 relative">
+      <div className="mt-8 sm:mt-14 lg:mt-16 pt-2 relative">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-center mb-12"
+          className="text-center mb-6 sm:mb-10 lg:mb-12 px-3 sm:px-4"
         >
           {/* Section Header */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#2b0071]/10 to-[#5E14E4]/10 border border-[#2b0071]/20 mb-4">
+          <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gradient-to-r from-[#2b0071]/10 to-[#5E14E4]/10 border border-[#2b0071]/20 mb-2.5 sm:mb-4">
   {/* <motion.div
     animate={{ scale: [1, 1.2, 1] }}
     transition={{ duration: 2, repeat: Infinity }}
     className="w-2 h-2 rounded-full bg-gradient-to-r from-[#2b0071] to-[#5E14E4]"
   /> */}
 
-  <div className="flex items-center gap-1">
+  <div className="flex items-center gap-0.5 sm:gap-1">
     {[...Array(5)].map((_, i) => (
       <Star
         key={i}
-        size={14}
-        className="fill-[#5E14E4] text-[#5E14E4]"
+        size={12}
+        className="fill-[#5E14E4] text-[#5E14E4] sm:w-[14px] sm:h-[14px]"
       />
     ))}
   </div>
 </div>
 
-          <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-[#2b0071] to-[#5E14E4] bg-clip-text text-transparent mb-0">
+          <h2 className="text-xl sm:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-[#2b0071] to-[#5E14E4] bg-clip-text text-transparent mb-0 px-2 sm:px-4">
             Powering innovative startups & enterprises
           </h2>
           {/* <p className="text-foreground/60 text-base sm:text-lg">
@@ -427,13 +436,13 @@ export function HeroSection() {
               {partners.map((partner, idx) => (
                 <motion.div
                   key={`row1-${idx}`}
-                  className="mx-6 inline-flex group cursor-pointer"
+                  className="mx-2 sm:mx-4 lg:mx-6 inline-flex group cursor-pointer"
                   whileHover={{ scale: 1.05, rotateY: 5 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div className="relative w-50 h-30 perspective-1000">
+                  <div className="relative w-36 sm:w-48 lg:w-50 perspective-1000">
                     {/* Glass morphism card */}
-                    <div className="relative h-full px-2 py-4 rounded-2xl">
+                    <div className="relative h-full px-2.5 sm:px-4 py-3 sm:py-4 rounded-xl sm:rounded-2xl">
                       {/* Animated gradient background */}
                       {/* <div className="absolute inset-0 bg-gradient-to-br from-[#2b0071]/5 via-[#5E14E4]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" /> */}
                       
@@ -452,7 +461,7 @@ export function HeroSection() {
                       /> */}
                       
                       {/* Logo container */}
-                      <div className="relative z-10 flex flex-col items-center justify-center h-full gap-3">
+                      <div className="relative z-10 flex flex-col items-center justify-center h-full gap-1.5 sm:gap-3">
                         <motion.div
                           whileHover={{ scale: 1.1, rotate: 5 }}
                           transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -460,11 +469,11 @@ export function HeroSection() {
                           <img 
                             src={partner.logo} 
                             alt={partner.name}
-                            className="h-16 w-auto object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500 drop-shadow-lg"
-                            loading="lazy"
+                            className="h-10 sm:h-14 lg:h-16 w-auto object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500 drop-shadow-lg"
+                            loading="eager"
                           />
                         </motion.div>
-                        <p className="text-sm font-bold bg-gradient-to-r from-gray-600 to-gray-800 bg-clip-text text-transparent group-hover:from-[#2b0071] group-hover:to-[#5E14E4] transition-all duration-500">
+                        <p className="text-[10px] sm:text-sm font-bold bg-gradient-to-r from-gray-600 to-gray-800 bg-clip-text text-transparent group-hover:from-[#2b0071] group-hover:to-[#5E14E4] transition-all duration-500">
                           {partner.name}
                         </p>
                       </div>
@@ -486,12 +495,12 @@ export function HeroSection() {
           </ScrollVelocityContainer>
           
           {/* Enhanced Gradient Overlays with glow */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-white via-white/80 to-transparent z-10" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-40 bg-gradient-to-l from-white via-white/80 to-transparent z-10" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-20 sm:w-32 lg:w-40 bg-gradient-to-r from-white via-white/80 to-transparent z-10" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-20 sm:w-32 lg:w-40 bg-gradient-to-l from-white via-white/80 to-transparent z-10" />
           
           {/* Subtle glow effect at edges */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-[#5E14E4]/5 to-transparent blur-xl" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-[#2b0071]/5 to-transparent blur-xl" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-10 sm:w-16 lg:w-20 bg-gradient-to-r from-[#5E14E4]/5 to-transparent blur-xl" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-10 sm:w-16 lg:w-20 bg-gradient-to-l from-[#2b0071]/5 to-transparent blur-xl" />
         </motion.div>
       </div>
 
