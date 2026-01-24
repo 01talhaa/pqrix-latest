@@ -50,7 +50,7 @@ export default function Features() {
   }, [])
 
   return (
-    <section id="features" className="text-foreground relative overflow-hidden py-12 sm:py-12 md:py-12 bg-[#FBFFFF] p-20 sm:p-10 md:p-20 lg:p-46">
+    <section id="features" className="text-foreground relative overflow-hidden py-12 sm:py-12 md:py-12 bg-[#FBFFFF] p-10 sm:p-10 md:p-20 lg:p-46">
       <motion.div
         ref={ref}
         initial={{ opacity: 0, y: isMobile ? 0 : 50 }}
@@ -72,7 +72,7 @@ export default function Features() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-center">
               {/* CLI */}
               <motion.div
-                className="group border-[#2b0071]/40 text-card-foreground relative flex flex-col overflow-hidden rounded-xl border-2 p-2 shadow-xl transition-all ease-in-out"
+                className="group border-[#2b0071]/40 text-card-foreground relative hidden lg:flex flex-col overflow-hidden rounded-xl border-2 p-2 shadow-xl transition-all ease-in-out"
                 onMouseEnter={() => setIsCliHovering(true)}
                 onMouseLeave={() => setIsCliHovering(false)}
                 ref={ref}
@@ -283,7 +283,7 @@ export default function Features() {
 
               {/* Global */}
               <motion.div
-                className="group border-[#2b0071]/40 text-card-foreground relative flex flex-col overflow-hidden rounded-xl border-2 p-4 shadow-xl transition-all ease-in-out"
+                className="group border-[#2b0071]/40 text-card-foreground relative hidden lg:flex flex-col overflow-hidden rounded-xl border-2 p-4 shadow-xl transition-all ease-in-out"
                 onMouseEnter={() => setIsHovering(true)}
                 onMouseLeave={() => setIsHovering(false)}
                 ref={ref}
@@ -947,7 +947,7 @@ export default function Features() {
 
               {/* Automation */}
               <motion.div
-                className="group border-[#2b0071]/40 text-card-foreground relative flex flex-col overflow-hidden rounded-xl border-2 p-4 shadow-xl transition-all ease-in-out"
+                className="group border-[#2b0071]/40 text-card-foreground relative hidden lg:flex flex-col overflow-hidden rounded-xl border-2 p-4 shadow-xl transition-all ease-in-out"
                 onMouseEnter={() => setIsAutomationHovering(true)}
                 onMouseLeave={() => setIsAutomationHovering(false)}
                 initial={{ opacity: 0, y: isMobile ? 0 : 50 }}
