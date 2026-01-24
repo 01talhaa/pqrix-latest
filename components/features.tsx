@@ -18,6 +18,8 @@ export default function Features() {
   const [isCliHovering, setIsCliHovering] = useState(false)
   const [isSleekDesignHovering, setIsSleekDesignHovering] = useState(false)
   const [isEnterpriseHovering, setIsEnterpriseHovering] = useState(false)
+  const [isAiIntegrationHovering, setIsAiIntegrationHovering] = useState(false)
+  const [isAutomationHovering, setIsAutomationHovering] = useState(false)
   const [inputValue, setInputValue] = useState("")
 
   const [baseColor, setBaseColor] = useState<[number, number, number]>([0.169, 0, 0.443]) // #2b0071 in RGB normalized
@@ -48,12 +50,12 @@ export default function Features() {
   }, [])
 
   return (
-    <section id="features" className="text-foreground relative overflow-hidden py-12 sm:py-12 md:py-12 bg-[#FBFFFF]">
+    <section id="features" className="text-foreground relative overflow-hidden py-12 sm:py-12 md:py-12 bg-[#FBFFFF] p-20 sm:p-10 md:p-20 lg:p-46">
       <motion.div
         ref={ref}
         initial={{ opacity: 0, y: isMobile ? 0 : 50 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: isMobile ? 0 : 50 }}
-        transition={{ duration: isMobile ? 0.2 : 0.5, delay: 0 }}
+        transition={{ duration: isMobile ? 0.8 : 0.5, delay: 0 }}
         className="container mx-auto flex flex-col items-center gap-6 sm:gap-12"
       >
                   <div className="flex justify-center">
@@ -67,7 +69,7 @@ export default function Features() {
             </button>
           </div>
         <div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 justify-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-center">
               {/* CLI */}
               <motion.div
                 className="group border-[#2b0071]/40 text-card-foreground relative flex flex-col overflow-hidden rounded-xl border-2 p-2 shadow-xl transition-all ease-in-out"
@@ -76,7 +78,7 @@ export default function Features() {
                 ref={ref}
                 initial={{ opacity: 0, y: isMobile ? 0 : 50 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: isMobile ? 0 : 50 }}
-                transition={{ duration: isMobile ? 0.2 : 0.5, delay: isMobile ? 0 : 0.5 }}
+                transition={{ duration: isMobile ? 0.8 : 0.5, delay: isMobile ? 0 : 0.5 }}
                 whileHover={{
                   scale: 1.02,
                   borderColor: "rgba(43, 0, 113, 0.6)",
@@ -173,8 +175,8 @@ export default function Features() {
                               initial={{ opacity: 1, x: 0 }}
                               animate={isCliHovering ? { x: [-20, 0] } : isMobile ? { x: [-20, 0, -20] } : { x: 0 }}
                               transition={{
-                                duration: isMobile ? 2 : 0.5,
-                                delay: index * 0.1,
+                                duration: isMobile ? 4 : 0.5,
+                                delay: index * 0.2,
                                 repeat: isMobile ? Infinity : 0,
                                 ease: "easeInOut",
                               }}
@@ -224,8 +226,8 @@ export default function Features() {
                               initial={{ opacity: 1, x: 0 }}
                               animate={isCliHovering ? { x: [20, 0] } : isMobile ? { x: [20, 0, 20] } : { x: 0 }}
                               transition={{
-                                duration: isMobile ? 2 : 0.5,
-                                delay: index * 0.1,
+                                duration: isMobile ? 4 : 0.5,
+                                delay: index * 0.2,
                                 repeat: isMobile ? Infinity : 0,
                                 ease: "easeInOut",
                               }}
@@ -287,7 +289,7 @@ export default function Features() {
                 ref={ref}
                 initial={{ opacity: 0, y: isMobile ? 0 : 50 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: isMobile ? 0 : 50 }}
-                transition={{ duration: isMobile ? 0.2 : 0.5, delay: isMobile ? 0 : 0.5 }}
+                transition={{ duration: isMobile ? 0.8 : 0.5, delay: isMobile ? 0 : 0.5 }}
                 whileHover={{
                   scale: 1.02,
                   borderColor: "rgba(43, 0, 113, 0.6)",
@@ -376,8 +378,8 @@ export default function Features() {
                                 }
                           }
                           transition={{
-                            duration: isMobile ? 2.5 : 0.6,
-                            delay: index * 0.1,
+                            duration: isMobile ? 4.5 : 0.6,
+                            delay: index * 0.2,
                             ease: "easeInOut",
                             repeat: isMobile ? Infinity : 0,
                             repeatType: "loop",
@@ -506,7 +508,7 @@ export default function Features() {
                 onMouseLeave={() => setIsSleekDesignHovering(false)}
                 initial={{ opacity: 0, y: isMobile ? 0 : 50 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: isMobile ? 0 : 50 }}
-                transition={{ duration: isMobile ? 0.2 : 0.5, delay: isMobile ? 0 : 1.0 }}
+                transition={{ duration: isMobile ? 0.8 : 0.5, delay: isMobile ? 0 : 1.0 }}
                 whileHover={{
                   scale: 1.02,
                   borderColor: "rgba(43, 0, 113, 0.5)",
@@ -555,9 +557,9 @@ export default function Features() {
                               : { x: 0, y: 0, rotate: 0 }
                           }
                           transition={{
-                            duration: isMobile ? 2 : 0.6,
+                            duration: isMobile ? 4 : 0.6,
                             ease: "easeInOut",
-                            delay: index * 0.1,
+                            delay: index * 0.2,
                             repeat: isMobile ? Infinity : 0,
                             repeatType: "loop",
                           }}
@@ -612,7 +614,7 @@ export default function Features() {
                 onMouseLeave={() => setIsEnterpriseHovering(false)}
                 initial={{ opacity: 0, y: isMobile ? 0 : 50 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: isMobile ? 0 : 50 }}
-                transition={{ duration: isMobile ? 0.2 : 0.5, delay: isMobile ? 0 : 1.0 }}
+                transition={{ duration: isMobile ? 0.8 : 0.5, delay: isMobile ? 0 : 1.0 }}
                 whileHover={{
                   scale: 1.02,
                   borderColor: "rgba(43, 0, 113, 0.6)",
@@ -709,8 +711,8 @@ export default function Features() {
                                 }
                           }
                           transition={{
-                            duration: isMobile ? 2.5 : 0.6,
-                            delay: index * 0.1,
+                            duration: isMobile ? 4.5 : 0.6,
+                            delay: index * 0.2,
                             ease: "easeInOut",
                             repeat: isMobile ? Infinity : 0,
                             repeatType: "loop",
@@ -745,6 +747,336 @@ export default function Features() {
                           )
                         })}
                     </svg>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* AI Integration */}
+              <motion.div
+                className="group border-[#2b0071]/40 text-card-foreground relative flex flex-col overflow-hidden rounded-xl border-2 p-4 shadow-xl transition-all ease-in-out"
+                onMouseEnter={() => setIsAiIntegrationHovering(true)}
+                onMouseLeave={() => setIsAiIntegrationHovering(false)}
+                initial={{ opacity: 0, y: isMobile ? 0 : 50 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: isMobile ? 0 : 50 }}
+                transition={{ duration: isMobile ? 0.8 : 0.5, delay: isMobile ? 0 : 1.5 }}
+                whileHover={{
+                  scale: 1.02,
+                  borderColor: "rgba(43, 0, 113, 0.6)",
+                  boxShadow: "0 0 30px rgba(43, 0, 113, 0.2)",
+                }}
+                style={{ transition: "all 0s ease-in-out" }}
+              >
+                <div className="flex flex-col gap-3">
+                  <h3 className="text-lg leading-none font-semibold tracking-tight">AI Integration</h3>
+                  <div className="text-muted-foreground flex flex-col gap-2 text-xs">
+                    <p>
+                      Seamlessly integrate advanced AI capabilities to automate tasks, enhance decision-making, and unlock intelligent insights.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex grow items-center justify-center select-none relative min-h-[200px] p-4">
+                  <div className="relative w-full max-w-xs">
+                    {/* Central AI Hub */}
+                    <motion.div
+                      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-[#2b0071] to-[#5b21b6] shadow-2xl flex items-center justify-center border-4 border-white/20"
+                      animate={
+                        isAiIntegrationHovering
+                          ? {
+                              scale: [1, 1.15, 1],
+                              rotate: [0, 360],
+                            }
+                          : isMobile
+                          ? {
+                              scale: [1, 1.15, 1],
+                              rotate: [0, 360],
+                            }
+                          : {}
+                      }
+                      transition={{
+                        duration: 3,
+                        repeat: isAiIntegrationHovering ? Number.POSITIVE_INFINITY : isMobile ? Number.POSITIVE_INFINITY : 0,
+                        ease: "linear",
+                      }}
+                    >
+                      <span className="text-3xl sm:text-4xl">🤖</span>
+                    </motion.div>
+
+                    {/* Orbiting AI Icons */}
+                    {[
+                      { icon: '💡', label: 'Smart', angle: 0 },
+                      { icon: '🧠', label: 'Learn', angle: 72 },
+                      { icon: '⚙️', label: 'Adapt', angle: 144 },
+                      { icon: '🎯', label: 'Predict', angle: 216 },
+                      { icon: '🔮', label: 'Optimize', angle: 288 },
+                    ].map((item, index) => {
+                      const angle = (item.angle * Math.PI) / 180
+                      const radius = 90
+                      return (
+                        <motion.div
+                          key={index}
+                          className="absolute top-1/2 left-1/2 w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-white dark:bg-gray-800 shadow-lg flex flex-col items-center justify-center border border-gray-200 dark:border-gray-700"
+                          style={{
+                            x: -24,
+                            y: -24,
+                          }}
+                          animate={
+                            isAiIntegrationHovering
+                              ? {
+                                  x: [
+                                    -24,
+                                    Math.cos(angle) * radius - 24,
+                                    Math.cos(angle) * radius - 24,
+                                  ],
+                                  y: [
+                                    -24,
+                                    Math.sin(angle) * radius - 24,
+                                    Math.sin(angle) * radius - 24,
+                                  ],
+                                  opacity: [0, 1, 1],
+                                }
+                              : isMobile
+                              ? {
+                                  x: [
+                                    -24,
+                                    Math.cos(angle) * radius - 24,
+                                    -24,
+                                  ],
+                                  y: [
+                                    -24,
+                                    Math.sin(angle) * radius - 24,
+                                    -24,
+                                  ],
+                                  opacity: [0, 1, 0],
+                                }
+                              : {
+                                  x: -24,
+                                  y: -24,
+                                  opacity: 0,
+                                }
+                          }
+                          transition={{
+                            duration: isMobile ? 4.5 : 0.6,
+                            delay: index * 0.2,
+                            ease: "easeInOut",
+                            repeat: isMobile ? Infinity : 0,
+                            repeatType: "loop",
+                          }}
+                        >
+                          <span className="text-xl sm:text-2xl">{item.icon}</span>
+                          <span className="text-[8px] sm:text-xs font-medium mt-0.5 sm:mt-1">{item.label}</span>
+                        </motion.div>
+                      )
+                    })}
+
+                    {/* Connecting Lines */}
+                    <svg className="absolute inset-0 w-full h-full pointer-events-none">
+                      {isAiIntegrationHovering &&
+                        [0, 72, 144, 216, 288].map((angle, index) => {
+                          const rad = (angle * Math.PI) / 180
+                          const radius = 90
+                          return (
+                            <motion.line
+                              key={index}
+                              x1="50%"
+                              y1="50%"
+                              x2={`calc(50% + ${Math.cos(rad) * radius}px)`}
+                              y2={`calc(50% + ${Math.sin(rad) * radius}px)`}
+                              stroke="rgba(43, 0, 113, 0.4)"
+                              strokeWidth="2"
+                              strokeDasharray="4 4"
+                              initial={{ pathLength: 0 }}
+                              animate={{ pathLength: 1 }}
+                              transition={{ duration: 0.6, delay: index * 0.1 }}
+                            />
+                          )
+                        })}
+                    </svg>
+
+                    {/* Pulsing rings */}
+                    {[0, 1, 2].map((index) => (
+                      <motion.div
+                        key={`ai-ring-${index}`}
+                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-[#2b0071]/30 rounded-full"
+                        style={{
+                          width: 80 + index * 50,
+                          height: 80 + index * 50,
+                        }}
+                        animate={{
+                          scale: [1, 1.2, 1],
+                          opacity: [0.3, 0.6, 0.3],
+                        }}
+                        transition={{
+                          duration: 3,
+                          delay: index * 0.4,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                        }}
+                      />
+                    ))}
+
+                    {/* Gradient orbs */}
+                    <motion.div
+                      className="absolute -top-10 -left-10 w-32 h-32 bg-[#2b0071] rounded-full blur-3xl opacity-20"
+                      animate={{
+                        scale: [1, 1.2, 1],
+                        x: [0, 20, 0],
+                        y: [0, -20, 0],
+                      }}
+                      transition={{
+                        duration: 4,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                    />
+                    <motion.div
+                      className="absolute -bottom-10 -right-10 w-32 h-32 bg-[#5b21b6] rounded-full blur-3xl opacity-20"
+                      animate={{
+                        scale: [1, 1.3, 1],
+                        x: [0, -20, 0],
+                        y: [0, 20, 0],
+                      }}
+                      transition={{
+                        duration: 5,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                    />
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Automation */}
+              <motion.div
+                className="group border-[#2b0071]/40 text-card-foreground relative flex flex-col overflow-hidden rounded-xl border-2 p-4 shadow-xl transition-all ease-in-out"
+                onMouseEnter={() => setIsAutomationHovering(true)}
+                onMouseLeave={() => setIsAutomationHovering(false)}
+                initial={{ opacity: 0, y: isMobile ? 0 : 50 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: isMobile ? 0 : 50 }}
+                transition={{ duration: isMobile ? 0.8 : 0.5, delay: isMobile ? 0 : 1.5 }}
+                whileHover={{
+                  scale: 1.02,
+                  borderColor: "rgba(43, 0, 113, 0.6)",
+                  boxShadow: "0 0 30px rgba(43, 0, 113, 0.2)",
+                }}
+                style={{ transition: "all 0s ease-in-out" }}
+              >
+                <div className="flex flex-col gap-3">
+                  <h3 className="text-lg leading-none font-semibold tracking-tight">Automation</h3>
+                  <div className="text-muted-foreground flex flex-col gap-2 text-xs">
+                    <p>
+                      Automate repetitive workflows and streamline processes to save time, reduce errors, and boost productivity.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex grow items-center justify-center select-none relative min-h-[200px] p-4">
+                  <div className="relative w-full max-w-xs h-[220px] flex items-center justify-center">
+                    {/* Animated workflow cards */}
+                    <div className="relative h-full w-full flex items-center justify-center">
+                      {[0, 1, 2].map((index) => (
+                        <motion.div
+                          key={index}
+                          className="absolute flex items-center justify-center"
+                          style={{
+                            zIndex: index,
+                          }}
+                          initial={{ opacity: 1, x: index * 5, y: index * -3 }}
+                          animate={
+                            isAutomationHovering
+                              ? {
+                                  x: (index - 1) * 80,
+                                  y: 0,
+                                  opacity: 1,
+                                }
+                              : isMobile
+                              ? {
+                                  x: [index * 5, (index - 1) * 80, index * 5],
+                                  y: [index * -3, 0, index * -3],
+                                  opacity: [1, 1, 1],
+                                }
+                              : { x: index * 5, y: index * -3, opacity: 1 }
+                          }
+                          transition={{
+                            duration: isMobile ? 4.5 : 0.7,
+                            ease: "easeInOut",
+                            delay: index * 0.15,
+                            repeat: isMobile ? Infinity : 0,
+                            repeatType: "loop",
+                          }}
+                        >
+                          <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-gradient-to-br from-[#2b0071] to-[#5b21b6] shadow-2xl flex flex-col items-center justify-center border-2 border-white/20">
+                            <span className="text-3xl sm:text-4xl mb-1">
+                              {index === 0 && '📥'}
+                              {index === 1 && '⚙️'}
+                              {index === 2 && '📤'}
+                            </span>
+                            <span className="text-[8px] sm:text-xs font-bold text-white text-center">
+                              {index === 0 && 'Input'}
+                              {index === 1 && 'Process'}
+                              {index === 2 && 'Output'}
+                            </span>
+                          </div>
+                        </motion.div>
+                      ))}
+                    </div>
+
+                    {/* Animated flow arrows */}
+                    <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 300 200">
+                      {isAutomationHovering &&
+                        [0, 80, 160].map((offset, index) => (
+                          <motion.g key={index}>
+                            <motion.path
+                              d={`M ${50 + offset} 100 L ${110 + offset} 100`}
+                              stroke="rgba(43, 0, 113, 0.4)"
+                              strokeWidth="2"
+                              fill="none"
+                              initial={{ pathLength: 0 }}
+                              animate={{ pathLength: 1 }}
+                              transition={{ duration: 0.8, delay: index * 0.2 }}
+                              markerEnd="url(#arrowhead)"
+                            />
+                          </motion.g>
+                        ))}
+                      <defs>
+                        <marker
+                          id="arrowhead"
+                          markerWidth="10"
+                          markerHeight="10"
+                          refX="9"
+                          refY="3"
+                          orient="auto"
+                        >
+                          <polygon points="0 0, 10 3, 0 6" fill="rgba(43, 0, 113, 0.4)" />
+                        </marker>
+                      </defs>
+                    </svg>
+
+                    {/* Animated gradient orbs */}
+                    <motion.div
+                      className="absolute -top-10 -left-10 w-32 h-32 sm:w-40 sm:h-40 bg-[#2b0071] rounded-full blur-3xl opacity-30"
+                      animate={{
+                        scale: isAutomationHovering ? [1, 1.2, 1] : isMobile ? [1, 1.2, 1] : 1,
+                        x: isAutomationHovering ? [0, 20, 0] : isMobile ? [0, 20, 0] : 0,
+                        y: isAutomationHovering ? [0, -20, 0] : isMobile ? [0, -20, 0] : 0,
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: isAutomationHovering ? Number.POSITIVE_INFINITY : isMobile ? Number.POSITIVE_INFINITY : 0,
+                        ease: "easeInOut",
+                      }}
+                    />
+                    <motion.div
+                      className="absolute -bottom-10 -right-10 w-32 h-32 sm:w-40 sm:h-40 bg-[#5b21b6] rounded-full blur-3xl opacity-30"
+                      animate={{
+                        scale: isAutomationHovering ? [1, 1.3, 1] : isMobile ? [1, 1.3, 1] : 1,
+                        x: isAutomationHovering ? [0, -20, 0] : isMobile ? [0, -20, 0] : 0,
+                        y: isAutomationHovering ? [0, 20, 0] : isMobile ? [0, 20, 0] : 0,
+                      }}
+                      transition={{
+                        duration: 4,
+                        repeat: isAutomationHovering ? Number.POSITIVE_INFINITY : isMobile ? Number.POSITIVE_INFINITY : 0,
+                        ease: "easeInOut",
+                      }}
+                    />
                   </div>
                 </div>
               </motion.div>

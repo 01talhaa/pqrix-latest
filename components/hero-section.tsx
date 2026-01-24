@@ -47,12 +47,12 @@ export function HeroSection() {
   return (
     <section className="bg-white overflow-hidden relative">
       {/* 3D Perspective Grid Floor */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
         {/* Perspective container */}
         <div 
           className="absolute inset-0"
           style={{
-            perspective: '1200px',
+            perspective: '980px',
             perspectiveOrigin: '50% 50%'
           }}
         >
@@ -98,22 +98,22 @@ export function HeroSection() {
       </div>
 
       {/* Radial Gradient Mesh Background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none z-[1]">
+      <div className="fixed inset-0 overflow-hidden pointer-events-none z-[1]">
         {/* Multiple soft radial gradients */}
-        {/* <div 
+        <div 
           className="absolute top-[-20%] left-[-10%] w-[70%] h-[70%] rounded-full blur-3xl"
           style={{
             background: 'radial-gradient(circle, rgba(94, 20, 228, 0.08) 0%, rgba(43, 0, 113, 0.04) 30%, transparent 70%)',
             filter: 'blur(60px)'
           }}
-        /> */}
-        {/* <div 
+        />
+        <div 
           className="absolute top-[10%] right-[-5%] w-[60%] h-[60%] rounded-full blur-3xl"
           style={{
             background: 'radial-gradient(circle, rgba(147, 51, 234, 0.06) 0%, rgba(94, 20, 228, 0.03) 40%, transparent 70%)',
             filter: 'blur(50px)'
           }}
-        /> */}
+        />
         {/* <div 
           className="absolute bottom-[-10%] left-[20%] w-[55%] h-[55%] rounded-full blur-3xl"
           style={{
@@ -262,9 +262,9 @@ export function HeroSection() {
           {/* Stats Section - Below CTA on Left Side */}
           <motion.div 
             className="grid grid-cols-4 sm:grid-cols-4 gap-2.5 sm:gap-4 pt-3 sm:pt-5 max-w-2xl mx-auto lg:mx-0"
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
+            initial={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0 }}
           >
             {[
               { 
@@ -292,9 +292,9 @@ export function HeroSection() {
               return (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                  animate={isInView ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.8, y: 20 }}
-                  transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
+                  initial={{ opacity: 1, scale: 1, y: 0 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  transition={{ duration: 0 }}
                   whileHover={{ scale: 1.05, y: -5 }}
                   className="group relative"
                 >
