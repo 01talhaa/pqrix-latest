@@ -30,7 +30,7 @@ export function InsightsSection() {
         ref={ref}
         initial={{ opacity: 0, y: 50 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-        transition={{ duration: 0.5, delay: 0 }}
+        transition={{ duration: 0.2 }}
         className="container mx-auto flex flex-col items-center gap-12"
       >
         {/* Header */}
@@ -53,18 +53,27 @@ export function InsightsSection() {
           </p>
         </div>
 
-        {/* Insights Grid */}
-{/* Insights Grid – Editorial Layout */}
+{/* Insights Grid */}
 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 w-full max-w-7xl">
   {/* FEATURED INSIGHT */}
   {industryInsights[0] && (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.2 }}
       onClick={() => handleInsightClick(industryInsights[0])}
-      className="lg:col-span-2 group cursor-pointer overflow-hidden rounded-3xl border border-border/30 bg-[#FBFFFF]  shadow-xl"
+      whileHover={{
+        scale: 1.02,
+        y: -5,
+      }}
+      className="lg:col-span-2 group cursor-pointer overflow-hidden rounded-3xl border border-border/30 bg-[#FBFFFF] backdrop-blur-sm shadow-xl relative"
     >
+      {/* Animated gradient background on hover */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#2b0071]/5 via-transparent to-[#2b0071]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+      
+      {/* Decorative blur */}
+      <div className="absolute -top-5 -right-5 -z-10 h-32 w-32 rounded-full bg-gradient-to-b from-[#2b0071]/20 to-transparent blur-2xl"></div>
+
       {/* Image */}
       <div className="relative h-[320px] w-full overflow-hidden">
         <img
@@ -81,8 +90,8 @@ export function InsightsSection() {
       </div>
 
       {/* Content */}
-      <div className="p-6">
-        <p className="text-foreground/70 text-sm leading-relaxed">
+      <div className="p-6 relative">
+        <p className="text-foreground/70 text-sm leading-relaxed group-hover:text-foreground/90 transition-colors duration-300">
           {industryInsights[0].description}
         </p>
 
@@ -90,6 +99,18 @@ export function InsightsSection() {
           by {industryInsights[0].source}
         </p>
       </div>
+
+      {/* Shine effect on hover */}
+      <motion.div
+        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full"
+        animate={{ x: ["0%", "200%"] }}
+        transition={{
+          duration: 2,
+          repeat: Number.POSITIVE_INFINITY,
+          repeatDelay: 5,
+          ease: "easeInOut",
+        }}
+      />
     </motion.div>
   )}
 
@@ -100,10 +121,20 @@ export function InsightsSection() {
         key={insight.id}
         initial={{ opacity: 0, y: 40 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.5, delay: index * 0.1 }}
+        transition={{ duration: 0.2 }}
         onClick={() => handleInsightClick(insight)}
-        className="group cursor-pointer overflow-hidden rounded-3xl border border-border/30 bg-[#FBFFFF]  shadow-xl flex"
+        whileHover={{
+          scale: 1.03,
+          y: -5,
+        }}
+        className="group cursor-pointer overflow-hidden rounded-3xl border border-border/30 bg-[#FBFFFF] backdrop-blur-sm shadow-xl flex relative"
       >
+        {/* Animated gradient background on hover */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#2b0071]/5 via-transparent to-[#2b0071]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        
+        {/* Decorative blur */}
+        <div className="absolute -top-5 -right-5 -z-10 h-32 w-32 rounded-full bg-gradient-to-b from-[#2b0071]/20 to-transparent blur-2xl"></div>
+
         {/* Thumbnail */}
         <div className="relative w-40 shrink-0 overflow-hidden">
           <img
@@ -114,12 +145,12 @@ export function InsightsSection() {
         </div>
 
         {/* Content */}
-        <div className="p-5 flex flex-col justify-between">
+        <div className="p-5 flex flex-col justify-between relative">
           <div>
-            <h4 className="text-lg font-semibold leading-snug text-foreground group-hover:text-black transition-colors">
+            <h4 className="text-lg font-semibold leading-snug text-foreground group-hover:text-[#2b0071] transition-colors duration-300">
               {insight.title}
             </h4>
-            <p className="mt-2 text-sm text-foreground/70 line-clamp-3">
+            <p className="mt-2 text-sm text-foreground/70 line-clamp-3 group-hover:text-foreground/90 transition-colors duration-300">
               {insight.description}
             </p>
           </div>
@@ -128,6 +159,18 @@ export function InsightsSection() {
             by {insight.source}
           </p>
         </div>
+
+        {/* Shine effect on hover */}
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full"
+          animate={{ x: ["0%", "200%"] }}
+          transition={{
+            duration: 2,
+            repeat: Number.POSITIVE_INFINITY,
+            repeatDelay: 5,
+            ease: "easeInOut",
+          }}
+        />
       </motion.div>
     ))}
   </div>
@@ -138,7 +181,7 @@ export function InsightsSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
+          transition={{ duration: 0.2 }}
           className="flex justify-center mt-8"
         >
           <button className="group relative inline-flex items-center gap-2 rounded-full border border-[#2b0071]/30 bg-primary/10 backdrop-blur-sm px-8 py-4 text-sm font-medium text-foreground transition-all hover:border-[#2b0071]/60 hover:bg-[#2b0071]/20 active:scale-95">

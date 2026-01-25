@@ -22,7 +22,7 @@ export function ProductSection() {
   ]
 
   return (
-    <section ref={ref} className="py-20 px-6 sm:px-10 bg-white overflow-hidden relative">
+    <section ref={ref} className="py-10 px-6 sm:px-10 bg-white overflow-hidden relative">
       {/* Background decorations */}
       <div className="absolute top-0 left-0 w-full h-full">
         <div className="absolute top-40 left-10 w-72 h-72 bg-gradient-to-br from-[#2b0071]/5 to-[#5E14E4]/5 rounded-full blur-3xl" />
@@ -36,27 +36,30 @@ export function ProductSection() {
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.3 }}
             className="space-y-6"
           >
             {/* Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#2b0071]/10 to-[#5E14E4]/10 rounded-full border border-[#5E14E4]/20"
-            >
-              <ShoppingBag className="w-4 h-4 text-[#5E14E4]" />
-              <span className="text-sm font-semibold ">
-                Our Flagship Product
-              </span>
-            </motion.div>
+            <div className="flex justify-center lg:justify-start">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.2 }}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#2b0071]/10 to-[#5E14E4]/10 rounded-full border border-[#5E14E4]/20"
+              >
+                <ShoppingBag className="w-4 h-4 text-[#5E14E4]" />
+                <span className="text-sm font-semibold">
+                  Our Flagship Product
+                </span>
+              </motion.div>
+            </div>
 
             {/* Heading */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ delay: 0.3 }}
+              transition={{ duration: 0.2 }}
+              className="text-center lg:text-left"
             >
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-gray-900">
                 ShilpoMarket
@@ -70,7 +73,7 @@ export function ProductSection() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ delay: 0.4 }}
+              transition={{ duration: 0.2 }}
               className="p-6 bg-gradient-to-br from-[#2b0071]/5 to-[#5E14E4]/5 rounded-2xl border border-[#5E14E4]/20"
             >
               <p className="text-lg text-gray-700 leading-relaxed">
@@ -83,15 +86,15 @@ export function ProductSection() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ delay: 0.5 }}
-              className="grid grid-cols-1 sm:grid-cols-3 gap-4"
+              transition={{ duration: 0.2 }}
+              className="grid grid-cols-3 sm:grid-cols-3 gap-4"
             >
               {features.map((feature, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-                  transition={{ delay: 0.6 + index * 0.1 }}
+                  transition={{ duration: 0.2 }}
                   className="flex flex-col items-center text-center p-4 rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100"
                 >
                   <div className="p-3 rounded-lg bg-gradient-to-br from-[#2b0071]/10 to-[#5E14E4]/10 mb-3">
@@ -106,17 +109,17 @@ export function ProductSection() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ delay: 0.7 }}
+              transition={{ duration: 0.2 }}
               className="space-y-3"
             >
-              <h3 className="text-lg font-semibold text-gray-900">Key Features:</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <h3 className="text-lg font-semibold text-gray-900 text-center lg:text-left">Key Features:</h3>
+              <div className="grid grid-cols-2 sm:grid-cols-2 gap-3">
                 {benefits.map((benefit, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, x: -20 }}
                     animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                    transition={{ delay: 0.8 + index * 0.1 }}
+                    transition={{ duration: 0.2 }}
                     className="flex items-center gap-2"
                   >
                     <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
@@ -130,7 +133,7 @@ export function ProductSection() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ delay: 1 }}
+              transition={{ duration: 0.2 }}
             >
               <button className="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#2b0071] to-[#5E14E4] text-white rounded-full font-semibold hover:shadow-xl hover:scale-105 transition-all duration-300">
                 Explore ShilpoMarket
@@ -143,7 +146,7 @@ export function ProductSection() {
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.3 }}
             className="relative"
           >
             <div className="relative group">
@@ -184,7 +187,7 @@ export function ProductSection() {
                             key={i}
                             initial={{ opacity: 0, y: 20 }}
                             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                            transition={{ delay: 1 + i * 0.1 }}
+                            transition={{ duration: 0.2 }}
                             className="p-3 bg-gradient-to-br from-[#2b0071]/5 to-[#5E14E4]/5 rounded-lg"
                           >
                             <div className="h-3 w-full bg-[#5E14E4]/30 rounded mb-2" />

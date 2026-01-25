@@ -28,7 +28,7 @@ export function AboutSection() {
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.3 }}
             className="relative order-2 lg:order-1"
           >
             <div className="relative group">
@@ -84,27 +84,30 @@ export function AboutSection() {
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.3 }}
             className="order-1 lg:order-2 space-y-6"
           >
             {/* Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ delay: 0.3 }}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#2b0071]/10 to-[#5E14E4]/10 rounded-full border border-[#5E14E4]/20"
-            >
-              <Target className="w-4 h-4 text-[#5E14E4]" />
-              <span className="text-sm font-semibold bg-gradient-to-r from-[#2b0071] to-[#5E14E4] bg-clip-text text-transparent">
-                About PQRIX
-              </span>
-            </motion.div>
+            <div className="flex justify-center lg:justify-start">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.2 }}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#2b0071]/10 to-[#5E14E4]/10 rounded-full border border-[#5E14E4]/20"
+              >
+                <Target className="w-4 h-4 text-[#5E14E4]" />
+                <span className="text-sm font-semibold bg-gradient-to-r from-[#2b0071] to-[#5E14E4] bg-clip-text text-transparent">
+                  About PQRIX
+                </span>
+              </motion.div>
+            </div>
 
             {/* Heading */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ delay: 0.4 }}
+              transition={{ duration: 0.2 }}
+              className="text-center lg:text-left"
             >
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
                 Transforming Ideas Into
@@ -118,7 +121,7 @@ export function AboutSection() {
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ delay: 0.5 }}
+              transition={{ duration: 0.2 }}
               className="text-lg text-gray-600 leading-relaxed"
             >
               PQRIX is a leading technology company specializing in AI-powered solutions, 
@@ -130,7 +133,7 @@ export function AboutSection() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ delay: 0.6 }}
+              transition={{ duration: 0.2 }}
               className="space-y-4"
             >
               {[
@@ -146,7 +149,7 @@ export function AboutSection() {
                   key={index}
                   initial={{ opacity: 0, x: -20 }}
                   animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                  transition={{ delay: 0.7 + index * 0.1 }}
+                  transition={{ duration: 0.2 }}
                   className="flex items-start gap-4 group"
                 >
                   <div className="mt-1 p-2 rounded-lg bg-gradient-to-br from-[#2b0071]/10 to-[#5E14E4]/10 group-hover:from-[#2b0071]/20 group-hover:to-[#5E14E4]/20 transition-all duration-300">

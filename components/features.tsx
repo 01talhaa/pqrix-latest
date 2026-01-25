@@ -55,7 +55,7 @@ export default function Features() {
         ref={ref}
         initial={{ opacity: 0, y: isMobile ? 0 : 50 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: isMobile ? 0 : 50 }}
-        transition={{ duration: isMobile ? 0.8 : 0.5, delay: 0 }}
+        transition={{ duration: 0.2 }}
         className="container mx-auto flex flex-col items-center gap-6 sm:gap-12"
       >
                   <div className="flex justify-center">
@@ -78,7 +78,7 @@ export default function Features() {
                 ref={ref}
                 initial={{ opacity: 0, y: isMobile ? 0 : 50 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: isMobile ? 0 : 50 }}
-                transition={{ duration: isMobile ? 0.8 : 0.5, delay: isMobile ? 0 : 0.5 }}
+                transition={{ duration: 0.2 }}
                 whileHover={{
                   scale: 1.02,
                   borderColor: "rgba(43, 0, 113, 0.6)",
@@ -289,7 +289,7 @@ export default function Features() {
                 ref={ref}
                 initial={{ opacity: 0, y: isMobile ? 0 : 50 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: isMobile ? 0 : 50 }}
-                transition={{ duration: isMobile ? 0.8 : 0.5, delay: isMobile ? 0 : 0.5 }}
+                transition={{ duration: 0.2 }}
                 whileHover={{
                   scale: 1.02,
                   borderColor: "rgba(43, 0, 113, 0.6)",
@@ -508,7 +508,7 @@ export default function Features() {
                 onMouseLeave={() => setIsSleekDesignHovering(false)}
                 initial={{ opacity: 0, y: isMobile ? 0 : 50 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: isMobile ? 0 : 50 }}
-                transition={{ duration: isMobile ? 0.8 : 0.5, delay: isMobile ? 0 : 1.0 }}
+                transition={{ duration: 0.2 }}
                 whileHover={{
                   scale: 1.02,
                   borderColor: "rgba(43, 0, 113, 0.5)",
@@ -614,7 +614,7 @@ export default function Features() {
                 onMouseLeave={() => setIsEnterpriseHovering(false)}
                 initial={{ opacity: 0, y: isMobile ? 0 : 50 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: isMobile ? 0 : 50 }}
-                transition={{ duration: isMobile ? 0.8 : 0.5, delay: isMobile ? 0 : 1.0 }}
+                transition={{ duration: 0.2 }}
                 whileHover={{
                   scale: 1.02,
                   borderColor: "rgba(43, 0, 113, 0.6)",
@@ -758,7 +758,7 @@ export default function Features() {
                 onMouseLeave={() => setIsAiIntegrationHovering(false)}
                 initial={{ opacity: 0, y: isMobile ? 0 : 50 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: isMobile ? 0 : 50 }}
-                transition={{ duration: isMobile ? 0.8 : 0.5, delay: isMobile ? 0 : 1.5 }}
+                transition={{ duration: 0.2 }}
                 whileHover={{
                   scale: 1.02,
                   borderColor: "rgba(43, 0, 113, 0.6)",
@@ -952,7 +952,7 @@ export default function Features() {
                 onMouseLeave={() => setIsAutomationHovering(false)}
                 initial={{ opacity: 0, y: isMobile ? 0 : 50 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: isMobile ? 0 : 50 }}
-                transition={{ duration: isMobile ? 0.8 : 0.5, delay: isMobile ? 0 : 1.5 }}
+                transition={{ duration: 0.2 }}
                 whileHover={{
                   scale: 1.02,
                   borderColor: "rgba(43, 0, 113, 0.6)",

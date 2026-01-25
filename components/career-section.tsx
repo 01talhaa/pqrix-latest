@@ -33,7 +33,7 @@ export function CareerSection() {
         ref={ref}
         initial={{ opacity: 0, y: 50 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-        transition={{ duration: 0.5, delay: 0 }}
+        transition={{ duration: 0.2 }}
         className="container mx-auto flex flex-col items-center gap-12"
       >
         {/* Header */}
@@ -63,7 +63,7 @@ export function CareerSection() {
               key={job.id}
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.2 }}
               whileHover={{
                 scale: 1.03,
                 y: -5,
@@ -147,7 +147,7 @@ export function CareerSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
+          transition={{ duration: 0.2 }}
           className="flex flex-col items-center gap-4 mt-8"
         >
           <p className="text-center text-foreground/70">

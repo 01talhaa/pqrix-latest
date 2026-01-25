@@ -10,7 +10,7 @@ import { Mail, MapPin, GraduationCap, Briefcase } from "lucide-react"
 export function TeamSection() {
   return (
     <SectionWrapper>
-      <FadeSlideReveal delay={0} duration={0.8}>
+      <FadeSlideReveal delay={0} duration={0.2}>
         <SectionHeader
           subtitle="Meet the Creators"
           title="Our Elite Team"
@@ -20,7 +20,7 @@ export function TeamSection() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {teamMembers.map((member, index) => (
-          <FadeSlideReveal key={member.id} delay={index * 0.15} duration={0.9}>
+          <FadeSlideReveal key={member.id} delay={0} duration={0.2}>
             <div className="flip-card-container h-[400px]">
               <div className="flip-card">
                 {/* Front of Card */}
