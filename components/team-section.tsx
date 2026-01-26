@@ -3,24 +3,23 @@
 import { teamMembers } from "@/data/team"
 import { SectionWrapper } from "@/components/section-wrapper"
 import { SectionHeader } from "@/components/section-header"
-import { FadeSlideReveal } from "@/components/fade-slide-reveal"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Mail, MapPin, GraduationCap, Briefcase } from "lucide-react"
 
 export function TeamSection() {
   return (
     <SectionWrapper>
-      <FadeSlideReveal delay={0} duration={0.2}>
+      <div>
         <SectionHeader
           subtitle="Meet the Creators"
           title="Our Elite Team"
           description="Talented individuals dedicated to pushing creative boundaries"
         />
-      </FadeSlideReveal>
+      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {teamMembers.map((member, index) => (
-          <FadeSlideReveal key={member.id} delay={0} duration={0.2}>
+          <div key={member.id}>
             <div className="flip-card-container h-[400px]">
               <div className="flip-card">
                 {/* Front of Card */}
@@ -116,7 +115,7 @@ export function TeamSection() {
                 </div>
               </div>
             </div>
-          </FadeSlideReveal>
+          </div>
         ))}
       </div>
 

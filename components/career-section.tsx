@@ -2,15 +2,11 @@
 
 import { useState } from "react"
 import { jobOpenings } from "@/data/career"
-import { motion, useInView } from "framer-motion"
-import { useRef } from "react"
 import { MapPin, Briefcase, DollarSign } from "lucide-react"
 import { JobModal } from "@/components/job-modal"
 import type { JobOpening } from "@/data/career"
 
 export function CareerSection() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.3 })
   const [selectedJob, setSelectedJob] = useState<JobOpening | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -29,13 +25,7 @@ export function CareerSection() {
       <div className="bg-primary absolute -top-10 left-1/2 h-16 w-44 -translate-x-1/2 rounded-full opacity-40 blur-3xl select-none"></div>
       <div className="via-primary/50 absolute top-0 left-1/2 h-px w-3/5 -translate-x-1/2 bg-gradient-to-r from-transparent to-transparent"></div>
       
-      <motion.div
-        ref={ref}
-        initial={{ opacity: 0, y: 50 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-        transition={{ duration: 0.2 }}
-        className="container mx-auto flex flex-col items-center gap-12"
-      >
+      <div className="container mx-auto flex flex-col items-center gap-12">
         {/* Header */}
         <div className="mx-auto max-w-[640px]">
           <div className="flex justify-center">
@@ -59,15 +49,8 @@ export function CareerSection() {
         {/* Job Listings Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-6xl">
           {jobOpenings.map((job, index) => (
-            <motion.div
+            <div
               key={job.id}
-              initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-              transition={{ duration: 0.2 }}
-              whileHover={{
-                scale: 1.03,
-                y: -5,
-              }}
               onClick={() => handleJobClick(job)}
               className="group relative overflow-hidden rounded-3xl border border-border/30 bg-[#FBFFFF] backdrop-blur-sm p-8 shadow-xl cursor-pointer"
             >
@@ -116,40 +99,19 @@ export function CareerSection() {
                 </div>
 
                 {/* Apply Button */}
-                <motion.div 
-                  className="flex justify-end pt-2"
-                  initial={{ x: 0 }}
-                  whileHover={{ x: 10 }}
-                  transition={{ duration: 0.3 }}
-                >
+                <div className="flex justify-end pt-2">
                   <div className="px-6 py-2 rounded-full bg-gradient-to-br from-[#2b0071] to-[#5E14E4] text-white font-medium group-hover:bg-[#e78a53]/20 transition-all duration-300">
                     View & Apply →
                   </div>
-                </motion.div>
+                </div>
               </div>
 
-              {/* Shine effect on hover */}
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full"
-                animate={{ x: ["0%", "200%"] }}
-                transition={{
-                  duration: 2,
-                  repeat: Number.POSITIVE_INFINITY,
-                  repeatDelay: 5,
-                  ease: "easeInOut",
-                }}
-              />
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.2 }}
-          className="flex flex-col items-center gap-4 mt-8"
-        >
+        <div className="flex flex-col items-center gap-4 mt-8">
           <p className="text-center text-foreground/70">
             Don't see a perfect fit? We're always looking for talented people.
           </p>
@@ -171,8 +133,8 @@ export function CareerSection() {
               />
             </svg>
           </button>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
 
       {/* Job Application Modal */}
       <JobModal job={selectedJob} isOpen={isModalOpen} onClose={handleCloseModal} />
