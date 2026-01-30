@@ -10,9 +10,9 @@ export function MainHeader() {
 
   const navLinks = [
     { name: "About", href: "/about" },
-    { name: "Projects", href: "/#portfolio" },
-    { name: "Services", href: "/#features" },
-    { name: "Products", href: "/#portfolio" },
+    { name: "Projects", href: "https://app.pqrix.com/projects" },
+    { name: "Services", href: "https://app.pqrix.com/services" },
+    { name: "Careers", href: "https://app.pqrix.com/careers" },
     { name: "Contact", href: "/contact" },
   ]
 

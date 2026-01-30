@@ -1,11 +1,12 @@
 "use client"
 
-import { Globe, Zap, Cpu, Rocket, Award, TrendingUp, Users, Shield, X, Star } from "lucide-react";
+import { Globe, Zap, Cpu, Rocket, Award, TrendingUp, Users, Shield, X, Star, ArrowRight } from "lucide-react";
 import { StatCard } from "@/components/stat-card"
 import { MagneticButton } from "@/components/magnetic-button"
 import AnimatedJourneyButton from "@/components/animated-journey-button"
 import { useState } from "react"
 import { ScrollVelocityContainer, ScrollVelocityRow } from "@/components/ui/scroll-based-velocity"
+import Link from "next/link"
 
 const partners = [
   { name: "ShilpoMarket", logo: "https://www.shilpomarket.com/logo.png", color: "#00A4EF" },
@@ -223,10 +224,16 @@ export function HeroSection() {
 
           {/* CTA Section with Magnetic Button */}
           <div>
-            <div className="flex flex-wrap gap-3 sm:gap-4 items-center justify-center lg:justify-start mt-4 sm:mt-7">
-              <AnimatedJourneyButton />
-            </div>
-          </div>
+  <a 
+    href="https://app.pqrix.com/client/register" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    className="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#2b0071] to-[#5E14E4] text-white rounded-full font-semibold hover:shadow-xl hover:scale-105 transition-all duration-300"
+  >
+    Start Your Journey  
+    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+  </a>
+</div>
 
           {/* Stats Section - Below CTA on Left Side */}
           <div className="grid grid-cols-4 sm:grid-cols-4 gap-2.5 sm:gap-4 pt-3 sm:pt-5 max-w-2xl mx-auto lg:mx-0">
