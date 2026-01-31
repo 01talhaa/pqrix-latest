@@ -1,14 +1,58 @@
 "use client"
 
-import { useState } from "react"
-import { jobOpenings } from "@/data/career"
-import { MapPin, Briefcase, DollarSign } from "lucide-react"
+import { useState, useEffect } from "react"
+import { MapPin, Briefcase, DollarSign, Clock } from "lucide-react"
 import { JobModal } from "@/components/job-modal"
-import type { JobOpening } from "@/data/career"
+
+interface JobOpening {
+  _id: string
+  id: string
+  title: string
+  department: string
+  location: string
+  type: string
+  experience: string
+  description: string
+  requirements: string[]
+  responsibilities: string[]
+  niceToHave: string[]
+  benefits: string[]
+  status: string
+  featured: boolean
+  remote: boolean
+  applicationsCount: number
+  salary: string
+}
 
 export function CareerSection() {
+  const [jobOpenings, setJobOpenings] = useState<JobOpening[]>([])
+  const [loading, setLoading] = useState(true)
   const [selectedJob, setSelectedJob] = useState<JobOpening | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
+
+  useEffect(() => {
+    const fetchJobs = async () => {
+      try {
+        console.log('Fetching careers...')
+        const response = await fetch('/api/careers')
+        console.log('Response status:', response.status)
+        const data = await response.json()
+        console.log('Career data:', data)
+        console.log('Is array?', Array.isArray(data.data))
+        console.log('Data length:', data.data?.length)
+        
+        if (data && data.data) {
+          setJobOpenings(data.data)
+        }
+      } catch (error) {
+        console.error('Failed to fetch job openings:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchJobs()
+  }, [])
 
   const handleJobClick = (job: JobOpening) => {
     setSelectedJob(job)
@@ -18,6 +62,29 @@ export function CareerSection() {
   const handleCloseModal = () => {
     setIsModalOpen(false)
     setTimeout(() => setSelectedJob(null), 300)
+  }
+
+  if (loading) {
+    return (
+      <section id="careers" className="relative overflow-hidden">
+        <div className="container mx-auto flex justify-center items-center min-h-[400px]">
+          <div className="text-foreground/70">Loading job openings...</div>
+        </div>
+      </section>
+    )
+  }
+
+  if (!jobOpenings || jobOpenings.length === 0) {
+    console.log('Job openings state:', jobOpenings)
+    return (
+      <section id="careers" className="relative overflow-hidden">
+        <div className="container mx-auto flex justify-center items-center min-h-[400px]">
+          <div className="text-foreground/70">
+            No job openings available at the moment. (Check console for details)
+          </div>
+        </div>
+      </section>
+    )
   }
 
   return (
@@ -64,12 +131,22 @@ export function CareerSection() {
               <div className="relative space-y-4">
                 {/* Badges */}
                 <div className="flex items-center gap-2 flex-wrap">
+                  {job.featured && (
+                    <span className="px-3 py-1 rounded-full bg-yellow-400 text-yellow-900 text-xs font-semibold">
+                      ⭐ Featured
+                    </span>
+                  )}
                   <span className="px-3 py-1 rounded-full bg-gradient-to-br from-[#2b0071] to-[#5E14E4] text-white text-xs font-semibold">
                     {job.department}
                   </span>
                   <span className="px-3 py-1 rounded-full bg-muted text-foreground text-xs font-semibold">
                     {job.type}
                   </span>
+                  {job.remote && (
+                    <span className="px-3 py-1 rounded-full bg-green-100 text-green-700 text-xs font-semibold">
+                      🌍 Remote
+                    </span>
+                  )}
                 </div>
 
                 {/* Title */}
@@ -89,12 +166,18 @@ export function CareerSection() {
                     <span>{job.location}</span>
                   </div>
                   <div className="flex items-center gap-1">
-                    <Briefcase className="w-4 h-4" />
-                    <span>{job.type}</span>
+                    <Clock className="w-4 h-4" />
+                    <span>{job.experience}</span>
                   </div>
+                  {job.salary && (
+                    <div className="flex items-center gap-1">
+                      <DollarSign className="w-4 h-4" />
+                      <span>{job.salary}</span>
+                    </div>
+                  )}
                   <div className="flex items-center gap-1">
-                    <DollarSign className="w-4 h-4" />
-                    <span>{job.salary}</span>
+                    <Briefcase className="w-4 h-4" />
+                    <span>{job.applicationsCount} applications</span>
                   </div>
                 </div>
 

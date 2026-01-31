@@ -1,9 +1,28 @@
 "use client"
 
 import { motion, AnimatePresence } from "framer-motion"
-import { X, MapPin, Briefcase, DollarSign } from "lucide-react"
-import type { JobOpening } from "@/data/career"
+import { X, MapPin, Briefcase, DollarSign, Clock } from "lucide-react"
 import { useState } from "react"
+
+interface JobOpening {
+  _id: string
+  id: string
+  title: string
+  department: string
+  location: string
+  type: string
+  experience: string
+  description: string
+  requirements: string[]
+  responsibilities: string[]
+  niceToHave: string[]
+  benefits: string[]
+  status: string
+  featured: boolean
+  remote: boolean
+  applicationsCount: number
+  salary: string
+}
 
 interface JobModalProps {
   job: JobOpening | null
@@ -85,7 +104,7 @@ export function JobModal({ job, isOpen, onClose }: JobModalProps) {
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-3 flex-wrap">
-                      <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">
+                      <span className="px-3 py-1 rounded-full bg-primary/10 text-foreground text-xs font-semibold">
                         {job.department}
                       </span>
                       <span className="px-3 py-1 rounded-full bg-muted text-foreground text-xs font-semibold">
@@ -103,9 +122,15 @@ export function JobModal({ job, isOpen, onClose }: JobModalProps) {
                         <span>{job.type}</span>
                       </div>
                       <div className="flex items-center gap-1">
-                        <DollarSign className="w-4 h-4" />
-                        <span>{job.salary}</span>
+                        <Clock className="w-4 h-4" />
+                        <span>{job.experience}</span>
                       </div>
+                      {job.salary && (
+                        <div className="flex items-center gap-1">
+                          <DollarSign className="w-4 h-4" />
+                          <span>{job.salary}</span>
+                        </div>
+                      )}
                     </div>
                   </div>
                   <button
@@ -125,46 +150,66 @@ export function JobModal({ job, isOpen, onClose }: JobModalProps) {
                     <div className="space-y-6">
                       <div>
                         <h3 className="text-lg font-bold text-foreground mb-3">About the Role</h3>
-                        <p className="text-foreground/70 leading-relaxed">{job.fullDescription}</p>
+                        <p className="text-foreground/70 leading-relaxed whitespace-pre-line">{job.description}</p>
                       </div>
 
-                      <div>
-                        <h3 className="text-lg font-bold text-foreground mb-3">Responsibilities</h3>
-                        <ul className="space-y-2">
-                          {job.responsibilities.map((resp, i) => (
-                            <li key={i} className="flex items-start gap-2 text-sm text-foreground/70">
-                              <span className="text-primary mt-1">•</span>
-                              <span>{resp}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      <div>
-                        <h3 className="text-lg font-bold text-foreground mb-3">Requirements</h3>
-                        <ul className="space-y-2">
-                          {job.requirements.map((req, i) => (
-                            <li key={i} className="flex items-start gap-2 text-sm text-foreground/70">
-                              <span className="text-primary mt-1">•</span>
-                              <span>{req}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      <div>
-                        <h3 className="text-lg font-bold text-foreground mb-3">Benefits</h3>
-                        <div className="flex flex-wrap gap-2">
-                          {job.benefits.map((benefit, i) => (
-                            <span
-                              key={i}
-                              className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium"
-                            >
-                              {benefit}
-                            </span>
-                          ))}
+                      {job.responsibilities && job.responsibilities.length > 0 && (
+                        <div>
+                          <h3 className="text-lg font-bold text-foreground mb-3">Responsibilities</h3>
+                          <ul className="space-y-2">
+                            {job.responsibilities.map((resp, i) => (
+                              <li key={i} className="flex items-start gap-2 text-sm text-foreground/70">
+                                <span className="text-primary mt-1">•</span>
+                                <span>{resp}</span>
+                              </li>
+                            ))}
+                          </ul>
                         </div>
-                      </div>
+                      )}
+
+                      {job.requirements && job.requirements.length > 0 && (
+                        <div>
+                          <h3 className="text-lg font-bold text-foreground mb-3">Requirements</h3>
+                          <ul className="space-y-2">
+                            {job.requirements.map((req, i) => (
+                              <li key={i} className="flex items-start gap-2 text-sm text-foreground/70">
+                                <span className="text-primary mt-1">•</span>
+                                <span>{req}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+
+                      {job.niceToHave && job.niceToHave.length > 0 && job.niceToHave[0] !== "" && (
+                        <div>
+                          <h3 className="text-lg font-bold text-foreground mb-3">Nice to Have</h3>
+                          <ul className="space-y-2">
+                            {job.niceToHave.map((item, i) => (
+                              <li key={i} className="flex items-start gap-2 text-sm text-foreground/70">
+                                <span className="text-green-500 mt-1">✓</span>
+                                <span>{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+
+                      {job.benefits && job.benefits.length > 0 && job.benefits[0] !== "" && (
+                        <div>
+                          <h3 className="text-lg font-bold text-foreground mb-3">Benefits</h3>
+                          <div className="flex flex-wrap gap-2">
+                            {job.benefits.map((benefit, i) => (
+                              <span
+                                key={i}
+                                className="px-3 py-1 rounded-full bg-primary/10 text-foreground/70 text-sm font-medium"
+                              >
+                                {benefit}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      )}
                     </div>
 
                     {/* Application Form */}

@@ -138,7 +138,7 @@ export function HeroSection() {
 
       {/* Announcement Bar */}
       {showAnnouncement && (
-        <div className="relative z-20 mx-3 sm:mx-6 lg:mx-10 mt-0">
+        <div className="relative z-20 mx-3 sm:mx-6 lg:mx-10 mt-4">
           <div className="relative backdrop-blur-md bg-gradient-to-r from-[#2b0071]/90 via-[#5E14E4]/85 to-[#2b0071]/90 rounded-full py-2.5 px-4 sm:py-3 sm:px-6 shadow-lg shadow-[#2b0071]/20 border border-white/10 group hover:shadow-xl hover:shadow-[#5E14E4]/30 transition-all duration-300">
             {/* Subtle glow effect */}
             <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#5E14E4]/20 via-transparent to-[#5E14E4]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

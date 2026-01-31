@@ -1,307 +1,193 @@
 "use client"
 
-import { useState } from "react"
-import { Menu, X } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { useEffect, useState } from "react"
 import Link from "next/link"
-import { motion } from "framer-motion"
+import { Menu, Sparkles } from "lucide-react"
 
 export function MainHeader() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-
-  const navLinks = [
-    { name: "About", href: "/about" },
-    { name: "Projects", href: "https://app.pqrix.com/projects" },
-    { name: "Services", href: "https://app.pqrix.com/services" },
-    { name: "Careers", href: "https://app.pqrix.com/careers" },
-    { name: "Contact", href: "/contact" },
+  const [scrolled, setScrolled] = useState(false)
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+  
+  const links = [
+    { href: "/", label: "Home" },
+    { href: "/about", label: "About" },
+    { href: "https://app.pqrix.com/projects", label: "Projects" },
+    { href: "https://app.pqrix.com/services", label: "Services" },
+    { href: "https://app.pqrix.com/careers", label: "Careers" },
+    { href: "https://app.pqrix.com/insights", label: "Insights" },
   ]
 
   return (
-    <>
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#FBFFFF]/80 backdrop-blur-md border-b border-border/50 transition-all duration-300">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            {/* Logo with Animation */}
-            <Link href="/" className="flex items-center gap-3 group">
-              <svg className="loader" width={40} height={40} viewBox="0 0 240 240">
-                <circle
-                  className="loader-ring loader-ring-a"
-                  cx={120}
-                  cy={120}
-                  r={105}
-                  fill="none"
-                  stroke="#9708F4"
-                  strokeWidth={20}
-                  strokeDasharray="0 660"
-                  strokeDashoffset={-330}
-                  strokeLinecap="round"
-                />
-                <circle
-                  className="loader-ring loader-ring-b"
-                  cx={120}
-                  cy={120}
-                  r={35}
-                  fill="none"
-                  stroke="#5E14E4"
-                  strokeWidth={20}
-                  strokeDasharray="0 220"
-                  strokeDashoffset={-110}
-                  strokeLinecap="round"
-                />
-                <circle
-                  className="loader-ring loader-ring-c"
-                  cx={85}
-                  cy={120}
-                  r={70}
-                  fill="none"
-                  stroke="#9708F4"
-                  strokeWidth={20}
-                  strokeDasharray="0 440"
-                  strokeLinecap="round"
-                />
-                <circle
-                  className="loader-ring loader-ring-d"
-                  cx={155}
-                  cy={120}
-                  r={70}
-                  fill="none"
-                  stroke="#5E14E4"
-                  strokeWidth={20}
-                  strokeDasharray="0 440"
-                  strokeLinecap="round"
-                />
-              </svg>
-              <span className="text-2xl font-bold bg-gradient-to-r from-[#2b0071] to-[#5E14E4] bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">
+    <header className="fixed top-0 left-0 right-0 z-50 pt-4 pb-4 transition-all duration-700">
+      <div className="container mx-auto max-w-7xl">
+        {/* Mobile/Tablet: Simple Header with Icon Logo + Menu (below 1100px) */}
+        <div className="xl:hidden px-4 flex items-center justify-between min-h-[60px]">
+          {/* Icon Logo Only */}
+          <Link href="/" className="flex items-center gap-2">
+            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#2b0071] to-[#5E14E4] flex items-center justify-center shadow-lg shadow-[#5E14E4]/30 border border-[#5E14E4]/20">
+              <Sparkles size={20} className="text-white" />
+            </div>
+            <span className="text-xl font-black tracking-tight bg-gradient-to-br from-[#2b0071] to-[#5E14E4] bg-clip-text text-transparent">
+              PQRIX
+            </span>
+          </Link>
+          
+          {/* Menu Button */}
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button
+                variant="outline"
+                size="icon"
+                className="border-[#5E14E4]/30 bg-white text-black hover:bg-gray-100 hover:border-[#5E14E4]/50 rounded-full transition-all duration-300 shadow-lg shadow-[#5E14E4]/10"
+              >
+                <Menu className="h-5 w-5" />
+                <span className="sr-only">Open menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent 
+              side="right" 
+              className="border-[#5E14E4]/20 p-0 w-80 flex flex-col bg-gradient-to-b from-white via-gray-50 to-white backdrop-blur-xl"
+            >
+              {/* Brand Header */}
+              <div className="flex items-center gap-2 px-6 py-6 border-b border-[#5E14E4]/20">
+                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#2b0071] to-[#5E14E4] flex items-center justify-center shadow-lg shadow-[#5E14E4]/30 border border-[#5E14E4]/20">
+                  <Sparkles size={20} className="text-white" />
+                </div>
+                <span className="text-xl font-black tracking-tight bg-gradient-to-br from-[#2b0071] to-[#5E14E4] bg-clip-text text-transparent">
+                  PQRIX
+                </span>
+              </div>
+
+              {/* Nav Links */}
+              <nav className="flex flex-col gap-1 mt-4 px-3 text-gray-700">
+                {links.map((l) => (
+                  <a
+                    key={l.href}
+                    href={l.href}
+                    className="flex items-center gap-3 px-4 py-3.5 rounded-xl hover:bg-[#5E14E4]/10 hover:text-black transition-all duration-300 group"
+                  >
+                    <span className="text-sm font-semibold">{l.label}</span>
+                    <div className="ml-auto w-0 h-0.5 bg-[#5E14E4] group-hover:w-6 transition-all duration-300 shadow-[0_0_8px_rgba(94,20,228,0.5)]" />
+                  </a>
+                ))}
+              </nav>
+
+              {/* CTA at Bottom */}
+              <div className="mt-auto border-t border-[#5E14E4]/20 p-6">
+                <Link href="/contact">
+                  <Button
+                    className="w-full bg-gradient-to-r from-[#2b0071] to-[#5E14E4] hover:from-[#3a0095] hover:to-[#7118ff] text-white font-bold rounded-full py-6 shadow-[0_8px_24px_rgba(94,20,228,0.4)] hover:shadow-[0_12px_32px_rgba(94,20,228,0.6)] transition-all duration-500 hover:scale-105 border border-[#5E14E4]/20"
+                  >
+                    Contact Us
+                  </Button>
+                </Link>
+              </div>
+            </SheetContent>
+          </Sheet>
+        </div>
+
+        {/* Desktop/Laptop: Full Header with Animations (1100px and above) */}
+        <div className="hidden xl:block relative min-h-[60px]">
+          {/* Background Pill - Morphs smoothly with responsive positioning */}
+          <div 
+            className="absolute inset-0 rounded-full transition-all duration-700 ease-out"
+            style={{
+              background: scrolled 
+                ? 'rgba(0, 0, 0, 0)' 
+                : 'rgba(0, 0, 0, 0)',
+              backdropFilter: scrolled ? 'blur(32px) saturate(180%)' : 'blur(20px) saturate(150%)',
+              WebkitBackdropFilter: scrolled ? 'blur(32px) saturate(180%)' : 'blur(20px) saturate(150%)',
+              border: scrolled 
+                ? '1px solid rgba(94, 20, 228, 0.3)' 
+                : '1px solid rgba(94, 20, 228, 0.15)',
+              boxShadow: scrolled 
+                ? '0 8px 32px rgba(94, 20, 228, 0.2)' 
+                : '0 4px 16px rgba(94, 20, 228, 0.08)',
+              left: scrolled ? 'clamp(10%, 16%, 18%)' : 'clamp(12%, 20%, 22%)',
+              right: scrolled ? 'clamp(8%, 12%, 14%)' : 'clamp(12%, 20%, 22%)',
+            }}
+          />
+
+          {/* Logo - Slides from outside left to inside with responsive scaling */}
+          <div 
+            className="absolute z-10 flex items-center gap-1 transition-all duration-700 ease-out"
+            style={{
+              transform: scrolled 
+                ? 'translateX(clamp(120%, 180%, 200%)) scale(1)' 
+                : 'translateX(-40%) scale(1.3)',
+              paddingLeft: scrolled ? '1rem' : '0',
+              top: '50%',
+              marginTop: '-15px',
+              left: '1rem',
+            }}
+          >
+            <Link href="/" className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#2b0071] to-[#5E14E4] flex items-center justify-center shadow-lg shadow-[#5E14E4]/30 border border-[#5E14E4]/20">
+                <Sparkles size={18} className="text-white" />
+              </div>
+              <span className="text-xl font-black tracking-tight bg-gradient-to-br from-[#2b0071] to-[#5E14E4] bg-clip-text text-transparent whitespace-nowrap">
                 PQRIX
               </span>
             </Link>
+          </div>
 
-            {/* Mobile Menu Button */}
-            <button
-              className="md:hidden hover:scale-105 transition-transform duration-300 p-2"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-            >
-              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
+          {/* Desktop Nav - Always visible with enhanced styling and responsive gap */}
+          <nav 
+            className="absolute inset-y-0 left-1/2 flex items-center xl:gap-6 2xl:gap-8 text-sm font-semibold transition-all duration-700 ease-out"
+            style={{
+              opacity: scrolled ? 1 : 0.85,
+              transform: scrolled 
+                ? 'translateX(-50%) scale(1.0)' 
+                : 'translateX(-50%) scale(1.0)',
+            }}
+          >
+            {links.map((l) => (
+              <a 
+                key={l.href} 
+                href={l.href} 
+                className="relative text-gray-700 hover:text-black transition-all duration-300 group"
+              >
+                {l.label}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#2b0071] to-[#5E14E4] group-hover:w-full transition-all duration-300 shadow-[0_0_8px_rgba(94,20,228,0.5)]" />
+              </a>
+            ))}
+          </nav>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center gap-8">
-              {navLinks.map((link, index) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className="text-sm font-medium text-foreground hover:text-[#2b0071] transition-all duration-300 relative group"
-                >
-                  {link.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#2b0071] to-[#5E14E4] group-hover:w-full transition-all duration-300"></span>
-                </Link>
-              ))}
-            </nav>
+          {/* CTA Button - Slides from outside right to inside with responsive sizing */}
+          <div 
+            className="absolute z-10 flex items-center gap-3 transition-all duration-700 ease-out"
+            style={{
+              transform: scrolled 
+                ? 'translateX(clamp(-90%, -100%, -110%)) scale(1)'
+                : 'translateX(40%) scale(1.05)',
+              paddingRight: scrolled ? '1.2rem' : '0',
+              top: '50%',
+              marginTop: '-20px',
+              right: '1rem',
+            }}
+          >
+            <Link href="/contact"> 
+              <Button
+                className="relative overflow-hidden bg-gradient-to-r from-[#2b0071] to-[#5E14E4] hover:from-[#3a0095] hover:to-[#7118ff] text-white font-bold px-8 py-5 rounded-full text-sm shadow-[0_8px_24px_rgba(94,20,228,0.4)] hover:shadow-[0_12px_32px_rgba(94,20,228,0.6)] transition-all duration-500 hover:scale-105 border border-[#5E14E4]/20"
+              >
+                <span className="relative z-10 flex items-center gap-2">
+                  Contact Us
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-[#5E14E4]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              </Button>
+            </Link>
           </div>
         </div>
-      </header>
-
-      {/* Mobile Navigation */}
-      <motion.div
-        initial={{ opacity: 0, height: 0 }}
-        animate={{
-          opacity: mobileMenuOpen ? 1 : 0,
-          height: mobileMenuOpen ? "auto" : 0,
-        }}
-        transition={{ duration: 0.3 }}
-        className="md:hidden fixed top-[73px] left-0 right-0 z-40 bg-[#FBFFFF]/95 backdrop-blur-md border-b border-border/50 overflow-hidden"
-      >
-        <nav className="container mx-auto px-4 py-4 flex flex-col gap-4">
-          {navLinks.map((link, index) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-base font-medium text-foreground hover:text-[#9708F4] transition-all duration-300 py-2"
-            >
-              {link.name}
-            </Link>
-          ))}
-        </nav>
-      </motion.div>
-
-      <style jsx>{`
-        .loader-ring {
-          animation: ringA 2s linear infinite;
-        }
-
-        .loader-ring-a {
-          stroke: #9708F4;
-        }
-
-        .loader-ring-b {
-          animation-name: ringB;
-          stroke: #5E14E4;
-        }
-
-        .loader-ring-c {
-          animation-name: ringC;
-          stroke: #9708F4;
-        }
-
-        .loader-ring-d {
-          animation-name: ringD;
-          stroke: #5E14E4;
-        }
-
-        @keyframes ringA {
-          from, 4% {
-            stroke-dasharray: 0 660;
-            stroke-width: 20;
-            stroke-dashoffset: -330;
-          }
-          12% {
-            stroke-dasharray: 60 600;
-            stroke-width: 30;
-            stroke-dashoffset: -335;
-          }
-          32% {
-            stroke-dasharray: 60 600;
-            stroke-width: 30;
-            stroke-dashoffset: -595;
-          }
-          40%, 54% {
-            stroke-dasharray: 0 660;
-            stroke-width: 20;
-            stroke-dashoffset: -660;
-          }
-          62% {
-            stroke-dasharray: 60 600;
-            stroke-width: 30;
-            stroke-dashoffset: -665;
-          }
-          82% {
-            stroke-dasharray: 60 600;
-            stroke-width: 30;
-            stroke-dashoffset: -925;
-          }
-          90%, to {
-            stroke-dasharray: 0 660;
-            stroke-width: 20;
-            stroke-dashoffset: -990;
-          }
-        }
-
-        @keyframes ringB {
-          from, 12% {
-            stroke-dasharray: 0 220;
-            stroke-width: 20;
-            stroke-dashoffset: -110;
-          }
-          20% {
-            stroke-dasharray: 20 200;
-            stroke-width: 30;
-            stroke-dashoffset: -115;
-          }
-          40% {
-            stroke-dasharray: 20 200;
-            stroke-width: 30;
-            stroke-dashoffset: -195;
-          }
-          48%, 62% {
-            stroke-dasharray: 0 220;
-            stroke-width: 20;
-            stroke-dashoffset: -220;
-          }
-          70% {
-            stroke-dasharray: 20 200;
-            stroke-width: 30;
-            stroke-dashoffset: -225;
-          }
-          90% {
-            stroke-dasharray: 20 200;
-            stroke-width: 30;
-            stroke-dashoffset: -305;
-          }
-          98%, to {
-            stroke-dasharray: 0 220;
-            stroke-width: 20;
-            stroke-dashoffset: -330;
-          }
-        }
-
-        @keyframes ringC {
-          from {
-            stroke-dasharray: 0 440;
-            stroke-width: 20;
-            stroke-dashoffset: 0;
-          }
-          8% {
-            stroke-dasharray: 40 400;
-            stroke-width: 30;
-            stroke-dashoffset: -5;
-          }
-          28% {
-            stroke-dasharray: 40 400;
-            stroke-width: 30;
-            stroke-dashoffset: -175;
-          }
-          36%, 58% {
-            stroke-dasharray: 0 440;
-            stroke-width: 20;
-            stroke-dashoffset: -220;
-          }
-          66% {
-            stroke-dasharray: 40 400;
-            stroke-width: 30;
-            stroke-dashoffset: -225;
-          }
-          86% {
-            stroke-dasharray: 40 400;
-            stroke-width: 30;
-            stroke-dashoffset: -395;
-          }
-          94%, to {
-            stroke-dasharray: 0 440;
-            stroke-width: 20;
-            stroke-dashoffset: -440;
-          }
-        }
-
-        @keyframes ringD {
-          from, 8% {
-            stroke-dasharray: 0 440;
-            stroke-width: 20;
-            stroke-dashoffset: 0;
-          }
-          16% {
-            stroke-dasharray: 40 400;
-            stroke-width: 30;
-            stroke-dashoffset: -5;
-          }
-          36% {
-            stroke-dasharray: 40 400;
-            stroke-width: 30;
-            stroke-dashoffset: -175;
-          }
-          44%, 50% {
-            stroke-dasharray: 0 440;
-            stroke-width: 20;
-            stroke-dashoffset: -220;
-          }
-          58% {
-            stroke-dasharray: 40 400;
-            stroke-width: 30;
-            stroke-dashoffset: -225;
-          }
-          78% {
-            stroke-dasharray: 40 400;
-            stroke-width: 30;
-            stroke-dashoffset: -395;
-          }
-          86%, to {
-            stroke-dasharray: 0 440;
-            stroke-width: 20;
-            stroke-dashoffset: -440;
-          }
-        }
-      `}</style>
-    </>
+      </div>
+    </header>
   )
 }

@@ -13,6 +13,7 @@ import { Footer } from "@/components/footer"
 import Features from "@/components/features"
 import PartnersSection from "@/components/partners-section"
 import { MainHeader } from "@/components/main-header"
+import { WhatsAppButton } from "@/components/whatsapp-button"
 
 export default function PortfolioPage() {
   return (
@@ -34,6 +35,7 @@ export default function PortfolioPage() {
         <InsightsSection />
         <CareerSection />
         <TeamSection />
+        <WhatsAppButton/>
         <Footer />
       </div>
     </div>

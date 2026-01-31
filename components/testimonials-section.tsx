@@ -1,27 +1,48 @@
 "use client"
-import { testimonials } from "@/data/testimonials"
+import { useState, useEffect } from "react"
 import { Marquee } from "@/components/magicui/marquee"
 
-const firstColumn = testimonials.slice(0, 3)
-const secondColumn = testimonials.slice(3, 6)
-const thirdColumn = testimonials.slice(6, 9)
+interface Testimonial {
+  id: string
+  clientName: string
+  clientEmail: string
+  clientImage: string
+  rating: number
+  review: string
+  approved: boolean
+}
 
 const TestimonialCard = ({
   img,
   name,
   username,
   body,
+  rating,
 }: {
   img: string
   name: string
   username: string
   body: string
+  rating: number
 }) => {
   return (
     <div className="relative w-full max-w-xs overflow-hidden rounded-3xl border border-border/30 bg-card/90 backdrop-blur-sm p-10 shadow-xl">
       <div className="absolute -top-5 -left-5 h-40 w-40 rounded-full  from-[#2b0071]/20 to-transparent blur-md"></div>
 
       <div className="text-foreground/90 leading-relaxed font-medium">{body}</div>
+
+      {/* Rating Stars */}
+      <div className="mt-3 flex items-center gap-1">
+        {[...Array(5)].map((_, i) => (
+          <svg
+            key={i}
+            className={`w-4 h-4 ${i < rating ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300 fill-gray-300'}`}
+            viewBox="0 0 20 20"
+          >
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+        ))}
+      </div>
 
       <div className="mt-5 flex items-center gap-2">
         <img src={img || "/placeholder.svg"} alt={name} height="40" width="40" className="h-10 w-10 rounded-full border-2 border-primary/30" />
@@ -35,6 +56,60 @@ const TestimonialCard = ({
 }
 
 export function TestimonialsSection() {
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const fetchTestimonials = async () => {
+      try {
+        console.log('Fetching testimonials...')
+        const response = await fetch('/api/testimonials')
+        console.log('Response status:', response.status)
+        const data = await response.json()
+        console.log('Testimonials data:', data)
+        console.log('Is array?', Array.isArray(data.data))
+        console.log('Data length:', data.data?.length)
+        
+        if (data && data.data) {
+          setTestimonials(data.data)
+        }
+      } catch (error) {
+        console.error('Failed to fetch testimonials:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchTestimonials()
+  }, [])
+
+  if (loading) {
+    return (
+      <section id="testimonials" className="mb-0">
+        <div className="mx-auto max-w-7xl flex justify-center items-center min-h-[400px]">
+          <div className="text-foreground/70">Loading testimonials...</div>
+        </div>
+      </section>
+    )
+  }
+
+  if (!testimonials || testimonials.length === 0) {
+    console.log('Testimonials state:', testimonials)
+    return (
+      <section id="testimonials" className="mb-0">
+        <div className="mx-auto max-w-7xl flex justify-center items-center min-h-[400px]">
+          <div className="text-foreground/70">
+            No testimonials available yet. (Check console for details)
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  const firstColumn = testimonials.slice(0, Math.ceil(testimonials.length / 3))
+  const secondColumn = testimonials.slice(Math.ceil(testimonials.length / 3), Math.ceil(testimonials.length * 2 / 3))
+  const thirdColumn = testimonials.slice(Math.ceil(testimonials.length * 2 / 3))
+
   return (
     <section id="testimonials" className="mb-0">
       <div className="mx-auto max-w-7xl">
@@ -62,7 +137,14 @@ export function TestimonialsSection() {
           <div>
             <Marquee pauseOnHover vertical className="[--duration:20s]">
               {firstColumn.map((testimonial) => (
-                <TestimonialCard key={testimonial.username} {...testimonial} />
+                <TestimonialCard 
+                  key={testimonial.id} 
+                  img={testimonial.clientImage}
+                  name={testimonial.clientName}
+                  username={testimonial.clientEmail}
+                  body={testimonial.review}
+                  rating={testimonial.rating}
+                />
               ))}
             </Marquee>
           </div>
@@ -70,7 +152,14 @@ export function TestimonialsSection() {
           <div className="hidden md:block">
             <Marquee reverse pauseOnHover vertical className="[--duration:25s]">
               {secondColumn.map((testimonial) => (
-                <TestimonialCard key={testimonial.username} {...testimonial} />
+                <TestimonialCard 
+                  key={testimonial.id} 
+                  img={testimonial.clientImage}
+                  name={testimonial.clientName}
+                  username={testimonial.clientEmail}
+                  body={testimonial.review}
+                  rating={testimonial.rating}
+                />
               ))}
             </Marquee>
           </div>
@@ -78,7 +167,14 @@ export function TestimonialsSection() {
           <div className="hidden lg:block">
             <Marquee pauseOnHover vertical className="[--duration:30s]">
               {thirdColumn.map((testimonial) => (
-                <TestimonialCard key={testimonial.username} {...testimonial} />
+                <TestimonialCard 
+                  key={testimonial.id} 
+                  img={testimonial.clientImage}
+                  name={testimonial.clientName}
+                  username={testimonial.clientEmail}
+                  body={testimonial.review}
+                  rating={testimonial.rating}
+                />
               ))}
             </Marquee>
           </div>
