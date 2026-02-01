@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { useEffect, useState } from "react"
 import Link from "next/link"
-import { Menu, Sparkles } from "lucide-react"
+import { Menu } from "lucide-react"
 
 export function MainHeader() {
   const [scrolled, setScrolled] = useState(false)
@@ -26,6 +26,21 @@ export function MainHeader() {
     { href: "https://app.pqrix.com/insights", label: "Insights" },
   ]
 
+  // Reusable PQRIX Icon Component
+  const PQRIXIcon = ({ size = 40, gradientId = "pqrix-grad" }) => (
+    <svg width={size} height={size} viewBox="0 0 100 100" className="drop-shadow-lg">
+      <defs>
+        <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#2b0071" stopOpacity={0.9} />
+          <stop offset="50%" stopColor="#5E14E4" stopOpacity={0.85} />
+          <stop offset="100%" stopColor="#2b0071" stopOpacity={0.9} />
+        </linearGradient>
+      </defs>
+      <rect x="10" y="10" width="80" height="80" rx="12" fill={`url(#${gradientId})`}/>
+      <path d="M 30 30 L 30 70 L 40 70 L 40 55 L 57 55 C 65 55 70 50 70 42.5 C 70 35 65 30 57 30 Z M 40 38 L 55 38 C 60 38 62 40 62 42.5 C 62 45 60 47 55 47 L 40 47 Z" fill="white" />
+    </svg>
+  )
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 pt-4 pb-4 transition-all duration-700">
       <div className="container mx-auto max-w-7xl">
@@ -33,9 +48,7 @@ export function MainHeader() {
         <div className="xl:hidden px-4 flex items-center justify-between min-h-[60px]">
           {/* Icon Logo Only */}
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#2b0071] to-[#5E14E4] flex items-center justify-center shadow-lg shadow-[#5E14E4]/30 border border-[#5E14E4]/20">
-              <Sparkles size={20} className="text-white" />
-            </div>
+            <PQRIXIcon size={40} gradientId="grad-mobile" />
             <span className="text-xl font-black tracking-tight bg-gradient-to-br from-[#2b0071] to-[#5E14E4] bg-clip-text text-transparent">
               PQRIX
             </span>
@@ -59,9 +72,7 @@ export function MainHeader() {
             >
               {/* Brand Header */}
               <div className="flex items-center gap-2 px-6 py-6 border-b border-[#5E14E4]/20">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#2b0071] to-[#5E14E4] flex items-center justify-center shadow-lg shadow-[#5E14E4]/30 border border-[#5E14E4]/20">
-                  <Sparkles size={20} className="text-white" />
-                </div>
+                <PQRIXIcon size={40} gradientId="grad-menu" />
                 <span className="text-xl font-black tracking-tight bg-gradient-to-br from-[#2b0071] to-[#5E14E4] bg-clip-text text-transparent">
                   PQRIX
                 </span>
@@ -131,9 +142,7 @@ export function MainHeader() {
             }}
           >
             <Link href="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#2b0071] to-[#5E14E4] flex items-center justify-center shadow-lg shadow-[#5E14E4]/30 border border-[#5E14E4]/20">
-                <Sparkles size={18} className="text-white" />
-              </div>
+              <PQRIXIcon size={32} gradientId="grad-desktop" />
               <span className="text-xl font-black tracking-tight bg-gradient-to-br from-[#2b0071] to-[#5E14E4] bg-clip-text text-transparent whitespace-nowrap">
                 PQRIX
               </span>

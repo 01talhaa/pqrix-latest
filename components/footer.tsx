@@ -8,6 +8,21 @@ import { motion } from "framer-motion"
 export function Footer() {
   const currentYear = new Date().getFullYear()
 
+  // Reusable PQRIX Icon Component
+  const PQRIXIcon = ({ size = 48, gradientId = "pqrix-grad-footer" }) => (
+    <svg width={size} height={size} viewBox="0 0 100 100" className="drop-shadow-lg">
+      <defs>
+        <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#2b0071" stopOpacity={0.9} />
+          <stop offset="50%" stopColor="#5E14E4" stopOpacity={0.85} />
+          <stop offset="100%" stopColor="#2b0071" stopOpacity={0.9} />
+        </linearGradient>
+      </defs>
+      <rect x="10" y="10" width="80" height="80" rx="12" fill={`url(#${gradientId})`}/>
+      <path d="M 30 30 L 30 70 L 40 70 L 40 55 L 57 55 C 65 55 70 50 70 42.5 C 70 35 65 30 57 30 Z M 40 38 L 55 38 C 60 38 62 40 62 42.5 C 62 45 60 47 55 47 L 40 47 Z" fill="white" />
+    </svg>
+  )
+
   return (
     <footer className="bg-card/60 backdrop-blur-sm border-t border-border/50 mt-12 md:mt-16 lg:mt-20 relative overflow-hidden">
       {/* Animated background */}
@@ -38,7 +53,9 @@ export function Footer() {
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                className="flex items-center gap-2 justify-center md:justify-start"
               >
+                <PQRIXIcon size={48} gradientId="grad-footer" />
                 <motion.h3 
                   className="text-2xl font-bold bg-gradient-to-r from-[#2b0071] to-[#5E14E4] bg-clip-text text-transparent"
                   animate={{
@@ -49,16 +66,18 @@ export function Footer() {
                 >
                   pqrix
                 </motion.h3>
-                <motion.p 
-                  className="text-sm text-muted-foreground mt-1"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.2 }}
-                >
-                  Leading tech company delivering innovative solutions
-                </motion.p>
               </motion.div>
+              <motion.div>
+              </motion.div>
+              <motion.p 
+                className="text-sm text-muted-foreground mt-1 text-center md:text-left"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+              >
+                Leading tech company delivering innovative solutions
+              </motion.p>
               <div className="flex justify-center md:justify-start">
                 <SocialLinks size="md" />
               </div>

@@ -1,0 +1,28 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a0040" />
+      <stop offset="50%" stop-color="#2b0071" />
+      <stop offset="100%" stop-color="#1a0040" />
+    </linearGradient>
+    <linearGradient id="icon-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2b0071" stop-opacity="0.9" />
+      <stop offset="50%" stop-color="#5E14E4" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#2b0071" stop-opacity="0.9" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg-grad)"/>
+  
+  <!-- Icon (centered, larger) -->
+  <g transform="translate(350, 165)">
+    <rect x="10" y="10" width="200" height="200" rx="30" fill="url(#icon-grad)"/>
+    <path d="M 75 75 L 75 175 L 100 175 L 100 137.5 L 142.5 137.5 C 162.5 137.5 175 125 175 106.25 C 175 87.5 162.5 75 142.5 75 Z M 100 93.75 L 137.5 93.75 C 150 93.75 156.25 100 156.25 106.25 C 156.25 112.5 150 118.75 137.5 118.75 L 100 118.75 Z" fill="white" transform="scale(2.5)" />
+  </g>
+  
+  <!-- Text -->
+  <text x="650" y="280" font-family="Arial, sans-serif" font-size="80" font-weight="900" fill="white" text-anchor="start">PQRIX</text>
+  <text x="650" y="350" font-family="Arial, sans-serif" font-size="32" fill="#E0E0E0" text-anchor="start">Premium Software Solutions</text>
+  <text x="650" y="400" font-family="Arial, sans-serif" font-size="24" fill="#B0B0B0" text-anchor="start">Web • Mobile • Cloud • AI/ML</text>
+</svg>
